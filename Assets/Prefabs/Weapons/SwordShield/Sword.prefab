@@ -43,7 +43,6 @@ GameObject:
   - component: {fileID: 1281791645666797107}
   - component: {fileID: 955445197853520718}
   - component: {fileID: 4272364672458735020}
-  - component: {fileID: 173989752993141442}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -111,19 +110,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &173989752993141442
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 526303092944231538}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3757558421858721873
 GameObject:
   m_ObjectHideFlags: 0
@@ -212,7 +198,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6560275383405569270}
   - component: {fileID: 6006733910673099266}
-  - component: {fileID: 2327463184029194436}
+  - component: {fileID: 8878780972277338780}
   m_Layer: 0
   m_Name: Sword
   m_TagString: Untagged
@@ -244,11 +230,11 @@ BoxCollider:
   m_GameObject: {fileID: 8184805399377344547}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
-  m_Size: {x: 0.22028184, y: 1.574033, z: 0.28430915}
-  m_Center: {x: -0.0013409853, y: 0.9362508, z: -0.005112052}
---- !u!114 &2327463184029194436
+  m_Size: {x: 0.7428012, y: 1.7699773, z: 0.85425216}
+  m_Center: {x: 0.004101932, y: 1.034223, z: -0.0010179579}
+--- !u!114 &8878780972277338780
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -257,6 +243,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 8184805399377344547}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b5b00a21e5ab45418a06d95eaa7f0e7, type: 3}
+  m_Script: {fileID: 11500000, guid: 6e87d911320b19f48a9865f3d6f68df1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public abstract class PlayerInputs : MonoBehaviour
 {
@@ -9,9 +7,6 @@ public abstract class PlayerInputs : MonoBehaviour
     public float Verical { get { return axisY; } }
     public Vector3 Swipe { get { return swipeDirection; } }
     public bool A { get { return isAPressed; } }
-
-    [SerializeField]
-    private PlayerController playerController = default;
 
     // ---- INTERN ----
     protected float axisX = 0f;

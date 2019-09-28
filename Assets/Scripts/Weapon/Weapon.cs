@@ -7,10 +7,9 @@ public abstract class Weapon : MonoBehaviour
     public bool IsOneHand { get { return arrayWeaponObject.Length == 1;  } }
     public GameObject RightHandWeapon { get { return arrayWeaponObject[0]; } }
     public GameObject LeftHandWeapon { get { return IsOneHand ? null : arrayWeaponObject[1]; } }
+    public RuntimeAnimatorController AnimatorController { get { return animatorController; } }
 
-
-    // TODO some stats
-
+    public WeaponStats stats;
 
     [Header("Setup")]
     [SerializeField]
@@ -21,6 +20,8 @@ public abstract class Weapon : MonoBehaviour
     // ---- INTERN ---
     protected WeaponObject[] arrayConcreteWeaponObject;
     protected Animator animator;
+
+    protected bool canAttack = true;
 
     public void SetWeaponsObject(WeaponObject[] arrayWeaponObject)
     {
@@ -42,4 +43,16 @@ public abstract class Weapon : MonoBehaviour
     public abstract void DesactiveOffensiveColliders();
     public abstract void ActiveDefensiveColliders();
     public abstract void DesactiveDefensiveColliders();
+
+    protected IEnumerator CountAttackCouldown()
+    {
+        float time = stats.couldownAttack;
+        while(time > 0f)
+        {
+            time -= Time.deltaTime;
+            yield return null;
+        }
+
+        canAttack = true;
+    }
 }

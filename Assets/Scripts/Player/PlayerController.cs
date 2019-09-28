@@ -13,6 +13,13 @@ public class PlayerController : MonoBehaviour
     [Header("Setup")]
     [SerializeField]
     private PlayerInputs playerInputs = default;
+    [SerializeField]
+    private GameObject firstWeaponPrefab = default;
+
+    [Header("GFX")]
+    [SerializeField]
+    private ParticleSystem dashStartParticles = default;
+
 
     // ---- INTERN ----
     private PlayerMotor motor;
@@ -30,6 +37,8 @@ public class PlayerController : MonoBehaviour
         motor = GetComponent<PlayerMotor>();
         weaponManager = GetComponent<WeaponManager>();
         animator = GetComponent<Animator>();
+
+        GetNewWeapon(firstWeaponPrefab);
     }
 
     void Update()
@@ -49,15 +58,31 @@ public class PlayerController : MonoBehaviour
             canDash = false;
             motor.Dash(stats.dashSpeed, dashDirection, stats.dashTime);
             animator.SetTrigger("Dash");
-            StartCoroutine("countDashCouldown");
+            StartCoroutine("CountDashCouldown");
+
+            // GFX
+            // calculate rotation between current pos and dashDirection
+            float yAngle = Vector3.SignedAngle(dashDirection, Vector3.forward, -Vector3.up);
+            Quaternion rot = Quaternion.Euler(0f, yAngle, 0f);
+            ParticleSystem ps = (ParticleSystem)Instantiate(dashStartParticles, transform.position, rot);
+            Destroy(ps.gameObject, 0.8f);
         }
 
         // attack
         bool wantToAttack = playerInputs.A;
-        // todo
+        if (wantToAttack)
+        {
+            weaponManager.PerformWeaponAttack();
+        }
     }
 
-    private IEnumerator countDashCouldown()
+    public void GetNewWeapon(GameObject weaponPefab)
+    {
+        WeaponStats ws = weaponManager.ChangeWeapon(firstWeaponPrefab);
+        stats.ChangeStats(ws.playerStats.speed, ws.playerStats.dashSpeed, ws.playerStats.dashTime, ws.playerStats.dashCouldown);
+    }
+
+    private IEnumerator CountDashCouldown()
     {
         float time = stats.dashCouldown;
         while(time > 0f)

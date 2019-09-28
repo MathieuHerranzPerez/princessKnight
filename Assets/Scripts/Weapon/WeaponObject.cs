@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 [RequireComponent(typeof(Collider))]
 public class WeaponObject : MonoBehaviour
@@ -9,11 +7,20 @@ public class WeaponObject : MonoBehaviour
 
     // ---- INTERN ----
     private Collider wpCollider;
+    protected Weapon weapon;
+    private HingeJoint joint;
 
-    void Awake()
+    void Start()
     {
         wpCollider = GetComponent<Collider>();
+        joint = GetComponent<HingeJoint>();
     }
+
+    public void SetWeapon(Weapon weapon)
+    {
+        this.weapon = weapon;
+    }
+
 
     public void SetColliderActive()
     {

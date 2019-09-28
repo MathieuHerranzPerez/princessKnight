@@ -52,8 +52,10 @@ public class PlayerMotor : MonoBehaviour
 
     public void Dash(float force, Vector3 direction, float time)
     {
+        
         previousVelocity = Vector3.zero;     // reset player velocity after dash
         dashDirection = direction;
+        this.direction = dashDirection;
         dashSpeed = force;
         dashTime = time;
     }

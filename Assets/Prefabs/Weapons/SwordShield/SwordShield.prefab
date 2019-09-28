@@ -43,6 +43,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d73625c183916244aa95e2345ff29d7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stats:
+    playerStats:
+      maxHP: 5
+      HP: 5
+      defaultSpeed: 10
+      speed: 10
+      dashSpeed: 10
+      dashTime: 0.4
+      dashCouldown: 2
+    defaultDamage: 10
+    damage: 10
+    defaultCouldownAttack: 0.3
+    couldownAttack: 0.3
   animatorController: {fileID: 9100000, guid: b091c226ee92a3d4b8d9644613f734b4, type: 2}
   arrayWeaponObject:
   - {fileID: 8184805399377344547, guid: eee0e33f15491fd4fba2752b68606fdc, type: 3}

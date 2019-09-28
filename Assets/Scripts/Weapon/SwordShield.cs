@@ -27,7 +27,12 @@ public class SwordShield : MeleeWeapon
 
     public override void PerformAttack()
     {
-        animator.SetTrigger("BasicAttack");
+        if (canAttack)
+        {
+            animator.SetTrigger("BasicAttack");
+            canAttack = false;
+            StartCoroutine("CountAttackCouldown");
+        }
     }
 
     public override void PerformSpecial()
