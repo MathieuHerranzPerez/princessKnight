@@ -76,10 +76,41 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void TakeDamage(int amount)
+    {
+        CameraShake.Instance.Shake(0.15f, 0.3f, 0.15f);
+        animator.SetTrigger("TakingDamage");
+        StartCoroutine("CountCouldownSpeedWhenTakingDamage");
+        stats.HP -= amount;
+        if(stats.HP <= 0)
+        {
+            Die();
+        }
+    }
+
     public void GetNewWeapon(GameObject weaponPefab)
     {
         WeaponStats ws = weaponManager.ChangeWeapon(firstWeaponPrefab);
         stats.ChangeStats(ws.playerStats.speed, ws.playerStats.dashSpeed, ws.playerStats.dashTime, ws.playerStats.dashCouldown);
+    }
+
+    private void Die()
+    {
+        // todo
+        Debug.Log("DIE DIE DIE !");
+    }
+
+    private IEnumerator CountCouldownSpeedWhenTakingDamage()
+    {
+        stats.speed = 0f;
+        float time = 0.2f;
+        while(time > 0f)
+        {
+            time -= Time.deltaTime;
+            yield return null;
+        }
+
+        stats.speed = stats.defaultSpeed;
     }
 
     private IEnumerator CountDashCouldown()
