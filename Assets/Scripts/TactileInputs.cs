@@ -81,9 +81,17 @@ public class TactileInputs : PlayerInputs
             else
             {
                 swipeDirection = Vector3.zero;
+                isAPressed = false;
             }
         }
+        else
+        {
+            // reset all
+            swipeDirection = Vector3.zero;
+            isAPressed = false;
+        }
     }
+    
 
     private Vector2 DetectSwipe()
     {

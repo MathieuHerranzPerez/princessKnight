@@ -53,6 +53,7 @@ public class PlayerController : MonoBehaviour
 
         // dash
         dashDirection = playerInputs.Swipe;
+        Debug.Log(dashDirection);
         if (canDash && dashDirection != Vector3.zero)
         {
             canDash = false;
