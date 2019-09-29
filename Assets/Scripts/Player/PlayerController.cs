@@ -5,10 +5,9 @@ using UnityEngine;
 [RequireComponent(typeof(PlayerMotor))]
 [RequireComponent(typeof(WeaponManager))]
 [RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(Player))]
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField]
-    private Stats stats = default;
 
     [Header("Setup")]
     [SerializeField]
@@ -25,6 +24,7 @@ public class PlayerController : MonoBehaviour
     private PlayerMotor motor;
     private WeaponManager weaponManager;
     private Animator animator;
+    private Player player;
 
     private Vector3 direction = Vector3.zero;
     private Vector3 dashDirection = Vector3.zero;
@@ -38,6 +38,7 @@ public class PlayerController : MonoBehaviour
         motor = GetComponent<PlayerMotor>();
         weaponManager = GetComponent<WeaponManager>();
         animator = GetComponent<Animator>();
+        player = GetComponent<Player>();
 
         GetNewWeapon(firstWeaponPrefab);
     }
@@ -50,7 +51,9 @@ public class PlayerController : MonoBehaviour
 
         // move
         direction = new Vector3(directionX, 0f, directionY);
-        motor.Move(direction, stats.speed);
+        // I didn't found better way that using magnitude :/
+        motor.Move(direction, player.stats.speed * direction.magnitude);
+
 
         // dash
         if(!canDash)
@@ -66,9 +69,9 @@ public class PlayerController : MonoBehaviour
         if (canDash && dashDirection != Vector3.zero)
         {
             canDash = false;
-            motor.Dash(stats.dashSpeed, dashDirection, stats.dashTime);
+            motor.Dash(player.stats.dashSpeed, dashDirection, player.stats.dashTime);
             animator.SetTrigger("Dash");
-            dashCouldown = stats.dashCouldown;
+            dashCouldown = player.stats.dashCouldown;
             // StartCoroutine("CountDashCouldown");
 
             // GFX
@@ -89,19 +92,20 @@ public class PlayerController : MonoBehaviour
 
     public void TakeDamage(int amount)
     {
-        CameraShake.Instance.Shake(0.15f, 0.3f, 0.15f);
+        CameraShake.Instance.Shake(0.10f, 0.15f, 0.10f);
         animator.SetTrigger("TakingDamage");
-        stats.HP -= amount;
-        if(stats.HP <= 0)
+        player.stats.HP -= amount;
+        if(player.stats.HP <= 0)
         {
             Die();
         }
     }
 
+    // when the player need to change his weapon
     public void GetNewWeapon(GameObject weaponPefab)
     {
         WeaponStats ws = weaponManager.ChangeWeapon(firstWeaponPrefab);
-        stats.ChangeStats(ws.speed, ws.dashSpeed, ws.dashTime, ws.dashCouldown);
+        player.stats.ChangeStats(ws.speed, ws.dashSpeed, ws.dashTime, ws.dashCouldown);
     }
 
     private void Die()
@@ -112,7 +116,7 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator CountDashCouldown()
     {
-        float time = stats.dashCouldown;
+        float time = player.stats.dashCouldown;
         while(time > 0f)
         {
             time -= Time.deltaTime;

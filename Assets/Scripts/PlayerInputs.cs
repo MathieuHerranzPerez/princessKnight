@@ -2,6 +2,10 @@
 
 public abstract class PlayerInputs : MonoBehaviour
 {
+    /**
+     * The final version will use the Tactile input system
+     * But to test, contoller input is also available
+     */ 
 
     public float Horizontal { get { return axisX; } }
     public float Verical { get { return axisY; } }

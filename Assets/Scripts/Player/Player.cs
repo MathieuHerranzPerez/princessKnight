@@ -4,6 +4,7 @@
 public class Player : MonoBehaviour
 {
     public Transform HitTarget { get { return hitTarget; } }
+    public Stats stats = default;
 
     [Header("Setup")]
     [SerializeField]

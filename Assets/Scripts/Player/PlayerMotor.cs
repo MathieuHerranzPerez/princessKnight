@@ -65,6 +65,7 @@ public class PlayerMotor : MonoBehaviour
     {
         if (needToMove)
         {
+            Debug.Log("NeedToMove");
             // maybe should change that later for a system with rotation speed and going forward only
             // but there is maybe the simpliest and fastest way to move (mobile ready ;) )
 

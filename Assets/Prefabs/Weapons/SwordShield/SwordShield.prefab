@@ -45,13 +45,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stats:
     damage: 10
-    attackCouldown: 1
+    attackCouldown: 0.5
     specialCouldown: 10
-    defaultSpeed: 10
-    speed: 10
-    dashSpeed: 10
-    dashTime: 0.4
-    dashCouldown: 0.4
+    defaultSpeed: 15
+    speed: 15
+    dashSpeed: 20
+    dashTime: 0.2
+    dashCouldown: 0.3
   animatorController: {fileID: 9100000, guid: b091c226ee92a3d4b8d9644613f734b4, type: 2}
   arrayWeaponObject:
   - {fileID: 8184805399377344547, guid: eee0e33f15491fd4fba2752b68606fdc, type: 3}

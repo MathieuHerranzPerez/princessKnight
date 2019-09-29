@@ -42,10 +42,13 @@ public class TactileInputs : PlayerInputs
         }
 
 
-        Vector3 moveDirection = Vector3.forward * joystick.Vertical + Vector3.right * joystick.Horizontal;
-        moveDirection.Normalize();
-        axisX = moveDirection.x;
-        axisY = moveDirection.z;
+        // Vector3 moveDirection = Vector3.forward * joystick.Vertical + Vector3.right * joystick.Horizontal;
+        //moveDirection.Normalize();
+        //axisX = moveDirection.x;
+        //axisY = moveDirection.z;
+        axisX = joystick.Horizontal;
+        axisY = joystick.Vertical;
+
 
         // detect swipe
         if (Input.touchCount > 0)

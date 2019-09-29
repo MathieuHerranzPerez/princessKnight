@@ -7,10 +7,12 @@ public class ControllerInputs : PlayerInputs
         float axisXTmp = Input.GetAxis("AxisX");
         float axisYTmp = Input.GetAxis("AxisY");
 
-        Vector2 tmp = new Vector2(axisXTmp, axisYTmp);
-        tmp.Normalize();
-        axisX = tmp.x;
-        axisY = tmp.y;
+        axisX = axisXTmp;
+        axisY = axisYTmp;
+        //Vector2 tmp = new Vector2(axisXTmp, axisYTmp);
+        //tmp.Normalize();
+        //axisX = tmp.x;
+        //axisY = tmp.y;
 
         float rightXMov = Input.GetAxis("rightAxisX");
         float rightYMov = Input.GetAxis("rightAxisY");

@@ -188,15 +188,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stats:
-    maxHP: 15
-    HP: 15
+    maxHP: 1
+    HP: 1
     attackCouldown: 3
     specialCouldown: 10
     defaultSpeed: 3.5
     speed: 3.5
-    dashSpeed: 10
-    dashTime: 0.4
-    dashCouldown: 2
     aggroRange: 15
   targetMask:
     serializedVersion: 2

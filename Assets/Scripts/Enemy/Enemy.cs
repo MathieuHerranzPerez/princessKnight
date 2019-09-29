@@ -89,7 +89,7 @@ public class Enemy : MonoBehaviour
     {
         // todo effect
 
-        Destroy(transform.gameObject, 1.5f);
+        Destroy(transform.gameObject, 0f);
     }
 
     protected void PerformAttack()
@@ -97,6 +97,8 @@ public class Enemy : MonoBehaviour
         Debug.Log("Attack");
         canAttack = false;
         StartCoroutine("CountAttackCouldown");
+        // stop the anim during the attaque animation
+        // don't forget to Unfreeze with anim event at the end of the animation
         Freeze();
         currentAttack = basicAttack;
         animator.SetTrigger("Attack");
