@@ -8,7 +8,7 @@ using UnityEngine.AI;
 public class Enemy : MonoBehaviour
 {
     [SerializeField]
-    protected Stats stats = default;
+    protected EnemyStats stats = default;
     [SerializeField]
     protected LayerMask targetMask = default;
     [SerializeField]

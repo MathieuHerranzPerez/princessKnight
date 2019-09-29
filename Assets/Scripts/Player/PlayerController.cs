@@ -30,6 +30,7 @@ public class PlayerController : MonoBehaviour
     private Vector3 dashDirection = Vector3.zero;
 
     private bool canDash = true;
+    private float dashCouldown = 0f;
 
 
     void Start()
@@ -52,14 +53,23 @@ public class PlayerController : MonoBehaviour
         motor.Move(direction, stats.speed);
 
         // dash
+        if(!canDash)
+        {
+            dashCouldown -= Time.deltaTime;
+            if(dashCouldown <= 0f)
+            {
+                Debug.Log("CanDash");
+                canDash = true;
+            }
+        }
         dashDirection = playerInputs.Swipe;
-        Debug.Log(dashDirection);
         if (canDash && dashDirection != Vector3.zero)
         {
             canDash = false;
             motor.Dash(stats.dashSpeed, dashDirection, stats.dashTime);
             animator.SetTrigger("Dash");
-            StartCoroutine("CountDashCouldown");
+            dashCouldown = stats.dashCouldown;
+            // StartCoroutine("CountDashCouldown");
 
             // GFX
             // calculate rotation between current pos and dashDirection
@@ -81,7 +91,6 @@ public class PlayerController : MonoBehaviour
     {
         CameraShake.Instance.Shake(0.15f, 0.3f, 0.15f);
         animator.SetTrigger("TakingDamage");
-        StartCoroutine("CountCouldownSpeedWhenTakingDamage");
         stats.HP -= amount;
         if(stats.HP <= 0)
         {
@@ -92,7 +101,7 @@ public class PlayerController : MonoBehaviour
     public void GetNewWeapon(GameObject weaponPefab)
     {
         WeaponStats ws = weaponManager.ChangeWeapon(firstWeaponPrefab);
-        stats.ChangeStats(ws.playerStats.speed, ws.playerStats.dashSpeed, ws.playerStats.dashTime, ws.playerStats.dashCouldown);
+        stats.ChangeStats(ws.speed, ws.dashSpeed, ws.dashTime, ws.dashCouldown);
     }
 
     private void Die()
@@ -101,27 +110,15 @@ public class PlayerController : MonoBehaviour
         Debug.Log("DIE DIE DIE !");
     }
 
-    private IEnumerator CountCouldownSpeedWhenTakingDamage()
-    {
-        stats.speed = 0f;
-        float time = 0.2f;
-        while(time > 0f)
-        {
-            time -= Time.deltaTime;
-            yield return null;
-        }
-
-        stats.speed = stats.defaultSpeed;
-    }
-
     private IEnumerator CountDashCouldown()
     {
         float time = stats.dashCouldown;
         while(time > 0f)
         {
             time -= Time.deltaTime;
-            yield return null;;
+            yield return null;
         }
+        Debug.Log("no couldown");
         canDash = true;
     }
 }

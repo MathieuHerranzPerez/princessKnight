@@ -46,7 +46,7 @@ public abstract class Weapon : MonoBehaviour
 
     protected IEnumerator CountAttackCouldown()
     {
-        float time = stats.couldownAttack;
+        float time = stats.attackCouldown;
         while(time > 0f)
         {
             time -= Time.deltaTime;
