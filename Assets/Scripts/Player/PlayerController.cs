@@ -90,28 +90,11 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void TakeDamage(int amount)
-    {
-        CameraShake.Instance.Shake(0.10f, 0.15f, 0.10f);
-        animator.SetTrigger("TakingDamage");
-        player.stats.HP -= amount;
-        if(player.stats.HP <= 0)
-        {
-            Die();
-        }
-    }
-
     // when the player need to change his weapon
     public void GetNewWeapon(GameObject weaponPefab)
     {
         WeaponStats ws = weaponManager.ChangeWeapon(firstWeaponPrefab);
         player.stats.ChangeStats(ws.speed, ws.dashSpeed, ws.dashTime, ws.dashCouldown);
-    }
-
-    private void Die()
-    {
-        // todo
-        Debug.Log("DIE DIE DIE !");
     }
 
     private IEnumerator CountDashCouldown()
