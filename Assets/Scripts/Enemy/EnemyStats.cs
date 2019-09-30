@@ -6,7 +6,6 @@ public class EnemyStats
     public int HP = 5;
 
     public float attackCouldown = 3f;
-    public float specialCouldown = 10f;
 
     public float defaultSpeed = 10f;
     public float speed = 10f;

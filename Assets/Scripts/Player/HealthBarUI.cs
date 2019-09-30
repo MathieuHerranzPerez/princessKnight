@@ -5,10 +5,10 @@ public class HealthBarUI : MonoBehaviour, Observer
 {
     [Header("Setup")]
     [SerializeField]
-    private Player player;
+    private Player player = default;
     [Header("UI")]
     [SerializeField]
-    private Image healthAmountImage;
+    private Image healthAmountImage = default;
 
     void Start()
     {

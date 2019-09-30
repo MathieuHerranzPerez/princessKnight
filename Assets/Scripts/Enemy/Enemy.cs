@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -14,8 +13,6 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     protected EnemyAttack basicAttack = default;
     [SerializeField]
-    protected EnemyAttack specialAttack = default;
-    [SerializeField]
     protected BehaviorStrategy strategy = default;
 
     [Header("Setup")]
@@ -29,14 +26,13 @@ public class Enemy : MonoBehaviour
     protected NavMeshAgent navMeshAgent;
 
     protected bool canAttack = true;
-    protected bool canSpecial = true;
 
     protected bool isCastingBasic = false;
     protected bool isCastingSpecial = false;
 
     protected bool isFrozen = false;
 
-    private EnemyAttack currentAttack;
+    protected EnemyAttack currentAttack;
 
     void Start()
     {
@@ -79,7 +75,7 @@ public class Enemy : MonoBehaviour
         isFrozen = false;
         navMeshAgent.speed = stats.speed;
     }
-    private void Freeze()
+    protected void Freeze()
     {
         isFrozen = true;
         navMeshAgent.speed = 0f;
@@ -104,16 +100,6 @@ public class Enemy : MonoBehaviour
         animator.SetTrigger("Attack");
     }
 
-    protected void PerformSpecial()
-    {
-        Debug.Log("Special");
-        canSpecial = false;
-        StartCoroutine("CountSpecialCouldown");
-        Freeze();
-        currentAttack = specialAttack;
-        animator.SetTrigger("special");
-    }
-
     private void HitTarget()
     {
         target.TakeDamage(currentAttack.Damage);
@@ -136,11 +122,11 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    private void ChasePlayer()
+    protected virtual void ChasePlayer()
     {
         navMeshAgent.SetDestination(target.transform.position);
         WhatToDo whatToDo = strategy.GetNextAction(targetMask, target.HitTarget.position, projectileSpawnPoint.position, 
-            navMeshAgent.remainingDistance, basicAttack.Range, specialAttack.Range, canAttack, canSpecial);
+            navMeshAgent.remainingDistance, basicAttack.Range, canAttack);
 
         switch(whatToDo)
         {
@@ -148,16 +134,8 @@ public class Enemy : MonoBehaviour
                 PerformAttack();
                 break;
 
-            case WhatToDo.SPECIAL_ATTACK:
-                PerformSpecial();
-                break;
-
             case WhatToDo.MOVE_BASIC:
                 navMeshAgent.stoppingDistance = basicAttack.Range - 0.5f;
-                break;
-
-            case WhatToDo.MOVE_SPECIAL:
-                navMeshAgent.stoppingDistance = specialAttack.Range - 0.5f;
                 break;
 
             default:    // move closer
@@ -179,19 +157,6 @@ public class Enemy : MonoBehaviour
 
         canAttack = true;
     }
-
-    private IEnumerator CountSpecialCouldown()
-    {
-        float time = stats.specialCouldown;
-        while (time > 0f)
-        {
-            time -= Time.deltaTime;
-            yield return null;
-        }
-
-        canSpecial = true;
-    }
-
 
     /**
      *  Show the aggro range in gizmos
