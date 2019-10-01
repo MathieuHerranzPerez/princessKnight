@@ -6,12 +6,18 @@ using UnityEngine.AI;
 [RequireComponent(typeof(Animator))]
 public class Enemy : MonoBehaviour
 {
+    public Animator Anim { get { return animator; } }
+    public Transform ProjecileSpawnPoint { get { return projectileSpawnPoint; } }
+
+
     [SerializeField]
     protected EnemyStats stats = default;
     [SerializeField]
     protected LayerMask targetMask = default;
     [SerializeField]
-    protected EnemyAttack basicAttack = default;
+    protected string targetTag = "Player";
+    [SerializeField]
+    protected EnemyAttack attack = default;
     [SerializeField]
     protected BehaviorStrategy strategy = default;
 
@@ -22,23 +28,21 @@ public class Enemy : MonoBehaviour
     // ---- INERN ----
     protected Animator animator;
 
-    protected Player target = null;
+    protected Targetable target = null;
     protected NavMeshAgent navMeshAgent;
-
-    protected bool canAttack = true;
 
     protected bool isCastingBasic = false;
     protected bool isCastingSpecial = false;
 
     protected bool isFrozen = false;
-
-    protected EnemyAttack currentAttack;
+    protected bool isRotationFrozen = false;
 
     void Start()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
         navMeshAgent.speed = stats.defaultSpeed;
         animator = GetComponent<Animator>();
+        attack.Source = this;
     }
 
     void Update()
@@ -69,13 +73,20 @@ public class Enemy : MonoBehaviour
     }
 
 
-    // don't forget to call it in animation event
-    private void Unfreeze()
+    public void Unfreeze()
     {
         isFrozen = false;
         navMeshAgent.speed = stats.speed;
+        navMeshAgent.angularSpeed = 300f;
     }
-    protected void Freeze()
+
+    public void FreezeRotaion()
+    {
+        isRotationFrozen = true;
+        navMeshAgent.angularSpeed = 0f;
+    }
+
+    public void FreezeMovement()
     {
         isFrozen = true;
         navMeshAgent.speed = 0f;
@@ -91,18 +102,18 @@ public class Enemy : MonoBehaviour
     protected void PerformAttack()
     {
         Debug.Log("Attack");
-        canAttack = false;
-        StartCoroutine("CountAttackCouldown");
-        // stop the anim during the attaque animation
-        // don't forget to Unfreeze with anim event at the end of the animation
-        Freeze();
-        currentAttack = basicAttack;
-        animator.SetTrigger("Attack");
+        attack.Perform(target);
     }
 
-    private void HitTarget()
+    // don't forget to call it in animation event
+    protected void FinishAttack()
     {
-        target.TakeDamage(currentAttack.Damage);
+        attack.End();
+    }
+
+    private void Cast()
+    {
+        attack.Cast();
     }
 
     private void SearchTarge()
@@ -114,9 +125,10 @@ public class Enemy : MonoBehaviour
         {
             foreach(Collider col in withinAggroCollider)
             {
-                if(col.gameObject.tag == "Player")
+                if(col.gameObject.tag == targetTag)
                 {
-                    target = col.gameObject.GetComponent<Player>();
+                    target = col.gameObject.GetComponent<Targetable>();
+                    attack.Target = target;
                 }
             }
         }
@@ -125,8 +137,8 @@ public class Enemy : MonoBehaviour
     protected virtual void ChasePlayer()
     {
         navMeshAgent.SetDestination(target.transform.position);
-        WhatToDo whatToDo = strategy.GetNextAction(targetMask, target.HitTarget.position, projectileSpawnPoint.position, 
-            navMeshAgent.remainingDistance, basicAttack.Range, canAttack);
+        WhatToDo whatToDo = strategy.GetNextAction(targetMask, target.HitTargetPoint, projectileSpawnPoint.position, 
+            navMeshAgent.remainingDistance, attack.Range, attack.Couldown <= 0f);
 
         switch(whatToDo)
         {
@@ -135,28 +147,15 @@ public class Enemy : MonoBehaviour
                 break;
 
             case WhatToDo.MOVE_BASIC:
-                navMeshAgent.stoppingDistance = basicAttack.Range - 0.5f;
+                navMeshAgent.stoppingDistance = attack.Range - 0.5f;
                 break;
 
             default:    // move closer
-                Debug.Log("moving closer");
                 navMeshAgent.stoppingDistance = 0.5f;
                 break;
         }
     }
 
-
-    private IEnumerator CountAttackCouldown()
-    {
-        float time = stats.attackCouldown;
-        while(time > 0f)
-        {
-            time -= Time.deltaTime;
-            yield return null;
-        }
-
-        canAttack = true;
-    }
 
     /**
      *  Show the aggro range in gizmos

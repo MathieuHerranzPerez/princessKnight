@@ -40,8 +40,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 727076247079343524}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34536520dbb91c54f88456339066d843, type: 3}
+  m_Script: {fileID: 11500000, guid: 2f935fcc5cdaf6e4a868d675f1be4172, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   damageOnHit: 1
   range: 2
+  couldown: 3

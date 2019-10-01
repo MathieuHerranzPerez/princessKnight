@@ -3,14 +3,9 @@ using UnityEngine;
 
 [RequireComponent(typeof(PlayerController))]
 [RequireComponent(typeof(Animator))]
-public class Player : MonoBehaviour
+public class Player : Targetable
 {
-    public Transform HitTarget { get { return hitTarget; } }
     public Stats stats = default;
-
-    [Header("Setup")]
-    [SerializeField]
-    private Transform hitTarget = default;
 
     // ---- INTERN ----
     private PlayerController playerController;
@@ -25,7 +20,7 @@ public class Player : MonoBehaviour
     }
 
 
-    public void TakeDamage(int amount)
+    public override void TakeDamage(int amount)
     {
         CameraShake.Instance.Shake(0.10f, 0.15f, 0.10f);
         animator.SetTrigger("TakingDamage");

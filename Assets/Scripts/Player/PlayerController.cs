@@ -61,7 +61,6 @@ public class PlayerController : MonoBehaviour
             dashCouldown -= Time.deltaTime;
             if(dashCouldown <= 0f)
             {
-                Debug.Log("CanDash");
                 canDash = true;
             }
         }

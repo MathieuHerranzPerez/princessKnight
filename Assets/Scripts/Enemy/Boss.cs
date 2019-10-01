@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Boss : Enemy
 {
@@ -12,23 +11,19 @@ public class Boss : Enemy
     protected EnemyAttack specialAttack = default;
 
     // ---- INTERN ----
-    protected bool canSpecial = true;
+    protected EnemyAttack currentAttack;
 
     protected void PerformSpecial()
     {
         Debug.Log("Special");
-        canSpecial = false;
-        StartCoroutine("CountSpecialCouldown");
-        Freeze();
-        currentAttack = specialAttack;
-        animator.SetTrigger("special");
+        specialAttack.Perform(target);
     }
 
     protected override void ChasePlayer()
     {
         navMeshAgent.SetDestination(target.transform.position);
-        WhatToDoBoss whatToDo = strategy.GetNextAction(targetMask, target.HitTarget.position, projectileSpawnPoint.position,
-            navMeshAgent.remainingDistance, basicAttack.Range, specialAttack.Range, canAttack, canSpecial);
+        WhatToDoBoss whatToDo = strategy.GetNextAction(targetMask, target.HitTargetPoint, projectileSpawnPoint.position,
+            navMeshAgent.remainingDistance, attack.Range, specialAttack.Range, attack.Couldown <= 0f, specialAttack.Couldown <= 0f);
 
         switch (whatToDo)
         {
@@ -41,7 +36,7 @@ public class Boss : Enemy
                 break;
 
             case WhatToDoBoss.MOVE_BASIC:
-                navMeshAgent.stoppingDistance = basicAttack.Range - 0.5f;
+                navMeshAgent.stoppingDistance = attack.Range - 0.5f;
                 break;
 
             case WhatToDoBoss.MOVE_SPECIAL:
@@ -53,17 +48,5 @@ public class Boss : Enemy
                 navMeshAgent.stoppingDistance = 0.5f;
                 break;
         }
-    }
-
-    private IEnumerator CountSpecialCouldown()
-    {
-        float time = stats.specialCouldown;
-        while (time > 0f)
-        {
-            time -= Time.deltaTime;
-            yield return null;
-        }
-
-        canSpecial = true;
     }
 }
