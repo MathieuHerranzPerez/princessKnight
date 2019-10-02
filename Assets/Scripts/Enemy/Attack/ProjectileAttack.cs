@@ -12,24 +12,42 @@ public class ProjectileAttack : CastingAttack
 
     // ---- INTERN ----
     private LineRenderer lineRenderer;
+    private bool isAiming = false;
 
 
     void Start()
     {
         lineRenderer = GetComponent<LineRenderer>();
+        lineRenderer.positionCount = 0;
+    }
+
+    protected override void Update()
+    {
+        base.Update();
+
+        if (isAiming)
+        {
+            Vector3 dir = target.HitTargetPoint - source.ProjecileSpawnPoint.position;
+            dir.Normalize();
+            Vector3 point = dir * 20f + source.ProjecileSpawnPoint.position;
+
+            lineRenderer.SetPosition(0, source.ProjecileSpawnPoint.position);
+            lineRenderer.SetPosition(1, point);
+        }
     }
 
     public override void Perform(Targetable target)
     {
         base.Perform(target);
 
+        isAiming = true;
         // display the trajectory
-        lineRenderer.SetPosition(0, source.ProjecileSpawnPoint.position);
-        lineRenderer.SetPosition(1, target.HitTargetPoint);
+        lineRenderer.positionCount = 2;
     }
 
     public override void Cast()
     {
+        isAiming = false;
         lineRenderer.positionCount = 0;    // remove lineRenderer points
         GameObject projectileGO = Instantiate(projectilePrefab, source.ProjecileSpawnPoint.position, source.ProjecileSpawnPoint.rotation);
         Projectile projectile = projectileGO.GetComponent<Projectile>();

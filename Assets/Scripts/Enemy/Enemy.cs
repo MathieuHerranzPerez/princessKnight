@@ -154,6 +154,8 @@ public class Enemy : MonoBehaviour
                 navMeshAgent.stoppingDistance = 0.5f;
                 break;
         }
+
+        transform.LookAt(target.transform);
     }
 
 

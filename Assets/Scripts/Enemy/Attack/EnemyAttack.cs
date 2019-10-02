@@ -27,7 +27,7 @@ public abstract class EnemyAttack : MonoBehaviour
     protected Enemy source;
     protected float currentCouldown = 0f;
 
-    protected void Update()
+    protected virtual void Update()
     {
         if(currentCouldown > 0f)
         {
@@ -42,6 +42,7 @@ public abstract class EnemyAttack : MonoBehaviour
     {
         // stop the anim during the attaque animation
         // don't forget to Unfreeze with anim event at the end of the animation
+        currentCouldown = 1.5f;
         source.FreezeMovement();
         source.Anim.SetTrigger("Attack");
     }

@@ -14,14 +14,15 @@ public class Projectile : MonoBehaviour
 
     // ---- INTERN ----
     private int damage;
-    private float timeToLive;
+    private float timeToLive = 2f;
     private Rigidbody rb;
 
     void Start()
     {
         Destroy(this.gameObject, timeToLive);
         rb = GetComponent<Rigidbody>();
-        rb.AddForce(new Vector3(0f, 0f, speed), ForceMode.Impulse);
+        Vector3 force = transform.forward * speed;
+        rb.AddForce(force, ForceMode.Impulse);
     }
 
 }
