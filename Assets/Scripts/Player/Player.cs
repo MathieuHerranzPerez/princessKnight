@@ -41,8 +41,6 @@ public class Player : Targetable
     }
 
 
-
-
     /**
      * Observer / observable pattern
      */

@@ -13,7 +13,7 @@ public class ProjectileAttack : CastingAttack
     // ---- INTERN ----
     private LineRenderer lineRenderer;
     private bool isAiming = false;
-
+    private Vector3 directionFromPtojectileSpawnPointToTarget;
 
     void Start()
     {
@@ -27,9 +27,9 @@ public class ProjectileAttack : CastingAttack
 
         if (isAiming)
         {
-            Vector3 dir = target.HitTargetPoint - source.ProjecileSpawnPoint.position;
-            dir.Normalize();
-            Vector3 point = dir * 20f + source.ProjecileSpawnPoint.position;
+            directionFromPtojectileSpawnPointToTarget = target.HitTargetPoint - source.ProjecileSpawnPoint.position;
+            directionFromPtojectileSpawnPointToTarget.Normalize();
+            Vector3 point = directionFromPtojectileSpawnPointToTarget * 20f + source.ProjecileSpawnPoint.position;
 
             lineRenderer.SetPosition(0, source.ProjecileSpawnPoint.position);
             lineRenderer.SetPosition(1, point);
@@ -49,7 +49,8 @@ public class ProjectileAttack : CastingAttack
     {
         isAiming = false;
         lineRenderer.positionCount = 0;    // remove lineRenderer points
-        GameObject projectileGO = Instantiate(projectilePrefab, source.ProjecileSpawnPoint.position, source.ProjecileSpawnPoint.rotation);
+        Quaternion rotation = Quaternion.LookRotation(directionFromPtojectileSpawnPointToTarget, source.ProjecileSpawnPoint.up);
+        GameObject projectileGO = Instantiate(projectilePrefab, source.ProjecileSpawnPoint.position, rotation);
         Projectile projectile = projectileGO.GetComponent<Projectile>();
         projectile.Damage = damageOnHit;
         projectile.TimeToLive = projectileTimeToLive;

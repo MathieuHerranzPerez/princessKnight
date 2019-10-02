@@ -47,8 +47,8 @@ MonoBehaviour:
     damage: 10
     attackCouldown: 0.5
     specialCouldown: 10
-    defaultSpeed: 15
-    speed: 15
+    defaultSpeed: 7
+    speed: 7
     dashSpeed: 20
     dashTime: 0.2
     dashCouldown: 0.3

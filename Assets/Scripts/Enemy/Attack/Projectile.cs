@@ -25,4 +25,16 @@ public class Projectile : MonoBehaviour
         rb.AddForce(force, ForceMode.Impulse);
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        Targetable targetable = collision.transform.GetComponent<Targetable>();
+        if(targetable)
+        {
+            targetable.TakeDamage(damage);
+        }
+
+        // TODO effect
+
+        Destroy(gameObject);
+    }
 }
