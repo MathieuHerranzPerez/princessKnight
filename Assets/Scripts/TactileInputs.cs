@@ -10,8 +10,8 @@ public class TactileInputs : PlayerInputs
     private float minDistanceForSwipe = 2f;
 
     // ---- INTERN ----
-    private Touch rightFinger;
     private Touch leftFinger;
+    private Touch rightFinger;
     private bool leftFingerPress = false;
 
     private Vector2 fingerUpPosition;
@@ -23,20 +23,20 @@ public class TactileInputs : PlayerInputs
         // determine the fingers
         if (Input.touchCount > 0)
         {
-            if (Input.touches[0].position.x > Screen.width / 2)
-            {
-                rightFinger = Input.touches[0];
-                if (Input.touchCount > 1)
-                {
-                    leftFinger = Input.touches[1];
-                }
-            }
-            else
+            if (Input.touches[0].position.x < Screen.width / 2)
             {
                 leftFinger = Input.touches[0];
                 if (Input.touchCount > 1)
                 {
                     rightFinger = Input.touches[1];
+                }
+            }
+            else
+            {
+                rightFinger = Input.touches[0];
+                if (Input.touchCount > 1)
+                {
+                    leftFinger = Input.touches[1];
                 }
             }
         }
@@ -53,16 +53,16 @@ public class TactileInputs : PlayerInputs
         // detect swipe
         if (Input.touchCount > 0)
         {
-            if (leftFinger.phase == TouchPhase.Began)
+            if (rightFinger.phase == TouchPhase.Began)
             {
-                fingerUpPosition = leftFinger.position;
-                fingerDownPosition = leftFinger.position;
+                fingerUpPosition = rightFinger.position;
+                fingerDownPosition = rightFinger.position;
                 leftFingerPress = true;
             }
 
-            if (leftFingerPress && leftFinger.phase == TouchPhase.Ended)
+            if (leftFingerPress && rightFinger.phase == TouchPhase.Ended)
             {
-                fingerDownPosition = leftFinger.position;
+                fingerDownPosition = rightFinger.position;
                 Vector2 dashDir = DetectSwipe();
 
                 if (dashDir != Vector2.zero)
