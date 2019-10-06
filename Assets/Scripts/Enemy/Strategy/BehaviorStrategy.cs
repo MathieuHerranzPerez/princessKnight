@@ -11,4 +11,5 @@ public enum WhatToDo
     BASIC_ATTACK,
     MOVE_BASIC,
     MOVE_CLOSER,
+    FACE_TARGET,
 }

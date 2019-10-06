@@ -29,7 +29,7 @@ public class ProjectileAttack : CastingAttack
         {
             directionFromPtojectileSpawnPointToTarget = target.HitTargetPoint - source.ProjecileSpawnPoint.position;
             directionFromPtojectileSpawnPointToTarget.Normalize();
-            Vector3 point = directionFromPtojectileSpawnPointToTarget * 20f + source.ProjecileSpawnPoint.position;
+            Vector3 point = directionFromPtojectileSpawnPointToTarget * 100f + source.ProjecileSpawnPoint.position;
 
             lineRenderer.SetPosition(0, source.ProjecileSpawnPoint.position);
             lineRenderer.SetPosition(1, point);

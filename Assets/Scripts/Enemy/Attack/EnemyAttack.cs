@@ -42,7 +42,7 @@ public abstract class EnemyAttack : MonoBehaviour
     {
         // stop the anim during the attaque animation
         // don't forget to Unfreeze with anim event at the end of the animation
-        currentCouldown = 1.5f;
+        currentCouldown = 5f;
         source.FreezeMovement();
         source.Anim.SetTrigger("Attack");
     }

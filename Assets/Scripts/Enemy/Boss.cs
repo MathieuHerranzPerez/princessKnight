@@ -6,7 +6,7 @@ public class Boss : Enemy
     [SerializeField]
     protected new BossStats stats = default;
     [SerializeField]
-    protected new BehaviorStrategyBoss strategy = default;
+    protected BehaviorStrategyBoss strategy2 = default;
     [SerializeField]
     protected EnemyAttack specialAttack = default;
 
@@ -22,7 +22,7 @@ public class Boss : Enemy
     protected override void ChasePlayer()
     {
         navMeshAgent.SetDestination(target.transform.position);
-        WhatToDoBoss whatToDo = strategy.GetNextAction(targetMask, target.HitTargetPoint, projectileSpawnPoint.position,
+        WhatToDoBoss whatToDo = this.strategy2.GetNextAction(targetMask, target.HitTargetPoint, projectileSpawnPoint.position,
             navMeshAgent.remainingDistance, attack.Range, specialAttack.Range, attack.Couldown <= 0f, specialAttack.Couldown <= 0f);
 
         switch (whatToDo)

@@ -36,6 +36,7 @@ public class Enemy : MonoBehaviour
 
     protected bool isFrozen = false;
     protected bool isRotationFrozen = false;
+    protected bool isAttacking = false;
 
     void Start()
     {
@@ -101,14 +102,15 @@ public class Enemy : MonoBehaviour
 
     protected void PerformAttack()
     {
-        Debug.Log("Attack");
         attack.Perform(target);
+        isAttacking = true;
     }
 
     // don't forget to call it in animation event
     protected void FinishAttack()
     {
         attack.End();
+        isAttacking = false;
     }
 
     private void Cast()
@@ -140,7 +142,9 @@ public class Enemy : MonoBehaviour
         WhatToDo whatToDo = strategy.GetNextAction(targetMask, target.HitTargetPoint, projectileSpawnPoint.position, 
             navMeshAgent.remainingDistance, attack.Range, attack.Couldown <= 0f);
 
-        switch(whatToDo)
+        bool hasToLookAtTarget = false;
+
+        switch (whatToDo)
         {
             case WhatToDo.BASIC_ATTACK:
                 PerformAttack();
@@ -150,12 +154,20 @@ public class Enemy : MonoBehaviour
                 navMeshAgent.stoppingDistance = attack.Range - 0.5f;
                 break;
 
+            case WhatToDo.FACE_TARGET:
+                hasToLookAtTarget = true;
+                break;
+
             default:    // move closer
                 navMeshAgent.stoppingDistance = 0.5f;
                 break;
         }
 
-        transform.LookAt(target.transform);
+        // if the enemy is performing a non frozen attack or if he doesn't need to move to attack the player
+        if (hasToLookAtTarget || (isFrozen && !isRotationFrozen && isAttacking))
+        {
+            transform.LookAt(target.transform);
+        }
     }
 
 

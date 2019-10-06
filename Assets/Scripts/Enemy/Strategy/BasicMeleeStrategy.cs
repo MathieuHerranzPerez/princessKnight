@@ -18,6 +18,11 @@ public class BasicMeleeStrategy : BehaviorStrategy
                 return WhatToDo.MOVE_CLOSER;
             }
         }
+        // face the target
+        else if(!canBasic && distanceToTarget <= basicAttackRange)
+        {
+            return WhatToDo.FACE_TARGET;
+        }
         // move
         else
         {
