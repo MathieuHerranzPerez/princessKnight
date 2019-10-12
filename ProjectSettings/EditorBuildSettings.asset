@@ -6,6 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/ScenesTests/Mathieu.unity
-    guid: 2fbcb1a9df3197445acc29a836207556
+    path: Assets/Scenes/Menu.unity
+    guid: 200a8ab81adf1ac449f2d2b0cf277d96
+  - enabled: 1
+    path: Assets/Scenes/Mathieu 1.unity
+    guid: 3cb3259fb12bffe4ab76decfbe0e8c53
+  - enabled: 1
+    path: Assets/Scenes/Mathieu 2.unity
+    guid: d5d49666e5f948f46b8d693e8d22fce5
   m_configObjects: {}
