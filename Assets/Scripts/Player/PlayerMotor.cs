@@ -18,7 +18,7 @@ public class PlayerMotor : MonoBehaviour
     private float dashTime;
     private Vector3 dashDirection;
     private float dashSpeed;
-    // private Vector3 previousVelocity;
+    private Vector3 previousVelocity;
 
 
     void Start()
@@ -53,7 +53,7 @@ public class PlayerMotor : MonoBehaviour
     public void Dash(float force, Vector3 direction, float time)
     {
         
-        // previousVelocity = Vector3.zero;     // reset player velocity after dash
+        previousVelocity = Vector3.zero;     // reset player velocity after dash
         dashDirection = direction;
         this.direction = dashDirection;
         dashSpeed = force;
@@ -69,8 +69,8 @@ public class PlayerMotor : MonoBehaviour
             // but there is maybe the simpliest and fastest way to move (mobile ready ;) )
 
             // multiply by deltaTime to be sure to move the same way on every devices (slower or faster they are)
-            // rb.velocity = movement * Time.deltaTime * 20f;
-            transform.Translate(movement * Time.deltaTime, Space.World);
+            rb.velocity = movement * Time.deltaTime * 20f;
+            // transform.Translate(movement * Time.deltaTime, Space.World);
 
 
 
@@ -89,12 +89,12 @@ public class PlayerMotor : MonoBehaviour
         {
             needToMove = false;
             dashTime -= Time.deltaTime;
-            // rb.velocity = dashDirection * dashSpeed;
-            transform.Translate(dashDirection * dashSpeed * Time.deltaTime, Space.World);
-            //if (dashTime <= 0)
-            //{
-            //   rb.velocity = previousVelocity;
-            //}
+            rb.velocity = dashDirection * dashSpeed;
+            // transform.Translate(dashDirection * dashSpeed * Time.deltaTime, Space.World);
+            if (dashTime <= 0)
+            {
+                rb.velocity = previousVelocity;
+            }
             // for the character face where he is going
             transform.LookAt(transform.position + dashDirection);
         }

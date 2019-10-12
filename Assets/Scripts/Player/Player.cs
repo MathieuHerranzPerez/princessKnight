@@ -3,7 +3,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(PlayerController))]
 [RequireComponent(typeof(Animator))]
-public class Player : Targetable
+public class Player : Targetable, Observable
 {
     public Stats stats = default;
 

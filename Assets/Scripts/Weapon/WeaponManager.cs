@@ -88,7 +88,9 @@ public class WeaponManager : MonoBehaviour
 
         currentWeapon.SetWeaponsObject(arrayWeaponObject);
         currentWeapon.SetAnimator(animator);
-        animator.runtimeAnimatorController = currentWeapon.AnimatorController;
+
+        animator.SetLayerWeight(animator.GetLayerIndex(currentWeapon.NameLayerAnimator), 1f);
+        // animator.runtimeAnimatorController = currentWeapon.AnimatorController;
 
         return currentWeapon;
     }

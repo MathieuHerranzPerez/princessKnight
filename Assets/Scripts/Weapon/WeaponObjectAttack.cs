@@ -1,16 +1,15 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class WeaponObjectAttack : WeaponObject
+public abstract class WeaponObjectAttack : WeaponObject
 {
+    protected abstract void hitDamageable(Collider other, Damageable otherDamageable);
 
-    void OnTriggerEnter(Collider other)
+    protected void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Enemy")
+        Damageable damageable = other.GetComponent<Damageable>();
+        if (damageable != null)
         {
-            Enemy enemyHit = other.GetComponent<Enemy>();
-            enemyHit.TakeDamage(weapon.stats.damage);
+            hitDamageable(other, damageable);
         }
     }
 }

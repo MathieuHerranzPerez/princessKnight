@@ -4,7 +4,7 @@ using UnityEngine.AI;
 
 [RequireComponent(typeof(NavMeshAgent))]
 [RequireComponent(typeof(Animator))]
-public class Enemy : MonoBehaviour
+public class Enemy : MonoBehaviour, Damageable
 {
     public Animator Anim { get { return animator; } }
     public Transform ProjecileSpawnPoint { get { return projectileSpawnPoint; } }

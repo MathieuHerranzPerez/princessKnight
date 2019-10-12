@@ -7,13 +7,16 @@ public abstract class Weapon : MonoBehaviour
     public bool IsOneHand { get { return arrayWeaponObject.Length == 1;  } }
     public GameObject RightHandWeapon { get { return arrayWeaponObject[0]; } }
     public GameObject LeftHandWeapon { get { return IsOneHand ? null : arrayWeaponObject[1]; } }
-    public RuntimeAnimatorController AnimatorController { get { return animatorController; } }
+    // public RuntimeAnimatorController AnimatorController { get { return animatorController; } }
+    public string NameLayerAnimator { get { return nameLayerAnimator; } }
 
     public WeaponStats stats;
 
     [Header("Setup")]
+    // [SerializeField]
+    // protected RuntimeAnimatorController animatorController = default;
     [SerializeField]
-    protected RuntimeAnimatorController animatorController = default;
+    protected string nameLayerAnimator = "";
     [SerializeField]
     protected GameObject[] arrayWeaponObject = new GameObject[1];           // 1 or 2 weapons
 

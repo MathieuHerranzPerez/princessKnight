@@ -47,12 +47,12 @@ MonoBehaviour:
     damage: 10
     attackCouldown: 0.5
     specialCouldown: 10
-    defaultSpeed: 7
-    speed: 7
+    defaultSpeed: 15
+    speed: 15
     dashSpeed: 20
     dashTime: 0.2
     dashCouldown: 0.3
-  animatorController: {fileID: 9100000, guid: b091c226ee92a3d4b8d9644613f734b4, type: 2}
+  nameLayerAnimator: SwordShield
   arrayWeaponObject:
   - {fileID: 8184805399377344547, guid: eee0e33f15491fd4fba2752b68606fdc, type: 3}
   - {fileID: 4409442965800725637, guid: 4137480597365114e873d3b21c77fca8, type: 3}

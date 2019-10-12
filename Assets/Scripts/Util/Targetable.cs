@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public abstract class Targetable : MonoBehaviour
+public abstract class Targetable : MonoBehaviour, Damageable
 {
     public Vector3 HitTargetPoint { get { return hitTarget.position; } }
 
