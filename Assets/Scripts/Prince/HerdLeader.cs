@@ -20,10 +20,6 @@ public class HerdLeader : MonoBehaviour
     protected void Update()
     {
         // ChangeSpeed();
-    }
-
-    void FixedUpdate()
-    {
         transform.position = herd.target.position;
     }
 

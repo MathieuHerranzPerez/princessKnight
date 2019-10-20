@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.AI;
 
 [RequireComponent(typeof(NavMeshAgent))]
@@ -62,6 +60,17 @@ public class HerdUnit : MonoBehaviour
         this.herd = herd;
         hasReachTheHerd = true;
         offset = transform.position - herd.Leader.transform.position;
+
+        //navMeshAgent.angularSpeed = 120f;
+        navMeshAgent.acceleration = 3f;
+    }
+
+    public void LeaveHerd()
+    {
+        if (hasReachTheHerd)
+        {
+            herd.RemoveUnit(this);
+        }
     }
 
     private void MoveToNextPosition()

@@ -51,6 +51,7 @@ public class Prince : Targetable
     {
         // TODO anim
         ScoreManager.Instance.NotifyPrinceDeath();
+        herdUnit.LeaveHerd();
         Destroy(transform.gameObject);
     }
 }

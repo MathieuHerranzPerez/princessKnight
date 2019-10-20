@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   joystick: {fileID: 1807246478221159202}
-  minDistanceForSwipe: 2
+  minDistanceForSwipe: 8
 --- !u!1 &1807246477887023566
 GameObject:
   m_ObjectHideFlags: 0

@@ -47,7 +47,7 @@ public class Herd : MonoBehaviour
     void Update()
     {
         // virtualLeader.SetTarget(target.transform.position);
-        trigger.center = virtualLeader.transform.position;
+        trigger.center = virtualLeader.transform.localPosition;
 
         if (state == HerdState.Formed) 
         {
@@ -98,6 +98,9 @@ public class Herd : MonoBehaviour
         }
     }
 
+    /**
+     * Add an agent to the Herd
+     */ 
     public void AddUnit(HerdUnit unit)
     {
         ++size;
@@ -110,6 +113,9 @@ public class Herd : MonoBehaviour
         trigger.radius = radius;
     }
 
+    /**
+     * Remove agent
+     */ 
     public void RemoveUnit(HerdUnit unit)
     {
         unitList.Remove(unit);

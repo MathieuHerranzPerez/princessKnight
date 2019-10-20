@@ -17,9 +17,9 @@ TagManager:
   - Player
   - Enemy
   - Herd
-  - 
-  - 
-  - 
+  - BigWall
+  - Prince
+  - MapFragmentCollider
   - 
   - 
   - 
