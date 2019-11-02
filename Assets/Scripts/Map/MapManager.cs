@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(EnemyGroupGOFactory))]
 public class MapManager : MonoBehaviour
 {
     public static MapManager Instance { get; private set; }
@@ -30,6 +31,8 @@ public class MapManager : MonoBehaviour
     private int firstMapFragmentSize = 15;
     [SerializeField]
     private GameObject firstMapFragmentPrefab = default;
+    [SerializeField]
+    private GameObject princePrefab = default;
 
     // ---- INTERN ----
     private string[] listPrefabMapFragmentFolderFullPath;
@@ -40,9 +43,14 @@ public class MapManager : MonoBehaviour
     private int nbMapFragmentGeneratedInCurrentBiome = 0;
     private bool isLastBiomeFolder = false;
 
+    private EnemyGroupGOFactory enemyGroupGOFactory;
+
     void Start()
     {
         Instance = this;
+
+        enemyGroupGOFactory = GetComponent<EnemyGroupGOFactory>();
+
         // initialize the folder names to not have doing it all the time while instantiating new map fragment
         listPrefabMapFragmentFolderFullPath = new string[listPrefabMapFragmentSubFolder.Length];
         for (int i = 0; i < listPrefabMapFragmentSubFolder.Length; ++i)
@@ -61,8 +69,8 @@ public class MapManager : MonoBehaviour
     {
         // remove the last map
         MapFragment firstMapFragment = queueMapFragment.Dequeue();
-
         firstMapFragment.Destroy();
+
         // instantiate a map
         ChargeNewMap();
     }
@@ -117,20 +125,18 @@ public class MapManager : MonoBehaviour
 
     private void SpawnFirstMapFragment()
     {
-        GameObject mapFragmentGO = Instantiate(firstMapFragmentPrefab, Vector3.zero, mapFragmentContainer.rotation, mapFragmentContainer);
-        Vector3 pos = new Vector3(0f, 0f, -firstMapFragmentSize);
-        mapFragmentGO.transform.localPosition = pos;
-        mapFragmentGO.transform.localRotation = Quaternion.identity;
+        float distance = -firstMapFragmentSize;
+        Vector3 pos = mapFragmentContainer.forward * distance;
+        GameObject mapFragmentGO = Instantiate(firstMapFragmentPrefab, pos, mapFragmentContainer.rotation, mapFragmentContainer);
         MapFragment mapFragment = mapFragmentGO.GetComponent<MapFragment>();
         queueMapFragment.Enqueue(mapFragment);
     }
 
     private void SpawnMap(GameObject mapFragmentToSpawn)
     {
-        GameObject mapFragmentGO = Instantiate(mapFragmentToSpawn, Vector3.zero, mapFragmentContainer.rotation, mapFragmentContainer);
-        Vector3 pos = new Vector3(0f, 0f, nbMapFragmentGenerated * mapFragmentSize);
-        mapFragmentGO.transform.localPosition = pos;
-        mapFragmentGO.transform.localRotation = Quaternion.identity;
+        float distance = nbMapFragmentGenerated * mapFragmentSize;
+        Vector3 pos = mapFragmentContainer.forward * distance;
+        GameObject mapFragmentGO = Instantiate(mapFragmentToSpawn, pos, mapFragmentContainer.rotation, mapFragmentContainer);
         MapFragment mapFragment = mapFragmentGO.GetComponent<MapFragment>();
         queueMapFragment.Enqueue(mapFragment);
 
@@ -139,5 +145,16 @@ public class MapManager : MonoBehaviour
         // deal with navMesh
 
         // todo instantiate enemies, princes...
+
+        // TODO need better than that v1.0
+        GameObject[] arrayEnemyGroupGO = new GameObject[3];
+        GameObject[] arrayPrinceGO = new GameObject[3];
+        for(int i = 0; i < 3; ++i)
+        {
+            arrayEnemyGroupGO[i] = enemyGroupGOFactory.GetEnemyGroupGO(nbMapFragmentGenerated);
+            arrayPrinceGO[i] = princePrefab;
+        }
+
+        mapFragment.InitWith(arrayEnemyGroupGO, arrayPrinceGO);
     }
 }

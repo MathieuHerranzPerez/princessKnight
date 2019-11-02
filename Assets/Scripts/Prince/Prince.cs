@@ -44,6 +44,7 @@ public class Prince : Targetable
         {
             // todo anim
             status = PrinceStatus.JoiningHerd;
+            gameObject.transform.parent = null;    // put it in the scene root to not be removed if mapFragement destroy
         }
     }
 

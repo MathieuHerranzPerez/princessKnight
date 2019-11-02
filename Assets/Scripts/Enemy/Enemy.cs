@@ -58,7 +58,7 @@ public class Enemy : MonoBehaviour, Damageable
     {
         if (target == null)
         {
-            SearchTarge();
+            SearchTarget();
         }
     }
 
@@ -118,7 +118,7 @@ public class Enemy : MonoBehaviour, Damageable
         attack.Cast();
     }
 
-    private void SearchTarge()
+    private void SearchTarget()
     {
         Collider[] withinAggroCollider;
         withinAggroCollider = Physics.OverlapSphere(transform.position, stats.aggroRange, targetMask);
@@ -131,6 +131,7 @@ public class Enemy : MonoBehaviour, Damageable
                 {
                     target = col.gameObject.GetComponent<Targetable>();
                     attack.Target = target;
+                    gameObject.transform.parent = null;    // put it in the scene root to not be removed if mapFragement destroy
                 }
             }
         }

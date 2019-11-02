@@ -52,7 +52,9 @@ public class PlayerController : MonoBehaviour
         // move
         direction = new Vector3(directionX, 0f, directionY);
         // I didn't found better way that using magnitude :/
-        motor.Move(direction, player.stats.speed * direction.magnitude);
+        float maginitude = direction.magnitude;
+        animator.SetFloat("Speed", maginitude);
+        motor.Move(direction, player.stats.speed * maginitude);
 
 
         // dash
