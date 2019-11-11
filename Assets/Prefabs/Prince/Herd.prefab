@@ -154,7 +154,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   size: 0
-  herdSpeed: 5
+  herdSpeed: 1
   maxUnitSpeed: 10
   virtualLeader: {fileID: 5458642402920557866}
   unitsContainer: {fileID: 5458642403876639586}

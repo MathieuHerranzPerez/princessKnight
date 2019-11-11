@@ -14,6 +14,7 @@ public class HerdUnit : MonoBehaviour
     protected Vector3 offset = Vector3.zero;
     protected bool isFormingGroup = false;
     protected bool isMovingFaster = false;
+    protected bool isLeavingHerd = false;
 
     protected virtual void Start()
     {
@@ -22,12 +23,12 @@ public class HerdUnit : MonoBehaviour
 
     protected virtual void Update()
     {
-        if(!isFormingGroup && hasReachTheHerd)
+        if(!isFormingGroup && hasReachTheHerd && !isLeavingHerd)
         {
             navMeshAgent.speed = herd.Speed;
             MoveToNextPosition();
         }
-        else if(isFormingGroup && hasReachTheHerd)
+        else if(isFormingGroup && hasReachTheHerd && !isLeavingHerd)
         {
             offset = transform.position - herd.Leader.transform.position;
         }
@@ -71,6 +72,14 @@ public class HerdUnit : MonoBehaviour
         {
             herd.RemoveUnit(this);
         }
+    }
+
+    public void LeaveHerdToGoingPos(Vector3 targetPos)
+    {
+        isLeavingHerd = true;
+        navMeshAgent.acceleration = 300f;
+        navMeshAgent.speed = navMeshAgent.speed * 2f;
+        navMeshAgent.SetDestination(targetPos);
     }
 
     private void MoveToNextPosition()

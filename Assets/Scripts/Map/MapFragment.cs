@@ -12,6 +12,8 @@ public class MapFragment : MonoBehaviour
     private Transform objectContainer = default;    // every object in the mapFragment must be instantiated in this transform
                                                     // to be desroyed when fragment will be. To not destroying object, just put
                                                     // its transform to null (root)
+    [SerializeField]
+    private Transform checkpointSpawnPoint = default;
 
     // ---- INTERN ----
     private List<int> listAllIndex = new List<int>();
@@ -33,10 +35,15 @@ public class MapFragment : MonoBehaviour
         Destroy(transform.gameObject);
     }
 
-    public void InitWith(GameObject[] arrayEnemyGO, GameObject[] arrayPrinceGO)
+    public void InitWith(GameObject[] arrayEnemyGO, GameObject[] arrayPrinceGO, bool needToPutCheckPoint)
     {
         navMeshObject.BuildNavMesh();
         SpawnEnemiesAndPrinces(arrayEnemyGO, arrayPrinceGO);
+
+        if(needToPutCheckPoint)
+        {
+            Instantiate(MapManager.Instance.CheckpointPrefab, checkpointSpawnPoint);
+        }
     }
 
     // TODO pooling

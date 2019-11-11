@@ -228,8 +228,8 @@ TrailRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5663810903722007836}
   m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 0
@@ -384,3 +384,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   effectOnColliderActive: {fileID: 5663810903722007836}
+  effectOnHit: {fileID: 6288390281859258286, guid: 56a09b90d2667b141aceff05d43e825d,
+    type: 3}
+  enemyLayerMask:
+    serializedVersion: 2
+    m_Bits: 512

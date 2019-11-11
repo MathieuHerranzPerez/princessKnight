@@ -234,6 +234,7 @@ MonoBehaviour:
   strategy: {fileID: 3317188027313258394, guid: 0f37086820b4ca649b3677c90f118a21,
     type: 3}
   projectileSpawnPoint: {fileID: 6530232475112033771}
+  enemyMesh: {fileID: 6530232474676656206}
 --- !u!195 &6530232474879551720
 NavMeshAgent:
   m_ObjectHideFlags: 0

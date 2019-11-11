@@ -5,6 +5,7 @@ using UnityEngine.AI;
 
 [RequireComponent(typeof(NavMeshAgent))]
 [RequireComponent(typeof(HerdUnit))]
+[RequireComponent(typeof(Collider))]
 public class Prince : Targetable
 {
     [SerializeField]
@@ -46,6 +47,16 @@ public class Prince : Targetable
             status = PrinceStatus.JoiningHerd;
             gameObject.transform.parent = null;    // put it in the scene root to not be removed if mapFragement destroy
         }
+    }
+
+    public void NotifySaved()
+    {
+        Collider collider = GetComponent<Collider>();
+        collider.enabled = false;
+
+        // todo anim
+
+        Destroy(gameObject, 1f);
     }
 
     private void Die()

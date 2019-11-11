@@ -7,16 +7,7 @@ public class BasicMeleeStrategy : BehaviorStrategy
     {
         if (canBasic && distanceToTarget <= basicAttackRange)
         {
-            RaycastHit hit;
-            Vector3 dir = targetHitPoint - projectileSpawnPoint;
-            if (Physics.Raycast(projectileSpawnPoint, dir, out hit, basicAttackRange, targetMask))
-            {
-                return WhatToDo.BASIC_ATTACK;
-            }
-            else
-            {
-                return WhatToDo.MOVE_CLOSER;
-            }
+            return WhatToDo.BASIC_ATTACK;
         }
         // face the target
         else if(!canBasic && distanceToTarget <= basicAttackRange)

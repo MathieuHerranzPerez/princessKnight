@@ -136,6 +136,8 @@ public class Herd : MonoBehaviour
         return center;
     }
 
+
+
     private void MoveAllAgentToCenter(Vector3 gravityCenter)
     {
         foreach (HerdUnit hu in unitList)
@@ -151,6 +153,26 @@ public class Herd : MonoBehaviour
         {
             AddUnit(hu);
         }
+        else
+        {
+            Checkpoint checkpoint = other.gameObject.GetComponent<Checkpoint>();
+            if(checkpoint)
+            {
+                PerformActionOnCheckpointReached(checkpoint.Position);
+            }
+        }
+    }
+
+    private void PerformActionOnCheckpointReached(Vector3 positionToGo)
+    {
+        // for each agent in the herd
+        // order it to leave the herd and go to positionToGo
+        foreach (HerdUnit hu in unitList)
+        {
+            hu.LeaveHerdToGoingPos(positionToGo);
+        }
+
+        unitList.Clear();
     }
 
     /**

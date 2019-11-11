@@ -4,6 +4,7 @@ using UnityEngine.AI;
 
 [RequireComponent(typeof(NavMeshAgent))]
 [RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(Collider))]
 public class Enemy : MonoBehaviour, Damageable
 {
     public Animator Anim { get { return animator; } }
@@ -24,9 +25,12 @@ public class Enemy : MonoBehaviour, Damageable
     [Header("Setup")]
     [SerializeField]
     protected Transform projectileSpawnPoint = default;
+    [SerializeField]
+    private MeshRenderer enemyMesh = default;
 
     // ---- INERN ----
     protected Animator animator;
+    protected Collider colliderE;
 
     protected Targetable target = null;
     protected NavMeshAgent navMeshAgent;
@@ -38,19 +42,30 @@ public class Enemy : MonoBehaviour, Damageable
     protected bool isRotationFrozen = false;
     protected bool isAttacking = false;
 
+    protected bool isDying = false;
+    protected Color alphaColor;
+
     void Start()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
         navMeshAgent.speed = stats.defaultSpeed;
         animator = GetComponent<Animator>();
+        colliderE = GetComponent<Collider>();
         attack.Source = this;
+
+        alphaColor = enemyMesh.material.color;
+        alphaColor.a = 0;
     }
 
     void Update()
     {
-        if(target != null)
+        if(target != null && !isDying)
         {
             ChasePlayer();
+        }
+        else if(isDying)
+        {
+            enemyMesh.material.color = Color.Lerp(enemyMesh.material.color, alphaColor, 1f * Time.deltaTime);
         }
     }
 
@@ -95,9 +110,14 @@ public class Enemy : MonoBehaviour, Damageable
 
     protected void Die()
     {
+        isDying = true;
+        colliderE.enabled = false;
         // todo effect
 
-        Destroy(transform.gameObject, 0f);
+
+
+        StatisticsManager.Instance.NotifyEnemyDeath(this);
+        Destroy(transform.gameObject, 2f);
     }
 
     protected void PerformAttack()
@@ -170,7 +190,6 @@ public class Enemy : MonoBehaviour, Damageable
             transform.LookAt(target.transform);
         }
     }
-
 
     /**
      *  Show the aggro range in gizmos

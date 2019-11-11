@@ -5,6 +5,8 @@ using UnityEngine;
 public class MapManager : MonoBehaviour
 {
     public static MapManager Instance { get; private set; }
+    
+    public GameObject CheckpointPrefab { get { return checkpointPrefab; } }
 
     [Range(1, 10)]
     [SerializeField]
@@ -33,6 +35,8 @@ public class MapManager : MonoBehaviour
     private GameObject firstMapFragmentPrefab = default;
     [SerializeField]
     private GameObject princePrefab = default;
+    [SerializeField]
+    private GameObject checkpointPrefab = default;
 
     // ---- INTERN ----
     private string[] listPrefabMapFragmentFolderFullPath;
@@ -140,11 +144,12 @@ public class MapManager : MonoBehaviour
         MapFragment mapFragment = mapFragmentGO.GetComponent<MapFragment>();
         queueMapFragment.Enqueue(mapFragment);
 
+        // if we need to spawna checkpoint
+        bool needToSpawnCheckPoint = nbMapFragmentGenerated % nbMapToGetCheckPoint == 0 && nbMapFragmentGenerated != 0;
+ 
         ++nbMapFragmentGenerated;
 
-        // deal with navMesh
-
-        // todo instantiate enemies, princes...
+        // instantiate enemies, princes...
 
         // TODO need better than that v1.0
         GameObject[] arrayEnemyGroupGO = new GameObject[3];
@@ -155,6 +160,6 @@ public class MapManager : MonoBehaviour
             arrayPrinceGO[i] = princePrefab;
         }
 
-        mapFragment.InitWith(arrayEnemyGroupGO, arrayPrinceGO);
+        mapFragment.InitWith(arrayEnemyGroupGO, arrayPrinceGO, needToSpawnCheckPoint);
     }
 }

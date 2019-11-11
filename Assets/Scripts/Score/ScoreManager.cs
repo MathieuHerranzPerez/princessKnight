@@ -9,6 +9,8 @@ public class ScoreManager : MonoBehaviour, Observable
 
     [SerializeField]
     private float princeDeahImpactOnScore = -1f;
+    [SerializeField]
+    private float princeSavedImpactOnScore = 3f;
 
     // ---- INTERN ----
     private float score = 0f;
@@ -26,11 +28,19 @@ public class ScoreManager : MonoBehaviour, Observable
         NotifyObservers();
     }
 
+    public void NotifyPrinceSaved()
+    {
+        score += princeSavedImpactOnScore;
+        NotifyObservers();
+    }
+
+
+    // pattern observer
     public void Register(Observer obsever)
     {
         listObserver.Add(obsever);
     }
-
+    // pattern observer
     private void NotifyObservers()
     {
         foreach (Observer o in listObserver)

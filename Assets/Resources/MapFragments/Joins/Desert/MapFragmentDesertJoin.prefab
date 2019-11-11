@@ -340,6 +340,7 @@ Transform:
   - {fileID: 1263725819038124620}
   - {fileID: 389954495421339189}
   - {fileID: 5020087116784342238}
+  - {fileID: 6743652531709543436}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -368,6 +369,7 @@ MonoBehaviour:
     princeSpawnPoint: {fileID: 3253525768423404110}
   navMeshObject: {fileID: -1510719922463934810}
   objectContainer: {fileID: 5020087116784342238}
+  checkpointSpawnPoint: {fileID: 6743652531709543436}
 --- !u!114 &-1510719922463934810
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -455,6 +457,36 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3.42688, y: 3.9385452, z: 3.4055786}
   m_Center: {x: 17.755096, y: 1.4692726, z: -73.428345}
+--- !u!1 &6711205643821447690
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6743652531709543436}
+  m_Layer: 0
+  m_Name: CheckpointTransform
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6743652531709543436
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6711205643821447690}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0, y: 0, z: 68.01}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8556562240881615180}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6905454677628686681
 GameObject:
   m_ObjectHideFlags: 0

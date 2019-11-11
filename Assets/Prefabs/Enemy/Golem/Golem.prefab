@@ -255,8 +255,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stats:
-    maxHP: 200
-    HP: 200
+    maxHP: 50
+    HP: 50
     attackCouldown: 5
     defaultSpeed: 2
     speed: 2
@@ -269,6 +269,7 @@ MonoBehaviour:
   strategy: {fileID: 3317188027313258394, guid: 0f37086820b4ca649b3677c90f118a21,
     type: 3}
   projectileSpawnPoint: {fileID: 1976095510621789237}
+  enemyMesh: {fileID: 1976095509983308176}
 --- !u!195 &1976095510455695670
 NavMeshAgent:
   m_ObjectHideFlags: 0

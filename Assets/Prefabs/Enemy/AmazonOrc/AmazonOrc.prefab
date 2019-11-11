@@ -279,9 +279,10 @@ MonoBehaviour:
     m_Bits: 256
   targetTag: Player
   attack: {fileID: 8269151049263391019}
-  strategy: {fileID: 3317188027313258394, guid: 0f37086820b4ca649b3677c90f118a21,
+  strategy: {fileID: 2334587532407617927, guid: 501e803a301fa274a9ce005b1ba10a57,
     type: 3}
   projectileSpawnPoint: {fileID: 1976095510621789237}
+  enemyMesh: {fileID: 1976095509983308176}
 --- !u!195 &1976095510455695670
 NavMeshAgent:
   m_ObjectHideFlags: 0
