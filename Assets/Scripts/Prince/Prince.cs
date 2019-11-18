@@ -6,7 +6,8 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
 [RequireComponent(typeof(HerdUnit))]
 [RequireComponent(typeof(Collider))]
-public class Prince : Targetable
+[RequireComponent(typeof(Rigidbody))]
+public class Prince : Targetable, INavMeshUnit
 {
     [SerializeField]
     private PrinceStats stats;
@@ -16,6 +17,8 @@ public class Prince : Targetable
     private PrinceStatus status = PrinceStatus.WaitingHero;
     private HerdUnit herdUnit;
 
+    protected bool isOnNavMesh = true;
+
     void Start()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
@@ -24,9 +27,16 @@ public class Prince : Targetable
 
     private void Update()
     {
-        if(status == PrinceStatus.JoiningHerd && !herdUnit.IsMemberOfHerd)
+        if (isOnNavMesh)
         {
-            navMeshAgent.SetDestination(HerdManager.Instance.Herd.target.position);
+            if (status == PrinceStatus.JoiningHerd && !herdUnit.IsMemberOfHerd)
+            {
+                navMeshAgent.SetDestination(HerdManager.Instance.Herd.target.position);
+            }
+        }
+        else
+        {
+            transform.position = Vector3.MoveTowards(transform.position, HerdManager.Instance.Herd.target.position, herdUnit.Speed * Time.deltaTime);
         }
     }
 
@@ -59,12 +69,32 @@ public class Prince : Targetable
         Destroy(gameObject, 1f);
     }
 
+    public void LeaveNavMesh()
+    {
+        herdUnit.LeaveNavMesh();
+        navMeshAgent.enabled = false;
+        isOnNavMesh = false;
+    }
+
+    public void EnterOnNavMesh()
+    {
+        navMeshAgent.enabled = true;
+        herdUnit.EnterOnNavMesh();
+        isOnNavMesh = true;
+    }
+
     private void Die()
     {
         // TODO anim
         ScoreManager.Instance.NotifyPrinceDeath();
         herdUnit.LeaveHerd();
         Destroy(transform.gameObject);
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawLine(transform.position, transform.position + transform.forward * 2f);
     }
 }
 

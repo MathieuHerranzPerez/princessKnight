@@ -6,6 +6,7 @@ public class HerdUnit : MonoBehaviour
 {
     public bool IsMemberOfHerd { get { return hasReachTheHerd; } }
     public bool IsOnHisWay { get { return isMovingFaster; } }
+    public float Speed { get { return navMeshAgent.speed; } }
 
     // ---- INTERN ----
     protected Herd herd;
@@ -16,6 +17,8 @@ public class HerdUnit : MonoBehaviour
     protected bool isMovingFaster = false;
     protected bool isLeavingHerd = false;
 
+    private bool isOnNavMesh = true;
+
     protected virtual void Start()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
@@ -23,17 +26,20 @@ public class HerdUnit : MonoBehaviour
 
     protected virtual void Update()
     {
-        if(!isFormingGroup && hasReachTheHerd && !isLeavingHerd)
+        if (isOnNavMesh)
         {
-            navMeshAgent.speed = herd.Speed;
-            MoveToNextPosition();
-        }
-        else if(isFormingGroup && hasReachTheHerd && !isLeavingHerd)
-        {
-            offset = transform.position - herd.Leader.transform.position;
-        }
+            if (!isFormingGroup && hasReachTheHerd && !isLeavingHerd)
+            {
+                navMeshAgent.speed = herd.Speed;
+                MoveToNextPosition();
+            }
+            else if (isFormingGroup && hasReachTheHerd && !isLeavingHerd)
+            {
+                offset = transform.position - herd.Leader.transform.position;
+            }
 
-        isFormingGroup = false;
+            isFormingGroup = false;
+        }
     }
 
     public void MoveToFormGroup(Vector3 direction)
@@ -80,6 +86,16 @@ public class HerdUnit : MonoBehaviour
         navMeshAgent.acceleration = 300f;
         navMeshAgent.speed = navMeshAgent.speed * 2f;
         navMeshAgent.SetDestination(targetPos);
+    }
+
+    public void LeaveNavMesh()
+    {
+        isOnNavMesh = false;
+    }
+
+    public void EnterOnNavMesh()
+    {
+        isOnNavMesh = true;
     }
 
     private void MoveToNextPosition()

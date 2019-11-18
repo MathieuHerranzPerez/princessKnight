@@ -37,7 +37,7 @@ public class MapFragment : MonoBehaviour
 
     public void InitWith(GameObject[] arrayEnemyGO, GameObject[] arrayPrinceGO, bool needToPutCheckPoint)
     {
-        navMeshObject.BuildNavMesh();
+        // navMeshObject.BuildNavMesh();
         SpawnEnemiesAndPrinces(arrayEnemyGO, arrayPrinceGO);
 
         if(needToPutCheckPoint)

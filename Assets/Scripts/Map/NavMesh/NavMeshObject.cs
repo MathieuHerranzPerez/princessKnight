@@ -3,34 +3,34 @@ using UnityEngine.AI;
 
 public class NavMeshObject : MonoBehaviour
 {
-    private static NavMeshSurface currentGlobalNavMesh;
-
-    [SerializeField]
-    private NavMeshSurface navMeshSurface;
-
+    // private static NavMeshSurface currentGlobalNavMesh;
 
     //[SerializeField]
-    //private NavMeshData navMeshData;
-    //private NavMeshDataInstance navMeshInstance;
+    //private NavMeshSurface navMeshSurface;
 
-    public void BuildNavMesh()
-    {
-        if (currentGlobalNavMesh)
-            Destroy(currentGlobalNavMesh);
 
-        navMeshSurface.BuildNavMesh();
-        currentGlobalNavMesh = navMeshSurface;
-    }
+    [SerializeField]
+    private NavMeshData navMeshData;
+    private NavMeshDataInstance navMeshInstance;
 
-    //void OnEnable()
+    //public void BuildNavMesh()
     //{
-    //    navMeshData.rotation = this.transform.rotation;
-    //    navMeshData.position = this.transform.position;
-    //    navMeshInstance = NavMesh.AddNavMeshData(navMeshData);
+    //    if (currentGlobalNavMesh)
+    //        Destroy(currentGlobalNavMesh);
+
+    //    navMeshSurface.BuildNavMesh();
+    //    currentGlobalNavMesh = navMeshSurface;
     //}
+
+    void OnEnable()
+    {
+        navMeshData.rotation = this.transform.rotation;
+        navMeshData.position = this.transform.position;
+        navMeshInstance = NavMesh.AddNavMeshData(navMeshData);
+    }
 
     //void OnDisable()
     //{
-    //    NavMesh.RemoveAllNavMeshData(); ;
+    //    NavMesh.RemoveAllNavMeshData();
     //}
 }

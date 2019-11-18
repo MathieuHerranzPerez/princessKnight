@@ -59,7 +59,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageOnHit: 1
-  range: 3
+  range: 2
   couldown: 1
   castingParticle: {fileID: 2418552485810252722, guid: 75b8a1196ef061146b77d6a3f7f8ba60,
     type: 3}

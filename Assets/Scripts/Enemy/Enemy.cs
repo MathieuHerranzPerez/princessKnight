@@ -5,7 +5,8 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(Collider))]
-public class Enemy : MonoBehaviour, Damageable
+[RequireComponent(typeof(Rigidbody))]
+public class Enemy : MonoBehaviour, Damageable, INavMeshUnit
 {
     public Animator Anim { get { return animator; } }
     public Transform ProjecileSpawnPoint { get { return projectileSpawnPoint; } }
@@ -45,6 +46,9 @@ public class Enemy : MonoBehaviour, Damageable
     protected bool isDying = false;
     protected Color alphaColor;
 
+    protected bool isOnNavMesh = true;
+    protected Rigidbody rb;
+
     void Start()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
@@ -55,17 +59,26 @@ public class Enemy : MonoBehaviour, Damageable
 
         alphaColor = enemyMesh.material.color;
         alphaColor.a = 0;
+
+        rb = GetComponent<Rigidbody>();
     }
 
     void Update()
     {
-        if(target != null && !isDying)
+        if (isOnNavMesh)
         {
-            ChasePlayer();
+            if (target != null && !isDying)
+            {
+                ChasePlayer();
+            }
+            else if (isDying)
+            {
+                enemyMesh.material.color = Color.Lerp(enemyMesh.material.color, alphaColor, 1f * Time.deltaTime);
+            }
         }
-        else if(isDying)
+        else
         {
-            enemyMesh.material.color = Color.Lerp(enemyMesh.material.color, alphaColor, 1f * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, target.transform.position, stats.speed * Time.deltaTime);
         }
     }
 
@@ -108,13 +121,25 @@ public class Enemy : MonoBehaviour, Damageable
         navMeshAgent.speed = 0f;
     }
 
+    public void LeaveNavMesh()
+    {
+        isOnNavMesh = false;
+        navMeshAgent.enabled = false;
+    }
+
+    public void EnterOnNavMesh()
+    {
+        isOnNavMesh = true;
+        navMeshAgent.enabled = true;
+    }
+
     protected void Die()
     {
         isDying = true;
         colliderE.enabled = false;
         // todo effect
 
-
+        animator.SetTrigger("Dying");
 
         StatisticsManager.Instance.NotifyEnemyDeath(this);
         Destroy(transform.gameObject, 2f);
@@ -198,5 +223,11 @@ public class Enemy : MonoBehaviour, Damageable
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, stats.aggroRange);
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawLine(transform.position, transform.position + transform.forward * 2f);
     }
 }
