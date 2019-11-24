@@ -20,7 +20,7 @@ public class Player : Targetable, Observable
     }
 
 
-    public override void TakeDamage(int amount)
+    public override void TakeDamage(int amount, DamageSource source)
     {
         CameraShake.Instance.Shake(0.10f, 0.15f, 0.10f);
         animator.SetTrigger("TakingDamage");

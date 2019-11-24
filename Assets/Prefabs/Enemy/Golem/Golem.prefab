@@ -260,7 +260,7 @@ MonoBehaviour:
     attackCouldown: 5
     defaultSpeed: 2
     speed: 2
-    aggroRange: 10
+    aggroRange: 8
   targetMask:
     serializedVersion: 2
     m_Bits: 256

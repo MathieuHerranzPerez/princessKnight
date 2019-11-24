@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 [RequireComponent(typeof(Collider))]
 public class AOEAttack : CastingAttack
@@ -57,7 +55,7 @@ public class AOEAttack : CastingAttack
         Targetable targetable = other.transform.GetComponent<Targetable>();
         if (targetable)
         {
-            targetable.TakeDamage(damageOnHit);
+            targetable.TakeDamage(damageOnHit, DamageSource.ENEMY);
         }
     }
 }

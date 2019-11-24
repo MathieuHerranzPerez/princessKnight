@@ -6,7 +6,7 @@ public class Sword : WeaponObjectAttack
     {
         if(other.tag != "Player")
         {
-            otherDamageable.TakeDamage(weapon.stats.damage);
+            otherDamageable.TakeDamage(weapon.stats.damage, DamageSource.PLAYER);
         }
     }
 }

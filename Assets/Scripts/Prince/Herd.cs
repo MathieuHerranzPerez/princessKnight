@@ -13,6 +13,7 @@ public class Herd : MonoBehaviour
     public float Radius { get { return radius; } }
     public float RadiusSquare { get { return radiusSquare; } }
     public float MaxSpeed { get { return maxUnitSpeed; } }
+    public Transform Head { get { return head; } }
     public Transform target;
 
     public int size = 0;
@@ -23,6 +24,8 @@ public class Herd : MonoBehaviour
     private float maxUnitSpeed = 10f;
     [SerializeField]
     private HerdLeader virtualLeader = default;
+    [SerializeField]
+    private Transform head = default;
 
     [Header("Setup")]
     [SerializeField]

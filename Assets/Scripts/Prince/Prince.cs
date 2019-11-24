@@ -36,11 +36,11 @@ public class Prince : Targetable, INavMeshUnit
         }
         else
         {
-            transform.position = Vector3.MoveTowards(transform.position, HerdManager.Instance.Herd.target.position, herdUnit.Speed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, HerdManager.Instance.Herd.Head.position, herdUnit.Speed * Time.deltaTime);
         }
     }
 
-    public override void TakeDamage(int amount)
+    public override void TakeDamage(int amount, DamageSource source)
     {
         if (status != PrinceStatus.WaitingHero)
         {
@@ -53,9 +53,13 @@ public class Prince : Targetable, INavMeshUnit
         }
         else
         {
-            // todo anim
-            status = PrinceStatus.JoiningHerd;
-            gameObject.transform.parent = null;    // put it in the scene root to not be removed if mapFragement destroy
+            if (source != DamageSource.ENEMY)
+            {
+                // todo anim
+                Debug.Log("Join herd");
+                status = PrinceStatus.JoiningHerd;
+                gameObject.transform.parent = null;    // put it in the scene root to not be removed if mapFragement destroy
+            }
         }
     }
 

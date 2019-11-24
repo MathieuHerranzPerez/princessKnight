@@ -8,12 +8,6 @@ public class MapManager : MonoBehaviour
     
     public GameObject CheckpointPrefab { get { return checkpointPrefab; } }
 
-    [Range(1, 10)]
-    [SerializeField]
-    private int nbMapToGetCheckPoint = 3;   // TODO
-    [SerializeField]
-    private int nbMinMapFragmentInSameBiome = 3;
-
     [Header("Setup")]
     [SerializeField]
     private Transform mapFragmentContainer = default;
@@ -23,11 +17,6 @@ public class MapManager : MonoBehaviour
     private string prefabMapFragmentFolder = "";
     [SerializeField]
     private string[] listPrefabMapFragmentSubFolder = new string[1];
-    [SerializeField]
-    private string prefabJoinMapFragmentFolder = "";
-    [Range(0f, 1f)]
-    [SerializeField]
-    private float chanceToStayInSameBiome = 0.3f;
     [Header("First map fragment")]
     [SerializeField]
     private int firstMapFragmentSize = 15;
@@ -44,8 +33,6 @@ public class MapManager : MonoBehaviour
     private int currentMapFragmentFolderIndex = 0;
     private Object[] mapFragmentSelection;                              // store the mapFragment Object loaded from Ressources folder 
     private int nbMapFragmentGenerated = 0;
-    private int nbMapFragmentGeneratedInCurrentBiome = 0;
-    private bool isLastBiomeFolder = false;
 
     private EnemyGroupGOFactory enemyGroupGOFactory;
 
@@ -55,13 +42,12 @@ public class MapManager : MonoBehaviour
 
         enemyGroupGOFactory = GetComponent<EnemyGroupGOFactory>();
 
-        // initialize the folder names to not have doing it all the time while instantiating new map fragment
+        // initialize the folder names to not have doing it all the time while instantiating new map fragments
         listPrefabMapFragmentFolderFullPath = new string[listPrefabMapFragmentSubFolder.Length];
         for (int i = 0; i < listPrefabMapFragmentSubFolder.Length; ++i)
         {
             listPrefabMapFragmentFolderFullPath[i] = prefabMapFragmentFolder + "/" + listPrefabMapFragmentSubFolder[i];
         }
-        isLastBiomeFolder = !(listPrefabMapFragmentSubFolder.Length > 1);
 
         ChargeFirstsMap();
     }
@@ -98,39 +84,23 @@ public class MapManager : MonoBehaviour
     {
         GameObject mapFragmentToSpawn;
 
-        // if we already have instantiate the minimum fragment map in biome, and if we are not in the last biome folder
-        if (nbMapFragmentGeneratedInCurrentBiome >= nbMinMapFragmentInSameBiome -1 && !isLastBiomeFolder && chanceToStayInSameBiome <= Random.Range(0f, 1f))
-        {
-            nbMapFragmentGeneratedInCurrentBiome = 0;
-            Object[] arrayMapFragmentJoinGO = Resources.LoadAll(prefabJoinMapFragmentFolder + '/' + listPrefabMapFragmentSubFolder[currentMapFragmentFolderIndex]);
-            // select a join randomly
-            mapFragmentToSpawn = (GameObject)arrayMapFragmentJoinGO[Random.Range(0, arrayMapFragmentJoinGO.Length - 1)];
-
-            // change the map fragment biome
-            if (listPrefabMapFragmentFolderFullPath.Length - 1 > currentMapFragmentFolderIndex)
-            {
-                ++currentMapFragmentFolderIndex;
-                // charge the following map fragments
-                mapFragmentSelection = Resources.LoadAll(listPrefabMapFragmentFolderFullPath[currentMapFragmentFolderIndex], typeof(GameObject));
-                if (currentMapFragmentFolderIndex == listPrefabMapFragmentFolderFullPath.Length - 1)
-                {
-                    isLastBiomeFolder = true;
-                }
-            }
-        }
-        else
-        {
-            mapFragmentToSpawn = (GameObject) mapFragmentSelection[Random.Range(0, mapFragmentSelection.Length - 1)];
-            ++nbMapFragmentGeneratedInCurrentBiome;
-        }
-
+        // charge the following map fragments
+        mapFragmentSelection = Resources.LoadAll(listPrefabMapFragmentFolderFullPath[currentMapFragmentFolderIndex], typeof(GameObject));
+        mapFragmentToSpawn = (GameObject)mapFragmentSelection[Random.Range(0, mapFragmentSelection.Length - 1)];
         SpawnMap(mapFragmentToSpawn);
+
+
+        ++currentMapFragmentFolderIndex;
+        if (currentMapFragmentFolderIndex == listPrefabMapFragmentFolderFullPath.Length)
+        {
+            currentMapFragmentFolderIndex = 0;
+        }
     }
 
     private void SpawnFirstMapFragment()
     {
-        float distance = -firstMapFragmentSize;
-        Vector3 pos = mapFragmentContainer.forward * distance;
+        // float distance = -firstMapFragmentSize;
+        Vector3 pos = Vector3.zero;//mapFragmentContainer.forward * distance;
         GameObject mapFragmentGO = Instantiate(firstMapFragmentPrefab, pos, mapFragmentContainer.rotation, mapFragmentContainer);
         MapFragment mapFragment = mapFragmentGO.GetComponent<MapFragment>();
         queueMapFragment.Enqueue(mapFragment);
@@ -138,25 +108,29 @@ public class MapManager : MonoBehaviour
 
     private void SpawnMap(GameObject mapFragmentToSpawn)
     {
-        float distance = nbMapFragmentGenerated * mapFragmentSize;
+        Debug.Log("Spawn map");
+        float distance = nbMapFragmentGenerated * mapFragmentSize + firstMapFragmentSize;
         Vector3 pos = mapFragmentContainer.forward * distance;
         GameObject mapFragmentGO = Instantiate(mapFragmentToSpawn, pos, mapFragmentContainer.rotation, mapFragmentContainer);
         MapFragment mapFragment = mapFragmentGO.GetComponent<MapFragment>();
         queueMapFragment.Enqueue(mapFragment);
 
-        // if we need to spawna checkpoint
-        bool needToSpawnCheckPoint = nbMapFragmentGenerated % nbMapToGetCheckPoint == 0 && nbMapFragmentGenerated != 0;
+        // if we need to spawn a checkpoint
+        bool needToSpawnCheckPoint = currentMapFragmentFolderIndex == listPrefabMapFragmentFolderFullPath.Length - 1;
  
         ++nbMapFragmentGenerated;
 
         // instantiate enemies, princes...
 
         // TODO need better than that v1.0
-        GameObject[] arrayEnemyGroupGO = new GameObject[3];
-        GameObject[] arrayPrinceGO = new GameObject[3];
-        for(int i = 0; i < 3; ++i)
+        GameObject[] arrayEnemyGroupGO = new GameObject[15];
+        GameObject[] arrayPrinceGO = new GameObject[7];
+        for(int i = 0; i < 15; ++i)
         {
             arrayEnemyGroupGO[i] = enemyGroupGOFactory.GetEnemyGroupGO(nbMapFragmentGenerated);
+        }
+        for (int i = 0; i < 7; ++i)
+        {
             arrayPrinceGO[i] = princePrefab;
         }
 

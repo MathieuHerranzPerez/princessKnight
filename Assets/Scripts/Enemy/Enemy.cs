@@ -91,7 +91,7 @@ public class Enemy : MonoBehaviour, Damageable, INavMeshUnit
     }
 
 
-    public void TakeDamage(int amount)
+    public void TakeDamage(int amount, DamageSource source)
     {
         stats.HP -= amount;
 
@@ -185,6 +185,8 @@ public class Enemy : MonoBehaviour, Damageable, INavMeshUnit
     protected virtual void ChasePlayer()
     {
         navMeshAgent.SetDestination(target.transform.position);
+        //Debug.Log((transform.position - target.transform.position).magnitude);
+        Debug.Log(navMeshAgent.remainingDistance);
         WhatToDo whatToDo = strategy.GetNextAction(targetMask, target.HitTargetPoint, projectileSpawnPoint.position, 
             navMeshAgent.remainingDistance, attack.Range, attack.Couldown <= 0f);
 
