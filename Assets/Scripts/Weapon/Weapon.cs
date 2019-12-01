@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class Weapon : MonoBehaviour
@@ -17,18 +16,25 @@ public abstract class Weapon : MonoBehaviour
     // protected RuntimeAnimatorController animatorController = default;
     [SerializeField]
     protected string nameLayerAnimator = "";
+
+
+    [Header("0: attack, 1: def")]
+    [SerializeField]
+    protected ColliderAttack[] colliderAttackArray = default;
+    [SerializeField]
+    protected ColliderDef colliderDef = default;
     [SerializeField]
     protected GameObject[] arrayWeaponObject = new GameObject[1];           // 1 or 2 weapons
 
     // ---- INTERN ---
-    protected WeaponObject[] arrayConcreteWeaponObject;
+    protected WeaponGFXObject[] arrayConcreteWeaponObject;
     protected Animator animator;
 
     protected bool canAttack = true;
 
-    public void SetWeaponsObject(WeaponObject[] arrayWeaponObject)
+    public void SetWeaponsObject(WeaponGFXObject[] arrayWeaponObject)
     {
-        arrayConcreteWeaponObject = new WeaponObject[arrayWeaponObject.Length];
+        arrayConcreteWeaponObject = new WeaponGFXObject[arrayWeaponObject.Length];
         for (int i = 0; i < arrayWeaponObject.Length; ++i)
         {
             arrayConcreteWeaponObject[i] = arrayWeaponObject[i];

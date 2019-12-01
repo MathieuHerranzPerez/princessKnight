@@ -1,5 +1,8 @@
 ﻿using UnityEngine;
 
+/**
+ * Obsolete
+ */
 public class Sword : WeaponObjectAttack
 {
     protected override void hitDamageable(Collider other, Damageable otherDamageable)

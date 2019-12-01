@@ -79,10 +79,10 @@ public class WeaponManager : MonoBehaviour
             arrayWeaponGO[1] = weapon2;
         }
 
-        WeaponObject[] arrayWeaponObject = new WeaponObject[nbWeapon];
+        WeaponGFXObject[] arrayWeaponObject = new WeaponGFXObject[nbWeapon];
         for (int i = 0; i < nbWeapon; ++i)
         {
-            arrayWeaponObject[i] = arrayWeaponGO[i].GetComponent<WeaponObject>();
+            arrayWeaponObject[i] = arrayWeaponGO[i].GetComponent<WeaponGFXObject>();
             arrayWeaponObject[i].SetWeapon(currentWeapon);
         }
 

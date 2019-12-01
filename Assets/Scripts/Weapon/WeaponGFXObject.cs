@@ -1,39 +1,27 @@
 ﻿using UnityEngine;
 
-/**
- * Obsolete
- */ 
-[RequireComponent(typeof(Collider))]
-public class WeaponObject : MonoBehaviour
+public class WeaponGFXObject : MonoBehaviour
 {
     [SerializeField]
     protected GameObject effectOnColliderActive = default;
     // it contains all informations about a physic weapon
 
     // ---- INTERN ----
-    private Collider wpCollider;
     protected Weapon weapon;
 
-    void Start()
-    {
-        wpCollider = GetComponent<Collider>();
-    }
 
     public void SetWeapon(Weapon weapon)
     {
         this.weapon = weapon;
     }
 
-
-    public void SetColliderActive()
+    public void DisplayGFX()
     {
-        wpCollider.enabled = true;
         effectOnColliderActive.SetActive(true);
     }
 
-    public void SetColliderInactive()
+    public void HideGFX()
     {
-        wpCollider.enabled = false;
         effectOnColliderActive.SetActive(false);
     }
 }

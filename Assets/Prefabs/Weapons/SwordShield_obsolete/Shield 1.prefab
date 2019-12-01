@@ -4793,7 +4793,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 434303032934089542}
-  - component: {fileID: 2765224707546541167}
+  - component: {fileID: 326204749479931116}
+  - component: {fileID: 8781690792156944945}
   m_Layer: 0
   m_Name: Shield
   m_TagString: Untagged
@@ -4817,7 +4818,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2765224707546541167
+--- !u!65 &326204749479931116
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4409442965800725637}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 1.697376, y: 2.13303, z: 0.21792793}
+  m_Center: {x: 0.004649043, y: -0.12860918, z: 0.024439812}
+--- !u!114 &8781690792156944945
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4826,10 +4840,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 4409442965800725637}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 738df8c96d2846f47999803576af5303, type: 3}
+  m_Script: {fileID: 11500000, guid: 4b5b00a21e5ab45418a06d95eaa7f0e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  effectOnColliderActive: {fileID: 0}
+  effectOnColliderActive: {fileID: 2575447172829893500}
 --- !u!1 &8012215095629423801
 GameObject:
   m_ObjectHideFlags: 0

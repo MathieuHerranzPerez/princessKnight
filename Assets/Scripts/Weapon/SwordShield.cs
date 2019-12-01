@@ -23,24 +23,49 @@ public class SwordShield : MeleeWeapon
         }
     }
 
+    /**
+     * Obsolete
+     */
+    //public override void ActiveDefensiveColliders()
+    //{
+    //    arrayConcreteWeaponObject[1].SetColliderActive();
+    //}
+
+    //public override void ActiveOffensiveColliders()
+    //{
+    //    arrayConcreteWeaponObject[0].SetColliderActive();
+    //}
+
+    //public override void DesactiveDefensiveColliders()
+    //{
+    //    arrayConcreteWeaponObject[1].SetColliderInactive();
+    //}
+
+    //public override void DesactiveOffensiveColliders()
+    //{
+    //    arrayConcreteWeaponObject[0].SetColliderInactive();
+    //}
+
     public override void ActiveDefensiveColliders()
     {
-        arrayConcreteWeaponObject[1].SetColliderActive();
+        throw new System.NotImplementedException();
     }
 
     public override void ActiveOffensiveColliders()
     {
-        arrayConcreteWeaponObject[0].SetColliderActive();
+        arrayConcreteWeaponObject[0].DisplayGFX();
+        colliderAttackArray[nbCombo].ActiveCollider();
     }
 
     public override void DesactiveDefensiveColliders()
     {
-        arrayConcreteWeaponObject[1].SetColliderInactive();
+        throw new System.NotImplementedException();
     }
 
     public override void DesactiveOffensiveColliders()
     {
-        arrayConcreteWeaponObject[0].SetColliderInactive();
+        arrayConcreteWeaponObject[0].HideGFX();
+        colliderAttackArray[nbCombo].DesactiveCollider();
     }
 
     public override void PerformAttack()

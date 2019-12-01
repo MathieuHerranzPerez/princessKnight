@@ -1,9 +1,6 @@
 ﻿using UnityEngine;
 
-/**
- * Obsolete
- */
-public abstract class WeaponObjectAttack : WeaponObject
+public abstract class ColliderAttack : ColliderAttackDef
 {
     [Header("Setup")]
     [SerializeField]
@@ -11,9 +8,9 @@ public abstract class WeaponObjectAttack : WeaponObject
     [SerializeField]
     private LayerMask enemyLayerMask = default;
 
-    protected abstract void hitDamageable(Collider other, Damageable otherDamageable);
+    protected abstract void HitDamageable(Collider other, Damageable otherDamageable);
 
-    protected void OnTriggerEnter(Collider other)
+    protected override void ActOnTriggerEnter(Collider other)
     {
         Damageable damageable = other.GetComponent<Damageable>();
         if (damageable != null)
@@ -35,7 +32,8 @@ public abstract class WeaponObjectAttack : WeaponObject
                 }
             }
 
-            hitDamageable(other, damageable);
+
+            HitDamageable(other, damageable);
         }
     }
 }
