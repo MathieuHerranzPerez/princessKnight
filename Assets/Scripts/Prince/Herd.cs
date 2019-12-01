@@ -139,8 +139,6 @@ public class Herd : MonoBehaviour
         return center;
     }
 
-
-
     private void MoveAllAgentToCenter(Vector3 gravityCenter)
     {
         foreach (HerdUnit hu in unitList)
@@ -159,7 +157,7 @@ public class Herd : MonoBehaviour
         else
         {
             Checkpoint checkpoint = other.gameObject.GetComponent<Checkpoint>();
-            if(checkpoint)
+            if (checkpoint && checkpoint.IsActive)
             {
                 PerformActionOnCheckpointReached(checkpoint.Position);
             }

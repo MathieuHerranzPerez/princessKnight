@@ -186,7 +186,6 @@ public class Enemy : MonoBehaviour, Damageable, INavMeshUnit
     {
         navMeshAgent.SetDestination(target.transform.position);
         //Debug.Log((transform.position - target.transform.position).magnitude);
-        Debug.Log(navMeshAgent.remainingDistance);
         WhatToDo whatToDo = strategy.GetNextAction(targetMask, target.HitTargetPoint, projectileSpawnPoint.position, 
             navMeshAgent.remainingDistance, attack.Range, attack.Couldown <= 0f);
 

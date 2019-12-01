@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.AI;
 
 [RequireComponent(typeof(NavMeshAgent))]
@@ -10,7 +8,7 @@ using UnityEngine.AI;
 public class Prince : Targetable, INavMeshUnit
 {
     [SerializeField]
-    private PrinceStats stats;
+    private PrinceStats stats = default;
 
     // ---- INTERN ----
     private NavMeshAgent navMeshAgent;

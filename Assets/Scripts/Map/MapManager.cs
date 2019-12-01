@@ -21,6 +21,8 @@ public class MapManager : MonoBehaviour
     [SerializeField]
     private int firstMapFragmentSize = 15;
     [SerializeField]
+    private int offset = 10;
+    [SerializeField]
     private GameObject firstMapFragmentPrefab = default;
     [SerializeField]
     private GameObject princePrefab = default;
@@ -100,7 +102,7 @@ public class MapManager : MonoBehaviour
     private void SpawnFirstMapFragment()
     {
         // float distance = -firstMapFragmentSize;
-        Vector3 pos = Vector3.zero;//mapFragmentContainer.forward * distance;
+        Vector3 pos = new Vector3(0f, 0f, -offset);//mapFragmentContainer.forward * distance;
         GameObject mapFragmentGO = Instantiate(firstMapFragmentPrefab, pos, mapFragmentContainer.rotation, mapFragmentContainer);
         MapFragment mapFragment = mapFragmentGO.GetComponent<MapFragment>();
         queueMapFragment.Enqueue(mapFragment);
@@ -109,7 +111,7 @@ public class MapManager : MonoBehaviour
     private void SpawnMap(GameObject mapFragmentToSpawn)
     {
         Debug.Log("Spawn map");
-        float distance = nbMapFragmentGenerated * mapFragmentSize + firstMapFragmentSize;
+        float distance = nbMapFragmentGenerated * mapFragmentSize + firstMapFragmentSize - offset;
         Vector3 pos = mapFragmentContainer.forward * distance;
         GameObject mapFragmentGO = Instantiate(mapFragmentToSpawn, pos, mapFragmentContainer.rotation, mapFragmentContainer);
         MapFragment mapFragment = mapFragmentGO.GetComponent<MapFragment>();
