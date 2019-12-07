@@ -29,8 +29,8 @@ public class NavMeshObject : MonoBehaviour
         navMeshInstance = NavMesh.AddNavMeshData(navMeshData);
     }
 
-    //void OnDisable()
-    //{
-    //    NavMesh.RemoveAllNavMeshData();
-    //}
+    void OnDisable()
+    {
+        NavMesh.RemoveNavMeshData(navMeshInstance);
+    }
 }

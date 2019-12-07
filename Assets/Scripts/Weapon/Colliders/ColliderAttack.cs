@@ -15,7 +15,7 @@ public abstract class ColliderAttack : ColliderAttackDef
         Damageable damageable = other.GetComponent<Damageable>();
         if (damageable != null)
         {
-            if (other.tag != "Prince")
+            if (other.tag != "Prince" && other.tag == "Enemy")
             {
                 CameraShake.Instance.Shake(0.08f, 0.08f, 0.08f);
 

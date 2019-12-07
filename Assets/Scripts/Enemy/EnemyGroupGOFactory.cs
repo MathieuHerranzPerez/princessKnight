@@ -26,14 +26,17 @@ public class EnemyGroupGOFactory : MonoBehaviour
                 // replace the current list by the new one with old and current value
                 tmpList = dictionaryEnemyGroupGO[enemyGroup.Difficulty];
                 tmpList.Add(enemyGroupGO);
+
+                dictionaryEnemyGroupGO[enemyGroup.Difficulty] = tmpList;
             }
             else
             {
                 // create it
                 tmpList = new List<GameObject>();
                 tmpList.Add(enemyGroupGO);
+
+                dictionaryEnemyGroupGO.Add(enemyGroup.Difficulty, tmpList);
             }
-            dictionaryEnemyGroupGO.Add(enemyGroup.Difficulty, tmpList);
         }
     }
 

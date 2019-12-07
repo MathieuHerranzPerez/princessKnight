@@ -49,7 +49,7 @@ public class Enemy : MonoBehaviour, Damageable, INavMeshUnit
     protected bool isOnNavMesh = true;
     protected Rigidbody rb;
 
-    void Start()
+    protected virtual void Start()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
         navMeshAgent.speed = stats.defaultSpeed;
@@ -76,7 +76,7 @@ public class Enemy : MonoBehaviour, Damageable, INavMeshUnit
                 enemyMesh.material.color = Color.Lerp(enemyMesh.material.color, alphaColor, 1f * Time.deltaTime);
             }
         }
-        else
+        else if(!isDying)
         {
             transform.position = Vector3.MoveTowards(transform.position, target.transform.position, stats.speed * Time.deltaTime);
         }
@@ -106,7 +106,7 @@ public class Enemy : MonoBehaviour, Damageable, INavMeshUnit
     {
         isFrozen = false;
         navMeshAgent.speed = stats.speed;
-        navMeshAgent.angularSpeed = 300f;
+        navMeshAgent.angularSpeed = 600f;
     }
 
     public void FreezeRotaion()
@@ -133,7 +133,7 @@ public class Enemy : MonoBehaviour, Damageable, INavMeshUnit
         navMeshAgent.enabled = true;
     }
 
-    protected void Die()
+    protected virtual void Die()
     {
         isDying = true;
         colliderE.enabled = false;
@@ -142,6 +142,7 @@ public class Enemy : MonoBehaviour, Damageable, INavMeshUnit
         animator.SetTrigger("Dying");
 
         StatisticsManager.Instance.NotifyEnemyDeath(this);
+        navMeshAgent.enabled = false;
         Destroy(transform.gameObject, 2f);
     }
 

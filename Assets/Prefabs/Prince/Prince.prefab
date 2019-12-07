@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 4799098653722105070}
   - component: {fileID: 4799098653722105065}
   - component: {fileID: 4265283877692488667}
+  - component: {fileID: 4150183887004431434}
   m_Layer: 12
   m_Name: Prince
   m_TagString: Prince
@@ -116,6 +117,19 @@ MonoBehaviour:
   hitTarget: {fileID: 6183841449124146233}
   stats:
     HP: 2
+--- !u!114 &4150183887004431434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4799098653722105061}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf95f58f546468745b7be171105ce2a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skinToHide: {fileID: 4799098654686785342}
 --- !u!1 &4799098654686785337
 GameObject:
   m_ObjectHideFlags: 0

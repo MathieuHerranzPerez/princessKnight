@@ -200,6 +200,7 @@ GameObject:
   - component: {fileID: 1976095510455695668}
   - component: {fileID: 1976095510455695669}
   - component: {fileID: 1976095510455695666}
+  - component: {fileID: 7624152003529512321}
   - component: {fileID: 1976095510455695670}
   - component: {fileID: 1976095510455695657}
   m_Layer: 9
@@ -283,6 +284,19 @@ MonoBehaviour:
     type: 3}
   projectileSpawnPoint: {fileID: 1976095510621789237}
   enemyMesh: {fileID: 1976095509983308176}
+--- !u!114 &7624152003529512321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1976095510455695667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf95f58f546468745b7be171105ce2a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skinToHide: {fileID: 1976095511507860005}
 --- !u!195 &1976095510455695670
 NavMeshAgent:
   m_ObjectHideFlags: 0
