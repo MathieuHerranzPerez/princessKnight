@@ -4,7 +4,7 @@ public class HiddableUnit : MonoBehaviour
 {
     private static int lastId = 0;
 
-    public int Id { get; private set;  }
+    public int Id { get; private set; }
 
     [SerializeField]
     private Transform skinToHide = default;
@@ -22,7 +22,7 @@ public class HiddableUnit : MonoBehaviour
 
     void Update()
     {
-        if(!isVisible)
+        if (!isVisible)
         {
             Revel();
         }

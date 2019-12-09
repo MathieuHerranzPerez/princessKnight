@@ -169,7 +169,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &8421147820998743003
 Transform:
@@ -1917,7 +1917,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &7879922458471689015
 Transform:
@@ -3608,7 +3608,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1059019923462523551
 Transform:
@@ -4555,7 +4555,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &2910350443144683971
 Transform:
@@ -4661,7 +4661,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &752419401917885728
 Transform:
@@ -4941,6 +4941,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bush (52)
       objectReference: {fileID: 0}
+    - target: {fileID: 6953544198405282041, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 6953544198405282037, guid: 3284c3f78b3b914489f5e84ba246a03f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4996,6 +5001,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6686009691109171846, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 528064088312656162, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3284c3f78b3b914489f5e84ba246a03f, type: 3}
 --- !u!4 &7203348102432991223 stripped
@@ -5015,6 +5030,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush (19)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6953544198405282041, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 6953544198405282037, guid: 3284c3f78b3b914489f5e84ba246a03f,
         type: 3}
@@ -5071,6 +5091,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6686009691109171846, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 528064088312656162, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3284c3f78b3b914489f5e84ba246a03f, type: 3}
 --- !u!4 &7241998037925252215 stripped
@@ -5090,6 +5120,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush (44)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6953544198405282041, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 6953544198405282037, guid: 3284c3f78b3b914489f5e84ba246a03f,
         type: 3}
@@ -5146,6 +5181,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6686009691109171846, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 528064088312656162, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3284c3f78b3b914489f5e84ba246a03f, type: 3}
 --- !u!4 &7331467054469333599 stripped
@@ -5165,6 +5210,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush (19)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6953544198405282041, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 6953544198405282037, guid: 3284c3f78b3b914489f5e84ba246a03f,
         type: 3}
@@ -5221,6 +5271,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6686009691109171846, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 528064088312656162, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3284c3f78b3b914489f5e84ba246a03f, type: 3}
 --- !u!4 &7319263557752342814 stripped
@@ -5240,6 +5300,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6953544198405282041, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 6953544198405282037, guid: 3284c3f78b3b914489f5e84ba246a03f,
         type: 3}
@@ -5296,6 +5361,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6686009691109171846, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 528064088312656162, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3284c3f78b3b914489f5e84ba246a03f, type: 3}
 --- !u!4 &7397097434509090811 stripped
@@ -5315,6 +5390,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6953544198405282041, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 6953544198405282037, guid: 3284c3f78b3b914489f5e84ba246a03f,
         type: 3}
@@ -5371,6 +5451,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6686009691109171846, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 528064088312656162, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3284c3f78b3b914489f5e84ba246a03f, type: 3}
 --- !u!4 &7529610171299559210 stripped
@@ -5390,6 +5480,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush (14)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6953544198405282041, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 6953544198405282037, guid: 3284c3f78b3b914489f5e84ba246a03f,
         type: 3}
@@ -5446,6 +5541,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6686009691109171846, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 528064088312656162, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3284c3f78b3b914489f5e84ba246a03f, type: 3}
 --- !u!4 &7532648808431115125 stripped
@@ -5465,6 +5570,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush (25)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6953544198405282041, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 6953544198405282037, guid: 3284c3f78b3b914489f5e84ba246a03f,
         type: 3}
@@ -5521,6 +5631,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6686009691109171846, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 528064088312656162, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3284c3f78b3b914489f5e84ba246a03f, type: 3}
 --- !u!4 &7532425153548599098 stripped
@@ -5540,6 +5660,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush (34)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6953544198405282041, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 6953544198405282037, guid: 3284c3f78b3b914489f5e84ba246a03f,
         type: 3}
@@ -5596,6 +5721,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6686009691109171846, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 528064088312656162, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3284c3f78b3b914489f5e84ba246a03f, type: 3}
 --- !u!4 &7719574037035481561 stripped
@@ -5615,6 +5750,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush (42)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6953544198405282041, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 6953544198405282037, guid: 3284c3f78b3b914489f5e84ba246a03f,
         type: 3}
@@ -5671,6 +5811,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6686009691109171846, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 528064088312656162, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3284c3f78b3b914489f5e84ba246a03f, type: 3}
 --- !u!4 &7901593863020343170 stripped
@@ -5690,6 +5840,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6953544198405282041, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 6953544198405282037, guid: 3284c3f78b3b914489f5e84ba246a03f,
         type: 3}
@@ -5746,6 +5901,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6686009691109171846, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 528064088312656162, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3284c3f78b3b914489f5e84ba246a03f, type: 3}
 --- !u!4 &7947238214686573840 stripped
@@ -5765,6 +5930,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush (24)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6953544198405282041, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 6953544198405282037, guid: 3284c3f78b3b914489f5e84ba246a03f,
         type: 3}
@@ -5821,6 +5991,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6686009691109171846, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 528064088312656162, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3284c3f78b3b914489f5e84ba246a03f, type: 3}
 --- !u!4 &7996615828515501650 stripped
@@ -5840,6 +6020,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush (12)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6953544198405282041, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 6953544198405282037, guid: 3284c3f78b3b914489f5e84ba246a03f,
         type: 3}
@@ -5896,6 +6081,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6686009691109171846, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 528064088312656162, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3284c3f78b3b914489f5e84ba246a03f, type: 3}
 --- !u!4 &8323110323320540768 stripped
@@ -5915,6 +6110,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush (41)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6953544198405282041, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 6953544198405282037, guid: 3284c3f78b3b914489f5e84ba246a03f,
         type: 3}
@@ -5971,6 +6171,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6686009691109171846, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 528064088312656162, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3284c3f78b3b914489f5e84ba246a03f, type: 3}
 --- !u!4 &8473012248269269413 stripped
@@ -5990,6 +6200,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush (16)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6953544198405282041, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 6953544198405282037, guid: 3284c3f78b3b914489f5e84ba246a03f,
         type: 3}
@@ -6046,6 +6261,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6686009691109171846, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 528064088312656162, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3284c3f78b3b914489f5e84ba246a03f, type: 3}
 --- !u!4 &8546727476482748655 stripped
@@ -6065,6 +6290,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6953544198405282041, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 6953544198405282037, guid: 3284c3f78b3b914489f5e84ba246a03f,
         type: 3}
@@ -6121,6 +6351,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6686009691109171846, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 528064088312656162, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3284c3f78b3b914489f5e84ba246a03f, type: 3}
 --- !u!4 &8578797464981253754 stripped
@@ -6140,6 +6380,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush (51)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6953544198405282041, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 6953544198405282037, guid: 3284c3f78b3b914489f5e84ba246a03f,
         type: 3}
@@ -6196,6 +6441,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6686009691109171846, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 528064088312656162, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3284c3f78b3b914489f5e84ba246a03f, type: 3}
 --- !u!4 &8575231615920967138 stripped
@@ -6215,6 +6470,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush (17)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6953544198405282041, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 6953544198405282037, guid: 3284c3f78b3b914489f5e84ba246a03f,
         type: 3}
@@ -6271,6 +6531,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6686009691109171846, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 528064088312656162, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3284c3f78b3b914489f5e84ba246a03f, type: 3}
 --- !u!4 &8700576586009425211 stripped
@@ -6290,6 +6560,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush (26)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6953544198405282041, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 6953544198405282037, guid: 3284c3f78b3b914489f5e84ba246a03f,
         type: 3}
@@ -6346,6 +6621,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6686009691109171846, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 528064088312656162, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3284c3f78b3b914489f5e84ba246a03f, type: 3}
 --- !u!4 &8769409609854102069 stripped
@@ -6365,6 +6650,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush (35)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6953544198405282041, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 6953544198405282037, guid: 3284c3f78b3b914489f5e84ba246a03f,
         type: 3}
@@ -6421,6 +6711,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6686009691109171846, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 528064088312656162, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3284c3f78b3b914489f5e84ba246a03f, type: 3}
 --- !u!4 &8869673617294362217 stripped
@@ -6440,6 +6740,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush (50)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6953544198405282041, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 6953544198405282037, guid: 3284c3f78b3b914489f5e84ba246a03f,
         type: 3}
@@ -6496,6 +6801,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6686009691109171846, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 528064088312656162, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3284c3f78b3b914489f5e84ba246a03f, type: 3}
 --- !u!4 &9071347328463481139 stripped
@@ -6515,6 +6830,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush (29)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6953544198405282041, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 6953544198405282037, guid: 3284c3f78b3b914489f5e84ba246a03f,
         type: 3}
@@ -6571,6 +6891,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6686009691109171846, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 528064088312656162, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3284c3f78b3b914489f5e84ba246a03f, type: 3}
 --- !u!4 &9172965047898637195 stripped
@@ -6590,6 +6920,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush (54)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6953544198405282041, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 6953544198405282037, guid: 3284c3f78b3b914489f5e84ba246a03f,
         type: 3}
@@ -6646,6 +6981,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6686009691109171846, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 528064088312656162, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3284c3f78b3b914489f5e84ba246a03f, type: 3}
 --- !u!4 &4730366950889613205 stripped
@@ -6665,6 +7010,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush (21)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6953544198405282041, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 6953544198405282037, guid: 3284c3f78b3b914489f5e84ba246a03f,
         type: 3}
@@ -6721,6 +7071,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6686009691109171846, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 528064088312656162, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3284c3f78b3b914489f5e84ba246a03f, type: 3}
 --- !u!4 &4824689577176359558 stripped
@@ -6740,6 +7100,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush (22)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6953544198405282041, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 6953544198405282037, guid: 3284c3f78b3b914489f5e84ba246a03f,
         type: 3}
@@ -6796,6 +7161,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6686009691109171846, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 528064088312656162, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3284c3f78b3b914489f5e84ba246a03f, type: 3}
 --- !u!4 &5032525625551980839 stripped
@@ -6815,6 +7190,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush (53)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6953544198405282041, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 6953544198405282037, guid: 3284c3f78b3b914489f5e84ba246a03f,
         type: 3}
@@ -6871,6 +7251,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6686009691109171846, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 528064088312656162, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3284c3f78b3b914489f5e84ba246a03f, type: 3}
 --- !u!4 &5093122146252802645 stripped
@@ -6890,6 +7280,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6953544198405282041, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 6953544198405282037, guid: 3284c3f78b3b914489f5e84ba246a03f,
         type: 3}
@@ -6946,6 +7341,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6686009691109171846, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 528064088312656162, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3284c3f78b3b914489f5e84ba246a03f, type: 3}
 --- !u!4 &5196109120090527263 stripped
@@ -6965,6 +7370,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6953544198405282041, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 6953544198405282037, guid: 3284c3f78b3b914489f5e84ba246a03f,
         type: 3}
@@ -7021,6 +7431,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6686009691109171846, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 528064088312656162, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3284c3f78b3b914489f5e84ba246a03f, type: 3}
 --- !u!4 &5275862682839486404 stripped
@@ -7040,6 +7460,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6953544198405282041, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 6953544198405282037, guid: 3284c3f78b3b914489f5e84ba246a03f,
         type: 3}
@@ -7096,6 +7521,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6686009691109171846, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 528064088312656162, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3284c3f78b3b914489f5e84ba246a03f, type: 3}
 --- !u!4 &5275834054751445362 stripped
@@ -7115,6 +7550,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush (38)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6953544198405282041, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 6953544198405282037, guid: 3284c3f78b3b914489f5e84ba246a03f,
         type: 3}
@@ -7171,6 +7611,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6686009691109171846, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 528064088312656162, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3284c3f78b3b914489f5e84ba246a03f, type: 3}
 --- !u!4 &6068402244724185595 stripped
@@ -7190,6 +7640,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush (18)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6953544198405282041, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 6953544198405282037, guid: 3284c3f78b3b914489f5e84ba246a03f,
         type: 3}
@@ -7246,6 +7701,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6686009691109171846, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 528064088312656162, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3284c3f78b3b914489f5e84ba246a03f, type: 3}
 --- !u!4 &6091477693433119499 stripped
@@ -7265,6 +7730,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6953544198405282041, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 6953544198405282037, guid: 3284c3f78b3b914489f5e84ba246a03f,
         type: 3}
@@ -7321,6 +7791,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6686009691109171846, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 528064088312656162, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3284c3f78b3b914489f5e84ba246a03f, type: 3}
 --- !u!4 &6351633259255279008 stripped
@@ -7340,6 +7820,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6953544198405282041, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 6953544198405282037, guid: 3284c3f78b3b914489f5e84ba246a03f,
         type: 3}
@@ -7396,6 +7881,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6686009691109171846, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 528064088312656162, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3284c3f78b3b914489f5e84ba246a03f, type: 3}
 --- !u!4 &6531312332918239563 stripped
@@ -7415,6 +7910,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush (43)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6953544198405282041, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 6953544198405282037, guid: 3284c3f78b3b914489f5e84ba246a03f,
         type: 3}
@@ -7471,6 +7971,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6686009691109171846, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 528064088312656162, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3284c3f78b3b914489f5e84ba246a03f, type: 3}
 --- !u!4 &6700015796235143297 stripped
@@ -7490,6 +8000,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush (17)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6953544198405282041, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 6953544198405282037, guid: 3284c3f78b3b914489f5e84ba246a03f,
         type: 3}
@@ -7546,6 +8061,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6686009691109171846, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 528064088312656162, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3284c3f78b3b914489f5e84ba246a03f, type: 3}
 --- !u!4 &6665853150498198408 stripped
@@ -7565,6 +8090,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush (27)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6953544198405282041, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 6953544198405282037, guid: 3284c3f78b3b914489f5e84ba246a03f,
         type: 3}
@@ -7621,6 +8151,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6686009691109171846, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 528064088312656162, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3284c3f78b3b914489f5e84ba246a03f, type: 3}
 --- !u!4 &6768235512467394778 stripped
@@ -7640,6 +8180,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush (39)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6953544198405282041, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 6953544198405282037, guid: 3284c3f78b3b914489f5e84ba246a03f,
         type: 3}
@@ -7696,6 +8241,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6686009691109171846, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 528064088312656162, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3284c3f78b3b914489f5e84ba246a03f, type: 3}
 --- !u!4 &6847938175083491484 stripped
@@ -7715,6 +8270,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush (45)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6953544198405282041, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 6953544198405282037, guid: 3284c3f78b3b914489f5e84ba246a03f,
         type: 3}
@@ -7771,6 +8331,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6686009691109171846, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 528064088312656162, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3284c3f78b3b914489f5e84ba246a03f, type: 3}
 --- !u!4 &2443479793770941877 stripped
@@ -7790,6 +8360,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush (31)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6953544198405282041, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 6953544198405282037, guid: 3284c3f78b3b914489f5e84ba246a03f,
         type: 3}
@@ -7846,6 +8421,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6686009691109171846, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 528064088312656162, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3284c3f78b3b914489f5e84ba246a03f, type: 3}
 --- !u!4 &2507633710576847487 stripped
@@ -7865,6 +8450,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6953544198405282041, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 6953544198405282037, guid: 3284c3f78b3b914489f5e84ba246a03f,
         type: 3}
@@ -7921,6 +8511,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6686009691109171846, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 528064088312656162, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3284c3f78b3b914489f5e84ba246a03f, type: 3}
 --- !u!4 &2497588167832212266 stripped
@@ -7940,6 +8540,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush (23)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6953544198405282041, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 6953544198405282037, guid: 3284c3f78b3b914489f5e84ba246a03f,
         type: 3}
@@ -7996,6 +8601,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6686009691109171846, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 528064088312656162, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3284c3f78b3b914489f5e84ba246a03f, type: 3}
 --- !u!4 &2541749324350704831 stripped
@@ -8015,6 +8630,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush (18)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6953544198405282041, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 6953544198405282037, guid: 3284c3f78b3b914489f5e84ba246a03f,
         type: 3}
@@ -8071,6 +8691,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6686009691109171846, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 528064088312656162, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3284c3f78b3b914489f5e84ba246a03f, type: 3}
 --- !u!4 &2653467688178312724 stripped
@@ -8090,6 +8720,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush (13)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6953544198405282041, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 6953544198405282037, guid: 3284c3f78b3b914489f5e84ba246a03f,
         type: 3}
@@ -8146,6 +8781,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6686009691109171846, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 528064088312656162, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3284c3f78b3b914489f5e84ba246a03f, type: 3}
 --- !u!4 &2754997112655938630 stripped
@@ -8165,6 +8810,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush (20)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6953544198405282041, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 6953544198405282037, guid: 3284c3f78b3b914489f5e84ba246a03f,
         type: 3}
@@ -8221,6 +8871,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6686009691109171846, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 528064088312656162, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3284c3f78b3b914489f5e84ba246a03f, type: 3}
 --- !u!4 &2873770789508708691 stripped
@@ -8240,6 +8900,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush (36)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6953544198405282041, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 6953544198405282037, guid: 3284c3f78b3b914489f5e84ba246a03f,
         type: 3}
@@ -8296,6 +8961,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6686009691109171846, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 528064088312656162, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3284c3f78b3b914489f5e84ba246a03f, type: 3}
 --- !u!4 &3219977517500132836 stripped
@@ -8315,6 +8990,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush (32)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6953544198405282041, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 6953544198405282037, guid: 3284c3f78b3b914489f5e84ba246a03f,
         type: 3}
@@ -8371,6 +9051,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6686009691109171846, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 528064088312656162, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3284c3f78b3b914489f5e84ba246a03f, type: 3}
 --- !u!4 &3344038878410157045 stripped
@@ -8390,6 +9080,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush (46)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6953544198405282041, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 6953544198405282037, guid: 3284c3f78b3b914489f5e84ba246a03f,
         type: 3}
@@ -8446,6 +9141,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6686009691109171846, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 528064088312656162, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3284c3f78b3b914489f5e84ba246a03f, type: 3}
 --- !u!4 &3322628500659767110 stripped
@@ -8465,6 +9170,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush (33)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6953544198405282041, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 6953544198405282037, guid: 3284c3f78b3b914489f5e84ba246a03f,
         type: 3}
@@ -8521,6 +9231,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6686009691109171846, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 528064088312656162, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3284c3f78b3b914489f5e84ba246a03f, type: 3}
 --- !u!4 &3450264621515472817 stripped
@@ -8540,6 +9260,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush (13)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6953544198405282041, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 6953544198405282037, guid: 3284c3f78b3b914489f5e84ba246a03f,
         type: 3}
@@ -8596,6 +9321,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6686009691109171846, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 528064088312656162, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3284c3f78b3b914489f5e84ba246a03f, type: 3}
 --- !u!4 &3444522505198583041 stripped
@@ -8615,6 +9350,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush (37)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6953544198405282041, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 6953544198405282037, guid: 3284c3f78b3b914489f5e84ba246a03f,
         type: 3}
@@ -8671,6 +9411,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6686009691109171846, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 528064088312656162, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3284c3f78b3b914489f5e84ba246a03f, type: 3}
 --- !u!4 &3433822254040161042 stripped
@@ -8690,6 +9440,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6953544198405282041, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 6953544198405282037, guid: 3284c3f78b3b914489f5e84ba246a03f,
         type: 3}
@@ -8746,6 +9501,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6686009691109171846, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 528064088312656162, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3284c3f78b3b914489f5e84ba246a03f, type: 3}
 --- !u!4 &3517852140132422954 stripped
@@ -8765,6 +9530,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush (21)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6953544198405282041, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 6953544198405282037, guid: 3284c3f78b3b914489f5e84ba246a03f,
         type: 3}
@@ -8821,6 +9591,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6686009691109171846, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 528064088312656162, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3284c3f78b3b914489f5e84ba246a03f, type: 3}
 --- !u!4 &3533730128597624210 stripped
@@ -8840,6 +9620,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6953544198405282041, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 6953544198405282037, guid: 3284c3f78b3b914489f5e84ba246a03f,
         type: 3}
@@ -8896,6 +9681,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6686009691109171846, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 528064088312656162, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3284c3f78b3b914489f5e84ba246a03f, type: 3}
 --- !u!4 &3757029807070554541 stripped
@@ -8915,6 +9710,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush (28)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6953544198405282041, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 6953544198405282037, guid: 3284c3f78b3b914489f5e84ba246a03f,
         type: 3}
@@ -8971,6 +9771,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6686009691109171846, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 528064088312656162, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3284c3f78b3b914489f5e84ba246a03f, type: 3}
 --- !u!4 &4066156558964034438 stripped
@@ -8990,6 +9800,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush (40)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6953544198405282041, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 6953544198405282037, guid: 3284c3f78b3b914489f5e84ba246a03f,
         type: 3}
@@ -9046,6 +9861,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6686009691109171846, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 528064088312656162, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3284c3f78b3b914489f5e84ba246a03f, type: 3}
 --- !u!4 &4451794762385843796 stripped
@@ -9065,6 +9890,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6953544198405282041, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 6953544198405282037, guid: 3284c3f78b3b914489f5e84ba246a03f,
         type: 3}
@@ -9121,6 +9951,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6686009691109171846, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 528064088312656162, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3284c3f78b3b914489f5e84ba246a03f, type: 3}
 --- !u!4 &4478275549366859219 stripped
@@ -9140,6 +9980,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush
+      objectReference: {fileID: 0}
+    - target: {fileID: 6953544198405282041, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 6953544198405282037, guid: 3284c3f78b3b914489f5e84ba246a03f,
         type: 3}
@@ -9196,6 +10041,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6686009691109171846, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 528064088312656162, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3284c3f78b3b914489f5e84ba246a03f, type: 3}
 --- !u!4 &4529964896863886403 stripped
@@ -9215,6 +10070,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush (20)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6953544198405282041, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 6953544198405282037, guid: 3284c3f78b3b914489f5e84ba246a03f,
         type: 3}
@@ -9271,6 +10131,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6686009691109171846, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 528064088312656162, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3284c3f78b3b914489f5e84ba246a03f, type: 3}
 --- !u!4 &59050308339415647 stripped
@@ -9290,6 +10160,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6953544198405282041, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 6953544198405282037, guid: 3284c3f78b3b914489f5e84ba246a03f,
         type: 3}
@@ -9346,6 +10221,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6686009691109171846, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 528064088312656162, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3284c3f78b3b914489f5e84ba246a03f, type: 3}
 --- !u!4 &197267349649445666 stripped
@@ -9365,6 +10250,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6953544198405282041, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 6953544198405282037, guid: 3284c3f78b3b914489f5e84ba246a03f,
         type: 3}
@@ -9421,6 +10311,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6686009691109171846, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 528064088312656162, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3284c3f78b3b914489f5e84ba246a03f, type: 3}
 --- !u!4 &277805381938807550 stripped
@@ -9440,6 +10340,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush (49)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6953544198405282041, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 6953544198405282037, guid: 3284c3f78b3b914489f5e84ba246a03f,
         type: 3}
@@ -9496,6 +10401,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6686009691109171846, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 528064088312656162, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3284c3f78b3b914489f5e84ba246a03f, type: 3}
 --- !u!4 &1005902881882352413 stripped
@@ -9515,6 +10430,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush (16)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6953544198405282041, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 6953544198405282037, guid: 3284c3f78b3b914489f5e84ba246a03f,
         type: 3}
@@ -9571,6 +10491,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6686009691109171846, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 528064088312656162, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3284c3f78b3b914489f5e84ba246a03f, type: 3}
 --- !u!4 &1079122561291246589 stripped
@@ -9590,6 +10520,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush (47)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6953544198405282041, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 6953544198405282037, guid: 3284c3f78b3b914489f5e84ba246a03f,
         type: 3}
@@ -9646,6 +10581,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6686009691109171846, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 528064088312656162, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3284c3f78b3b914489f5e84ba246a03f, type: 3}
 --- !u!4 &1464867617756330216 stripped
@@ -9665,6 +10610,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush (14)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6953544198405282041, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 6953544198405282037, guid: 3284c3f78b3b914489f5e84ba246a03f,
         type: 3}
@@ -9721,6 +10671,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6686009691109171846, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 528064088312656162, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3284c3f78b3b914489f5e84ba246a03f, type: 3}
 --- !u!4 &1523906286646045663 stripped
@@ -9740,6 +10700,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush (12)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6953544198405282041, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 6953544198405282037, guid: 3284c3f78b3b914489f5e84ba246a03f,
         type: 3}
@@ -9796,6 +10761,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6686009691109171846, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 528064088312656162, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3284c3f78b3b914489f5e84ba246a03f, type: 3}
 --- !u!4 &1669803419763587764 stripped
@@ -9815,6 +10790,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush (15)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6953544198405282041, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 6953544198405282037, guid: 3284c3f78b3b914489f5e84ba246a03f,
         type: 3}
@@ -9871,6 +10851,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6686009691109171846, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 528064088312656162, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3284c3f78b3b914489f5e84ba246a03f, type: 3}
 --- !u!4 &1725175104208877831 stripped
@@ -9890,6 +10880,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush (22)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6953544198405282041, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 6953544198405282037, guid: 3284c3f78b3b914489f5e84ba246a03f,
         type: 3}
@@ -9946,6 +10941,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6686009691109171846, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 528064088312656162, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3284c3f78b3b914489f5e84ba246a03f, type: 3}
 --- !u!4 &1837147937497351977 stripped
@@ -9965,6 +10970,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush (30)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6953544198405282041, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 6953544198405282037, guid: 3284c3f78b3b914489f5e84ba246a03f,
         type: 3}
@@ -10021,6 +11031,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6686009691109171846, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 528064088312656162, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3284c3f78b3b914489f5e84ba246a03f, type: 3}
 --- !u!4 &1934637924296365043 stripped
@@ -10040,6 +11060,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush (15)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6953544198405282041, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 6953544198405282037, guid: 3284c3f78b3b914489f5e84ba246a03f,
         type: 3}
@@ -10096,6 +11121,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6686009691109171846, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 528064088312656162, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3284c3f78b3b914489f5e84ba246a03f, type: 3}
 --- !u!4 &1971368922862868970 stripped
@@ -10115,6 +11150,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush (48)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6953544198405282041, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 6953544198405282037, guid: 3284c3f78b3b914489f5e84ba246a03f,
         type: 3}
@@ -10171,6 +11211,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6686009691109171846, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 528064088312656162, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3284c3f78b3b914489f5e84ba246a03f, type: 3}
 --- !u!4 &2243342218443291565 stripped
@@ -10190,6 +11240,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bush (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6953544198405282041, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 6953544198405282037, guid: 3284c3f78b3b914489f5e84ba246a03f,
         type: 3}
@@ -10245,6 +11300,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6686009691109171846, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 528064088312656162, guid: 3284c3f78b3b914489f5e84ba246a03f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3284c3f78b3b914489f5e84ba246a03f, type: 3}

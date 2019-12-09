@@ -11,13 +11,13 @@ public class Bush : MonoBehaviour
     public Point pos;       // the logic position
 
     [Header("Setup")]
+    //[SerializeField]
+    //private Transform partToMove = default;
     [SerializeField]
-    private Transform partToMove = default;
-    [SerializeField]
-    private Renderer renderer = default;
+    private Renderer rendererBush = default;
 
     // ---- INTERN ----
-    private Vector3 initialPos;
+    //private Vector3 initialPos;
     private BushGroup bushGroup;
     //                  unit,        needToHide
     private Dictionary<int, HiddableUnit> dicHiddable = new Dictionary<int, HiddableUnit> ();
@@ -27,8 +27,8 @@ public class Bush : MonoBehaviour
 
     void Start()
     {
-        initialPos = partToMove.localPosition;
-        defaultColor = renderer.material.color;
+        //initialPos = partToMove.localPosition;
+        defaultColor = rendererBush.material.color;
     }
 
     public void SetBushGroup(BushGroup bg)
@@ -71,7 +71,7 @@ public class Bush : MonoBehaviour
             PlayerVision playerVision = other.GetComponent<PlayerVision>();
             //playerVision.RevelInBushes(bushGroup);
         }
-        StartCoroutine(Shake(0.2f, 0.07f));
+        //StartCoroutine(Shake(0.2f, 0.07f));
     }
 
     void OnTriggerExit(Collider other)
@@ -94,13 +94,13 @@ public class Bush : MonoBehaviour
         needToHideUnits = false;
         Color newCol = defaultColor;
         newCol.a = 0.5f;
-        renderer.material.color = newCol;
+        rendererBush.material.color = newCol;
     }
 
     public void HideUnits()
     {
         needToHideUnits = true;
-        renderer.material.color = defaultColor;
+        rendererBush.material.color = defaultColor;
     }
 
     public bool Contains(HiddableUnit unit)
@@ -108,21 +108,21 @@ public class Bush : MonoBehaviour
         return dicHiddable.ContainsKey(unit.Id);
     }
 
-    private IEnumerator Shake(float duration, float translationMagnitude)
-    {
-        float time = 0f;
-        while (time < duration)
-        {
-            float x = UnityEngine.Random.Range(-1f, 1f) * translationMagnitude;
-            float z = UnityEngine.Random.Range(-1f, 1f) * translationMagnitude;
+    //private IEnumerator Shake(float duration, float translationMagnitude)
+    //{
+    //    float time = 0f;
+    //    while (time < duration)
+    //    {
+    //        float x = UnityEngine.Random.Range(-1f, 1f) * translationMagnitude;
+    //        float z = UnityEngine.Random.Range(-1f, 1f) * translationMagnitude;
 
 
-            partToMove.localPosition = new Vector3(x, 0f, z) + initialPos;
+    //        partToMove.localPosition = new Vector3(x, 0f, z) + initialPos;
 
-            time += Time.deltaTime;
-            yield return null;
-        }
+    //        time += Time.deltaTime;
+    //        yield return null;
+    //    }
 
-        partToMove.localPosition = initialPos;
-    }
+    //    partToMove.localPosition = initialPos;
+    //}
 }
