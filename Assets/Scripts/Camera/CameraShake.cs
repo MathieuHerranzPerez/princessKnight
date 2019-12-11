@@ -16,6 +16,7 @@ public class CameraShake : MonoBehaviour
         initialRot = transform.localRotation;
     }
 
+
     public void Shake(float duration, float translationMagnitude, float rotationMagnitude)
     {
         StartCoroutine(ShakeCam(duration, translationMagnitude, rotationMagnitude));
