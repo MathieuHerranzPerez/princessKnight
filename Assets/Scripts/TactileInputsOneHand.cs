@@ -2,97 +2,164 @@
 
 public class TactileInputsOneHand : PlayerInputs
 {
+    [SerializeField] private float minDistanceForSwipe = 100f;
+    [SerializeField] private float maxTimeForSwipe = 0.2f;
 
     [Header("Setup")]
-    [SerializeField]
-    private Joystick joystick = default;
-    [SerializeField]
-    private float minDistanceForSwipe = 2f;
-    [SerializeField]
-    private float maxTimeForSwipe = 0.15f;
+    [SerializeField] private Transform joystickBounds = default;
+    [SerializeField] private Transform joystickCenter = default;
 
     // ---- INTERN ----
-    private Touch currentTouch;
-    private int touchId;
 
     private float timeTouching = 0f;
+    private int currentTouchId = -1;
+    private float lastTouchTime;
+    private Vector2 startingPoint;
 
-    private Vector2 fingerUpPosition;
-    private Vector2 fingerDownPosition;
+    private float minDistanceForSwipeSquare;
 
+    private void Start()
+    {
+        minDistanceForSwipeSquare = minDistanceForSwipe * minDistanceForSwipe;
+        joystickBounds.gameObject.SetActive(false);
+    }
 
     void Update()
     {
-        axisX = joystick.Horizontal;
-        axisY = joystick.Vertical;
-        if (Input.touchCount > 0)
+        axisX = 0f;
+        axisY = 0f;
+        swipeDirection = Vector3.zero;
+        isAPressed = false;
+
+#if UNITY_EDITOR
+        UpdateEditor();
+#else
+        UpdateMobile();
+#endif
+
+    }
+
+    private void UpdateEditor()
+    {
+        Vector2 mousePos = Input.mousePosition;
+
+        if (Input.GetMouseButtonDown(0))
         {
-            currentTouch = Input.GetTouch(0);
-            timeTouching += Time.deltaTime;
-            if (currentTouch.phase == TouchPhase.Began)
+            startingPoint = mousePos;
+            lastTouchTime = Time.time;
+
+            joystickBounds.position = mousePos;
+        }
+        else if(Input.GetMouseButton(0))
+        {
+            Vector2 offset = mousePos - startingPoint;
+            Vector2 direction = Vector2.ClampMagnitude(offset, 100f);
+            axisX = direction.x / 100f;
+            axisY = direction.y / 100f;
+
+            if(Time.time - lastTouchTime >= maxTimeForSwipe)
             {
-                fingerUpPosition = currentTouch.position;
-                fingerDownPosition = currentTouch.position;
-                timeTouching = 0f;
+                joystickBounds.gameObject.SetActive(true);
+                joystickCenter.position = new Vector2(joystickBounds.position.x + direction.x, joystickBounds.position.y + direction.y);
             }
-
-            if (currentTouch.phase == TouchPhase.Ended)
+        }
+        else if(Input.GetMouseButtonUp(0))
+        {
+            if (Time.time - lastTouchTime < maxTimeForSwipe)
             {
-                fingerDownPosition = currentTouch.position;
-                if(timeTouching > maxTimeForSwipe)
+                // it is a simple touch
+                if (startingPoint == mousePos)
                 {
-
+                    isAPressed = true;
                 }
                 else
                 {
-                    axisX = 0f;
-                    axisY = 0f;
-                    Vector2 dashDir = DetectSwipe();
+                    Vector2 dashDir = DetectSwipe(mousePos);
+                    // it is a dash
                     if (dashDir != Vector2.zero)
                     {
                         Vector3 dir = new Vector3(dashDir.x, 0f, dashDir.y);
                         swipeDirection = dir;
                     }
-                    else
-                    {
-                        swipeDirection = Vector3.zero;
-                        // it is a simple touch
-                        isAPressed = true;
-                    }
                 }
             }
-            else
-            {
-                swipeDirection = Vector3.zero;
-                isAPressed = false;
-            }
-        }
-        else
-        {
-            timeTouching = 0f;
-            // reset all
-            swipeDirection = Vector3.zero;
-            isAPressed = false;
+
+            joystickBounds.gameObject.SetActive(false);
         }
     }
-    
 
-    private Vector2 DetectSwipe()
+    private void UpdateMobile()
+    {
+        int i = 0;
+        while (i < Input.touchCount)
+        {
+            Touch touch = Input.GetTouch(i);
+            Vector2 touchPos = touch.position;
+
+            if (touch.phase == TouchPhase.Began)
+            {
+                lastTouchTime = Time.time;
+                currentTouchId = touch.fingerId;
+                startingPoint = touchPos;
+
+                joystickBounds.position = touchPos;
+            }
+            else if ((touch.phase == TouchPhase.Moved || touch.phase == TouchPhase.Stationary) && currentTouchId == touch.fingerId)
+            {
+                Vector2 offset = touchPos - startingPoint;
+                Vector2 direction = Vector2.ClampMagnitude(offset, 100f);
+                axisX = direction.x / 100f;
+                axisY = direction.y / 100f;
+
+                if (Time.time - lastTouchTime >= maxTimeForSwipe)
+                {
+                    joystickBounds.gameObject.SetActive(true);
+                    joystickCenter.position = new Vector2(joystickBounds.position.x + direction.x, joystickBounds.position.y + direction.y);
+                }
+            }
+            else if ((touch.phase == TouchPhase.Ended || touch.phase == TouchPhase.Canceled) && currentTouchId == touch.fingerId)
+            {
+                currentTouchId = -1;
+
+                if (Time.time - lastTouchTime < maxTimeForSwipe)
+                {
+                    // it is a simple touch
+                    if (startingPoint == touchPos)
+                    {
+                        isAPressed = true;
+                    }
+                    else
+                    {
+                        Vector2 dashDir = DetectSwipe(touch.position);
+                        // it is a dash
+                        if (dashDir != Vector2.zero)
+                        {
+                            Vector3 dir = new Vector3(dashDir.x, 0f, dashDir.y);
+                            swipeDirection = dir;
+                        }
+                    }
+                }
+
+                joystickBounds.gameObject.SetActive(false);
+            }
+            ++i;
+        }
+    }
+
+    private Vector2 DetectSwipe(Vector2 lastPoint)
     {
         Vector2 direction = Vector2.zero;
-        if (timeTouching < maxTimeForSwipe && IsSwipeDistanceCorrect())
+        if (IsSwipeDistanceCorrect(lastPoint))
         {
-            direction = (fingerDownPosition - fingerUpPosition);
+            direction = (lastPoint - startingPoint);
         }
-
-        fingerUpPosition = fingerDownPosition;
 
         return direction.normalized;
     }
 
-    private bool IsSwipeDistanceCorrect()
+    private bool IsSwipeDistanceCorrect(Vector2 lastPoint)
     {
-        float squareDistance = (fingerDownPosition.x - fingerUpPosition.x) * (fingerDownPosition.x - fingerUpPosition.x) + (fingerDownPosition.y - fingerUpPosition.y) * (fingerDownPosition.y - fingerUpPosition.y);
-        return squareDistance > minDistanceForSwipe * minDistanceForSwipe;
+        float squareDistance = (lastPoint.x - startingPoint.x) * (lastPoint.x - startingPoint.x) + (lastPoint.y - startingPoint.y) * (lastPoint.y - startingPoint.y);
+        return squareDistance > minDistanceForSwipeSquare;
     }
 }

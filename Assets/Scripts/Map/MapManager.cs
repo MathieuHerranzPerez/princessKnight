@@ -6,8 +6,6 @@ public class MapManager : MonoBehaviour
 {
     public static MapManager Instance { get; private set; }
     
-    public GameObject CheckpointPrefab { get { return checkpointPrefab; } }
-
     [Header("Setup")]
     [SerializeField]
     private int nbMapFragmentToCheckPoint = 4;
@@ -19,15 +17,22 @@ public class MapManager : MonoBehaviour
     private string prefabMapFragmentFolder = "";
     [SerializeField]
     private string[] listPrefabMapFragmentSubFolder = new string[1];
+
     [Header("First map fragment")]
     [SerializeField]
     private int firstMapFragmentSize = 15;
     [SerializeField]
     private GameObject firstMapFragmentPrefab = default;
+
+    [Header("Checkpoint map fragment")]
+    [SerializeField]
+    private GameObject[] listPrefabCheckpointMapFragment = default;
+    [SerializeField]
+    private int checkpointMapFragmentSize = 10;
+
+    [Header("Prince")]
     [SerializeField]
     private GameObject princePrefab = default;
-    [SerializeField]
-    private GameObject checkpointPrefab = default;
 
     // ---- INTERN ----
     private string[] listPrefabMapFragmentFolderFullPath;
@@ -35,13 +40,20 @@ public class MapManager : MonoBehaviour
     private int currentMapFragmentFolderIndex = 0;
     private Object[] mapFragmentSelection;                              // store the mapFragment Object loaded from Ressources folder 
     private int nbMapFragmentGenerated = 0;
+    private int nbCheckpointMapFragment = 0;
     private int nbEndOfMap = 0;
+    private float offsetFragment = 0;
+    private float offsetCheckpoint = 0;
+    private bool needToSpawnCheckPoint = false;
 
     private EnemyGroupGOFactory enemyGroupGOFactory;
 
     void Start()
     {
         Instance = this;
+
+        offsetFragment = mapFragmentSize / 2f + firstMapFragmentSize / 2f;
+        offsetCheckpoint = checkpointMapFragmentSize / 2f + firstMapFragmentSize / 2f;
 
         enemyGroupGOFactory = GetComponent<EnemyGroupGOFactory>();
 
@@ -61,15 +73,33 @@ public class MapManager : MonoBehaviour
     public void NotifyEndOfMap()
     {
         ++nbEndOfMap;
-        if (nbEndOfMap > 1)
+        if (nbEndOfMap > 1 && nbEndOfMap % 4 != 0)
         {
             // remove the last map
             MapFragment firstMapFragment = queueMapFragment.Dequeue();
             firstMapFragment.Destroy();
+
+            if(nbEndOfMap != 2 && nbEndOfMap % 4 == 2)
+            {
+                // remove the last map
+                firstMapFragment = queueMapFragment.Dequeue();
+                firstMapFragment.Destroy();
+            }
+        }
+        else
+        {
+            Debug.Log("DO NOT DESTROY");
         }
 
         // instantiate a map
-        ChargeNewMap();
+        if(needToSpawnCheckPoint)
+        {
+            SpawnCheckpointMap();
+        }
+        else
+        {
+            ChargeNewMap();
+        }
     }
 
     private void ChargeFirstsMap()
@@ -106,26 +136,37 @@ public class MapManager : MonoBehaviour
 
     private void SpawnFirstMapFragment()
     {
-        // float distance = -firstMapFragmentSize;
-        Vector3 pos = new Vector3(0f, 0f, -0f);//mapFragmentContainer.forward * distance;
+        Vector3 pos = new Vector3(0f, 0f, -0f);
         GameObject mapFragmentGO = Instantiate(firstMapFragmentPrefab, pos, mapFragmentContainer.rotation, mapFragmentContainer);
         MapFragment mapFragment = mapFragmentGO.GetComponent<MapFragment>();
         queueMapFragment.Enqueue(mapFragment);
     }
 
-    private void SpawnMap(GameObject mapFragmentToSpawn)
+    private void SpawnCheckpointMap()
     {
-        Debug.Log("Spawn map");
-        float distance = (nbMapFragmentGenerated) * mapFragmentSize + mapFragmentSize / 2f + firstMapFragmentSize / 2f;
+        needToSpawnCheckPoint = false;
+        float distance = (nbMapFragmentGenerated) * mapFragmentSize + offsetCheckpoint + nbCheckpointMapFragment * checkpointMapFragmentSize;
         Vector3 pos = mapFragmentContainer.forward * distance;
-        GameObject mapFragmentGO = Instantiate(mapFragmentToSpawn, pos, mapFragmentContainer.rotation, mapFragmentContainer);
+        GameObject mapFragmentGO = Instantiate(listPrefabCheckpointMapFragment[Random.Range(0, listPrefabCheckpointMapFragment.Length-1)], pos, mapFragmentContainer.rotation, mapFragmentContainer);
         MapFragment mapFragment = mapFragmentGO.GetComponent<MapFragment>();
         queueMapFragment.Enqueue(mapFragment);
 
-        // if we need to spawn a checkpoint
-        bool needToSpawnCheckPoint = ((nbMapFragmentGenerated % nbMapFragmentToCheckPoint) == 0 && nbMapFragmentGenerated > 0);
+        ++nbCheckpointMapFragment;
+    }
+
+    private void SpawnMap(GameObject mapFragmentToSpawn)
+    {
+        Debug.Log("Spawn map");
+        float distance = (nbMapFragmentGenerated) * mapFragmentSize + offsetFragment + nbCheckpointMapFragment * checkpointMapFragmentSize;
+        Vector3 pos = mapFragmentContainer.forward * distance;
+        GameObject mapFragmentGO = Instantiate(mapFragmentToSpawn, pos, mapFragmentContainer.rotation, mapFragmentContainer);
+        LevelMapFragment levelMapFragment = mapFragmentGO.GetComponent<LevelMapFragment>();
+        queueMapFragment.Enqueue(levelMapFragment);
  
         ++nbMapFragmentGenerated;
+
+        // if we need to spawn a checkpoint as next map
+        needToSpawnCheckPoint = ((nbMapFragmentGenerated % nbMapFragmentToCheckPoint) == 0 && nbMapFragmentGenerated > 0);
 
         // instantiate enemies, princes...
 
@@ -141,6 +182,6 @@ public class MapManager : MonoBehaviour
             arrayPrinceGO[i] = princePrefab;
         }
 
-        mapFragment.InitWith(arrayEnemyGroupGO, arrayPrinceGO, needToSpawnCheckPoint);
+        levelMapFragment.InitWith(arrayEnemyGroupGO, arrayPrinceGO);
     }
 }

@@ -76,9 +76,18 @@ public class Enemy : MonoBehaviour, Damageable, INavMeshUnit
                 enemyMesh.material.color = Color.Lerp(enemyMesh.material.color, alphaColor, 1f * Time.deltaTime);
             }
         }
-        else if(!isDying)
+        else if (!isDying)
         {
             transform.position = Vector3.MoveTowards(transform.position, target.transform.position, stats.speed * Time.deltaTime);
+        }
+
+        if (target != null)
+        {
+            Vector3 dir = transform.position - target.transform.position;
+            if (dir.x * dir.x + dir.z * dir.z > 1600)
+            {
+                Destroy(gameObject);
+            }
         }
     }
 
@@ -95,7 +104,7 @@ public class Enemy : MonoBehaviour, Damageable, INavMeshUnit
     {
         stats.HP -= amount;
 
-        if(stats.HP <= 0)
+        if (stats.HP <= 0)
         {
             Die();
         }
@@ -169,11 +178,11 @@ public class Enemy : MonoBehaviour, Damageable, INavMeshUnit
         Collider[] withinAggroCollider;
         withinAggroCollider = Physics.OverlapSphere(transform.position, stats.aggroRange, targetMask);
 
-        if(withinAggroCollider.Length > 0)
+        if (withinAggroCollider.Length > 0)
         {
-            foreach(Collider col in withinAggroCollider)
+            foreach (Collider col in withinAggroCollider)
             {
-                if(col.gameObject.tag == targetTag)
+                if (col.gameObject.tag == targetTag)
                 {
                     target = col.gameObject.GetComponent<Targetable>();
                     attack.Target = target;
@@ -187,7 +196,7 @@ public class Enemy : MonoBehaviour, Damageable, INavMeshUnit
     {
         navMeshAgent.SetDestination(target.transform.position);
         //Debug.Log((transform.position - target.transform.position).magnitude);
-        WhatToDo whatToDo = strategy.GetNextAction(targetMask, target.HitTargetPoint, projectileSpawnPoint.position, 
+        WhatToDo whatToDo = strategy.GetNextAction(targetMask, target.HitTargetPoint, projectileSpawnPoint.position,
             navMeshAgent.remainingDistance, attack.Range, attack.Couldown <= 0f);
 
         bool hasToLookAtTarget = false;
