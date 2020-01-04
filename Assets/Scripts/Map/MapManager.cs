@@ -5,7 +5,12 @@ using UnityEngine;
 public class MapManager : MonoBehaviour
 {
     public static MapManager Instance { get; private set; }
-    
+
+    [Range(0f, 1f)]
+    [SerializeField] private float chanceToSpawnChest = 0.2f;
+    [Range(1, 3)]
+    [SerializeField] private int nbMaxChestPerFragment = 2;
+
     [Header("Setup")]
     [SerializeField]
     private int nbMapFragmentToCheckPoint = 4;
@@ -182,6 +187,17 @@ public class MapManager : MonoBehaviour
             arrayPrinceGO[i] = princePrefab;
         }
 
-        levelMapFragment.InitWith(arrayEnemyGroupGO, arrayPrinceGO);
+
+        int nbChestToSpawn = 0;
+        for(int i = 0; i < nbMaxChestPerFragment; ++i)
+        {
+            float random = Random.Range(0f, 1f);
+            if (random < chanceToSpawnChest)
+            {
+                ++nbChestToSpawn;
+            }
+        }
+
+        levelMapFragment.InitWith(arrayEnemyGroupGO, arrayPrinceGO, nbChestToSpawn);
     }
 }

@@ -5,12 +5,10 @@ using UnityEngine;
 public class LevelMapFragment : MapFragment
 {
     [Header("Setup")]
-    [SerializeField]
-    private SpawnChunck[] arrayEnemyAndPrinceSpawnPoint = new SpawnChunck[1];
-    [SerializeField]
-    private NavMeshObject navMeshObject = default;
-    [SerializeField]
-    private Transform objectContainer = default;    // every object in the mapFragment must be instantiated in this transform
+    [SerializeField] private SpawnChunck[] arrayEnemyAndPrinceSpawnPoint = new SpawnChunck[1];
+    [SerializeField] private Transform[] arrayChestSpawnPoint = new Transform[1];
+    [SerializeField] private NavMeshObject navMeshObject = default;
+    [SerializeField] private Transform objectContainer = default;    // every object in the mapFragment must be instantiated in this transform
                                                     // to be desroyed when fragment will be. To not destroying object, just put
                                                     // its transform to null (root)
 
@@ -26,10 +24,11 @@ public class LevelMapFragment : MapFragment
         }
     }
 
-    public void InitWith(GameObject[] arrayEnemyGO, GameObject[] arrayPrinceGO)
+    public void InitWith(GameObject[] arrayEnemyGO, GameObject[] arrayPrinceGO, int nbChest)
     {
         // navMeshObject.BuildNavMesh();
         SpawnEnemiesAndPrinces(arrayEnemyGO, arrayPrinceGO);
+        SpawnChest(nbChest);
     }
 
     // TODO pooling
@@ -52,6 +51,22 @@ public class LevelMapFragment : MapFragment
             }
 
             listIndexNotUsed.Remove(randomIndex);
+        }
+    }
+
+    private void SpawnChest(int nbChestToSpawn)
+    {
+        nbChestToSpawn = Mathf.Min(nbChestToSpawn, arrayChestSpawnPoint.Length);
+        List<int> indexList = new List<int>();
+        for(int i = 0; i < arrayChestSpawnPoint.Length; ++i)
+        {
+            indexList.Add(i);
+        }
+        for (int i = 0; i < nbChestToSpawn; ++i)
+        {
+            int index = indexList[Random.Range(0, indexList.Count -1)];
+            ChestManager.Instance.SpawnChest(arrayChestSpawnPoint[index]);
+            indexList.Remove(index);
         }
     }
 }
