@@ -41,7 +41,7 @@ public class Chest : MonoBehaviour, Damageable
 
     private void DestroySelf()
     {
-        GameObject go = (GameObject)Instantiate(dropObject, transform.position, Quaternion.identity, transform.parent);
+        GameObject go = (GameObject)Instantiate(dropObject, transform.position, transform.rotation, transform.parent);
         Destroy(gameObject);
     }
 }

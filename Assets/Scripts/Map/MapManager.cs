@@ -91,10 +91,6 @@ public class MapManager : MonoBehaviour
                 firstMapFragment.Destroy();
             }
         }
-        else
-        {
-            Debug.Log("DO NOT DESTROY");
-        }
 
         // instantiate a map
         if(needToSpawnCheckPoint)

@@ -21,7 +21,7 @@ public class ChestManager : MonoBehaviour
 
     public void SpawnChest(Transform whereToSpawn)
     {
-        GameObject chestGO = (GameObject)Instantiate(chestPrefab, whereToSpawn.position, Quaternion.identity, whereToSpawn);
+        GameObject chestGO = (GameObject)Instantiate(chestPrefab, whereToSpawn.position, whereToSpawn.rotation, whereToSpawn);
         Chest chest = chestGO.GetComponent<Chest>();
         int index = Random.Range(0, arrayGameObjectInChest.Count);
         chest.Init(arrayGameObjectInChest[index]);

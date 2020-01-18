@@ -11,7 +11,6 @@ public class TactileInputsOneHand : PlayerInputs
 
     // ---- INTERN ----
 
-    private float timeTouching = 0f;
     private int currentTouchId = -1;
     private float lastTouchTime;
     private Vector2 startingPoint;

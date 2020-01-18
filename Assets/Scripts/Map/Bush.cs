@@ -94,13 +94,15 @@ public class Bush : MonoBehaviour
         needToHideUnits = false;
         Color newCol = defaultColor;
         newCol.a = 0.5f;
-        rendererBush.material.color = newCol;
+        // rendererBush.material.color = newCol;
+        rendererBush.material.SetColor("_BaseColor", newCol);
     }
 
     public void HideUnits()
     {
         needToHideUnits = true;
-        rendererBush.material.color = defaultColor;
+        // rendererBush.material.color = defaultColor;
+        rendererBush.material.SetColor("_BaseColor", defaultColor);
     }
 
     public bool Contains(HiddableUnit unit)
