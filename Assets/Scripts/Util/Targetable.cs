@@ -8,5 +8,5 @@ public abstract class Targetable : MonoBehaviour, Damageable
     [SerializeField]
     private Transform hitTarget = default;
 
-    public abstract void TakeDamage(int amount, DamageSource source);
+    public abstract void TakeDamage(int amount, DamageSource? source);
 }

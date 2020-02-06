@@ -1,24 +1,22 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 
 public abstract class Weapon : MonoBehaviour
 {
     public bool IsOneHand { get { return arrayWeaponObject.Length == 1;  } }
     public GameObject RightHandWeapon { get { return arrayWeaponObject[0]; } }
     public GameObject LeftHandWeapon { get { return IsOneHand ? null : arrayWeaponObject[1]; } }
-    // public RuntimeAnimatorController AnimatorController { get { return animatorController; } }
     public string NameLayerAnimator { get { return nameLayerAnimator; } }
+    public WeaponSpell[] WeaponSpells { get { return this.arrayWeaponSpell; } }
 
     public WeaponStats stats;
 
     [Header("Setup")]
-    // [SerializeField]
-    // protected RuntimeAnimatorController animatorController = default;
     [SerializeField]
     protected string nameLayerAnimator = "";
+    [SerializeField] protected WeaponSpell[] arrayWeaponSpell = new WeaponSpell[1];
 
 
-    [Header("0: attack, 1: def")]
+    [Header("[0]: attack, [1]: def")]
     [SerializeField]
     protected ColliderAttack[] colliderAttackArray = default;
     [SerializeField]
@@ -30,7 +28,21 @@ public abstract class Weapon : MonoBehaviour
     protected WeaponGFXObject[] arrayConcreteWeaponObject;
     protected Animator animator;
 
+    protected float timeCouldown = 0f;
+
     protected bool canAttack = true;
+
+    protected virtual void Update()
+    {
+        if(timeCouldown > 0f)
+        {
+            timeCouldown -= Time.deltaTime;
+            if(timeCouldown <= 0f)
+            {
+                canAttack = true;
+            }
+        }
+    }
 
     public void SetWeaponsObject(WeaponGFXObject[] arrayWeaponObject)
     {
@@ -44,24 +56,30 @@ public abstract class Weapon : MonoBehaviour
     public void SetAnimator(Animator animator)
     {
         this.animator = animator;
+        foreach (WeaponSpell weaponSpell in arrayWeaponSpell)
+        {
+            weaponSpell.Init(animator, this);
+        }
     }
 
     public abstract void PerformAttack();
-    public abstract void PerformSpecial();
     public abstract void ActiveOffensiveColliders();
     public abstract void DesactiveOffensiveColliders();
-    public abstract void ActiveDefensiveColliders();
-    public abstract void DesactiveDefensiveColliders();
 
-    protected IEnumerator CountAttackCouldown()
+    protected void StartAttackCouldown()
     {
-        float time = stats.attackCouldown;
-        while(time > 0f)
-        {
-            time -= Time.deltaTime;
-            yield return null;
-        }
-
-        canAttack = true;
+        timeCouldown = stats.attackCouldown;
     }
+
+    //protected IEnumerator CountAttackCouldown()
+    //{
+    //    float time = stats.attackCouldown;
+    //    while(time > 0f)
+    //    {
+    //        time -= Time.deltaTime;
+    //        yield return null;
+    //    }
+
+    //    canAttack = true;
+    //}
 }

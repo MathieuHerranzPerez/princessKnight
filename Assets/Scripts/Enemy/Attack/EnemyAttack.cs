@@ -60,4 +60,9 @@ public abstract class EnemyAttack : MonoBehaviour
         currentCouldown = couldown;
         source.Unfreeze();
     }
+
+    public virtual void StopEffects()
+    {
+
+    }
 }

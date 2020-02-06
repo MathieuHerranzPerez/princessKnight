@@ -1,12 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class HerdLeader : MonoBehaviour
 {
-    [SerializeField]
-    private float maxHerdDrift = 4f;
-
     // ---- INTERN ----
     private Vector3 targetPos;
     private float maxHerdDriftSquare;

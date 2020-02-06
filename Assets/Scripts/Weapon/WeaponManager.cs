@@ -10,6 +10,8 @@ public class WeaponManager : MonoBehaviour
     [SerializeField]
     private Transform leftHandPoint = default;
 
+    [SerializeField] private SpellUI spellUI = default;
+
     // ---- INTERN ----
     private GameObject currentWeaponPrefab;
     private Weapon currentWeapon;
@@ -26,11 +28,6 @@ public class WeaponManager : MonoBehaviour
         currentWeapon.PerformAttack();
     }
 
-    public void PerformWeaponSpecial()
-    {
-        currentWeapon.PerformSpecial();
-    }
-
     public void ActiveOffensiveColliders()
     {
         currentWeapon.ActiveOffensiveColliders();
@@ -41,14 +38,9 @@ public class WeaponManager : MonoBehaviour
         currentWeapon.DesactiveOffensiveColliders();
     }
 
-    public void ActiveDefensiveCollider()
+    public void PerformSpellEffect(int num)
     {
-        currentWeapon.ActiveDefensiveColliders();
-    }
-
-    public void DesactiveDefensiveColiders()
-    {
-        currentWeapon.DesactiveDefensiveColliders();
+        currentWeapon.WeaponSpells[num].PerformEffect();
     }
 
     public WeaponStats ChangeWeapon(GameObject newWeaponPrefab)
@@ -91,6 +83,9 @@ public class WeaponManager : MonoBehaviour
 
         animator.SetLayerWeight(animator.GetLayerIndex(currentWeapon.NameLayerAnimator), 1f);
         // animator.runtimeAnimatorController = currentWeapon.AnimatorController;
+
+        // the spell UI
+        spellUI.InitWithWeaponSpell(currentWeapon.WeaponSpells);
 
         return currentWeapon;
     }

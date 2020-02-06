@@ -25,7 +25,7 @@ public class Player : Targetable, Observable
     }
 
 
-    public override void TakeDamage(int amount, DamageSource source)
+    public override void TakeDamage(int amount, DamageSource? source)
     {
         if (stackShieldBoost.Count == 0)
         {

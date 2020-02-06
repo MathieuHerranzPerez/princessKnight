@@ -100,7 +100,7 @@ public class Enemy : MonoBehaviour, Damageable, INavMeshUnit
     }
 
 
-    public void TakeDamage(int amount, DamageSource source)
+    public void TakeDamage(int amount, DamageSource? source)
     {
         stats.HP -= amount;
 
@@ -152,6 +152,8 @@ public class Enemy : MonoBehaviour, Damageable, INavMeshUnit
 
         StatisticsManager.Instance.NotifyEnemyDeath(this);
         navMeshAgent.enabled = false;
+
+        attack.StopEffects();
         Destroy(transform.gameObject, 2f);
     }
 

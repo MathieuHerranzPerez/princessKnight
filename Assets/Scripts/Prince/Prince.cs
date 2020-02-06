@@ -38,7 +38,7 @@ public class Prince : Targetable, INavMeshUnit
         }
     }
 
-    public override void TakeDamage(int amount, DamageSource source)
+    public override void TakeDamage(int amount, DamageSource? source)
     {
         if (status != PrinceStatus.WaitingHero)
         {

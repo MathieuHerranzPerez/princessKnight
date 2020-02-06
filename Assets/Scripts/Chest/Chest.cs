@@ -26,7 +26,7 @@ public class Chest : MonoBehaviour, Damageable
         dropObject = prefabToDrop;
     }
 
-    public void TakeDamage(int amount, DamageSource source)
+    public void TakeDamage(int amount, DamageSource? source)
     {
         if(source == DamageSource.PLAYER)
         {

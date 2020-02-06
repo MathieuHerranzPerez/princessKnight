@@ -50,6 +50,12 @@ public class AOEAttack : CastingAttack
         Destroy(particles.gameObject, 3f);
     }
 
+    public override void StopEffects()
+    {
+        base.StopEffects();
+        particlesCharging.Stop();
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         Targetable targetable = other.transform.GetComponent<Targetable>();

@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class TactileInputsOneHand : PlayerInputs
 {
@@ -8,6 +10,7 @@ public class TactileInputsOneHand : PlayerInputs
     [Header("Setup")]
     [SerializeField] private Transform joystickBounds = default;
     [SerializeField] private Transform joystickCenter = default;
+    [SerializeField] private EventSystem eventSystem = default;
 
     // ---- INTERN ----
 
@@ -41,71 +44,21 @@ public class TactileInputsOneHand : PlayerInputs
     private void UpdateEditor()
     {
         Vector2 mousePos = Input.mousePosition;
-
         if (Input.GetMouseButtonDown(0))
         {
-            startingPoint = mousePos;
-            lastTouchTime = Time.time;
-
-            joystickBounds.position = mousePos;
-        }
-        else if(Input.GetMouseButton(0))
-        {
-            Vector2 offset = mousePos - startingPoint;
-            Vector2 direction = Vector2.ClampMagnitude(offset, 100f);
-            axisX = direction.x / 100f;
-            axisY = direction.y / 100f;
-
-            if(Time.time - lastTouchTime >= maxTimeForSwipe)
+            if (!IsPointingOverUI())
             {
-                joystickBounds.gameObject.SetActive(true);
-                joystickCenter.position = new Vector2(joystickBounds.position.x + direction.x, joystickBounds.position.y + direction.y);
-            }
-        }
-        else if(Input.GetMouseButtonUp(0))
-        {
-            if (Time.time - lastTouchTime < maxTimeForSwipe)
-            {
-                // it is a simple touch
-                if (startingPoint == mousePos)
-                {
-                    isAPressed = true;
-                }
-                else
-                {
-                    Vector2 dashDir = DetectSwipe(mousePos);
-                    // it is a dash
-                    if (dashDir != Vector2.zero)
-                    {
-                        Vector3 dir = new Vector3(dashDir.x, 0f, dashDir.y);
-                        swipeDirection = dir;
-                    }
-                }
-            }
-
-            joystickBounds.gameObject.SetActive(false);
-        }
-    }
-
-    private void UpdateMobile()
-    {
-        int i = 0;
-        while (i < Input.touchCount)
-        {
-            Touch touch = Input.GetTouch(i);
-            Vector2 touchPos = touch.position;
-
-            if (touch.phase == TouchPhase.Began)
-            {
+                startingPoint = mousePos;
                 lastTouchTime = Time.time;
-                currentTouchId = touch.fingerId;
-                startingPoint = touchPos;
 
-                joystickBounds.position = touchPos;
+                joystickBounds.position = mousePos;
             }
-            else if ((touch.phase == TouchPhase.Moved || touch.phase == TouchPhase.Stationary) && currentTouchId == touch.fingerId)
+        }
+        else if (Input.GetMouseButton(0))
+        {
+            if (!IsPointingOverUI())
             {
-                Vector2 offset = touchPos - startingPoint;
+                Vector2 offset = mousePos - startingPoint;
                 Vector2 direction = Vector2.ClampMagnitude(offset, 100f);
                 axisX = direction.x / 100f;
                 axisY = direction.y / 100f;
@@ -116,20 +69,21 @@ public class TactileInputsOneHand : PlayerInputs
                     joystickCenter.position = new Vector2(joystickBounds.position.x + direction.x, joystickBounds.position.y + direction.y);
                 }
             }
-            else if ((touch.phase == TouchPhase.Ended || touch.phase == TouchPhase.Canceled) && currentTouchId == touch.fingerId)
+        }
+        else if (Input.GetMouseButtonUp(0))
+        {
+            if (!IsPointingOverUI())
             {
-                currentTouchId = -1;
-
                 if (Time.time - lastTouchTime < maxTimeForSwipe)
                 {
                     // it is a simple touch
-                    if (startingPoint == touchPos)
+                    if (startingPoint == mousePos)
                     {
                         isAPressed = true;
                     }
                     else
                     {
-                        Vector2 dashDir = DetectSwipe(touch.position);
+                        Vector2 dashDir = DetectSwipe(mousePos);
                         // it is a dash
                         if (dashDir != Vector2.zero)
                         {
@@ -140,6 +94,68 @@ public class TactileInputsOneHand : PlayerInputs
                 }
 
                 joystickBounds.gameObject.SetActive(false);
+            }
+        }
+        
+    }
+
+    private void UpdateMobile()
+    {
+        int i = 0;
+        while (i < Input.touchCount)
+        {
+            Touch touch = Input.GetTouch(i);
+            Vector2 touchPos = touch.position;
+
+            if (!IsPointingOverUIMobile(touchPos))
+            {
+                if (touch.phase == TouchPhase.Began)
+                {
+                    lastTouchTime = Time.time;
+                    currentTouchId = touch.fingerId;
+                    startingPoint = touchPos;
+
+                    joystickBounds.position = touchPos;
+
+                }
+                else if ((touch.phase == TouchPhase.Moved || touch.phase == TouchPhase.Stationary) && currentTouchId == touch.fingerId)
+                {
+                    Vector2 offset = touchPos - startingPoint;
+                    Vector2 direction = Vector2.ClampMagnitude(offset, 100f);
+                    axisX = direction.x / 100f;
+                    axisY = direction.y / 100f;
+
+                    if (Time.time - lastTouchTime >= maxTimeForSwipe)
+                    {
+                        joystickBounds.gameObject.SetActive(true);
+                        joystickCenter.position = new Vector2(joystickBounds.position.x + direction.x, joystickBounds.position.y + direction.y);
+                    }
+                }
+                else if ((touch.phase == TouchPhase.Ended || touch.phase == TouchPhase.Canceled) && currentTouchId == touch.fingerId)
+                {
+                    currentTouchId = -1;
+
+                    if (Time.time - lastTouchTime < maxTimeForSwipe)
+                    {
+                        // it is a simple touch
+                        if (startingPoint == touchPos)
+                        {
+                            isAPressed = true;
+                        }
+                        else
+                        {
+                            Vector2 dashDir = DetectSwipe(touch.position);
+                            // it is a dash
+                            if (dashDir != Vector2.zero)
+                            {
+                                Vector3 dir = new Vector3(dashDir.x, 0f, dashDir.y);
+                                swipeDirection = dir;
+                            }
+                        }
+                    }
+
+                    joystickBounds.gameObject.SetActive(false);
+                }
             }
             ++i;
         }
@@ -160,5 +176,54 @@ public class TactileInputsOneHand : PlayerInputs
     {
         float squareDistance = (lastPoint.x - startingPoint.x) * (lastPoint.x - startingPoint.x) + (lastPoint.y - startingPoint.y) * (lastPoint.y - startingPoint.y);
         return squareDistance > minDistanceForSwipeSquare;
+    }
+
+    private bool IsPointingOverUI()
+    {
+        bool isPointingOverUI = false;
+        if (eventSystem.IsPointerOverGameObject())
+        {
+            PointerEventData pointer = new PointerEventData(eventSystem);
+            pointer.position = Input.mousePosition;
+
+            List<RaycastResult> raycastResults = new List<RaycastResult>();
+            EventSystem.current.RaycastAll(pointer, raycastResults);
+
+            if (raycastResults.Count > 0)
+            {
+                foreach (RaycastResult go in raycastResults)
+                {
+                    if (!isPointingOverUI && go.gameObject.tag == "SpellUI")
+                    {
+                        isPointingOverUI = true;
+                    }
+                }
+            }
+        }
+
+        return isPointingOverUI;
+    }
+
+    private bool IsPointingOverUIMobile(Vector2 touchPos)
+    {
+        bool isPointingOverUI = false;
+        PointerEventData pointer = new PointerEventData(eventSystem);
+        pointer.position = touchPos;
+
+        List<RaycastResult> raycastResults = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(pointer, raycastResults);
+
+        if (raycastResults.Count > 0)
+        {
+            foreach (RaycastResult go in raycastResults)
+            {
+                if (!isPointingOverUI && go.gameObject.tag == "SpellUI")
+                {
+                    isPointingOverUI = true;
+                }
+            }
+        }
+
+        return isPointingOverUI;
     }
 }
