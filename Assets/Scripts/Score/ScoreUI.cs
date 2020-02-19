@@ -4,11 +4,9 @@ using UnityEngine.UI;
 public class ScoreUI : MonoBehaviour, Observer
 {
     [Header("Setup")]
-    [SerializeField]
-    private ScoreManager scoreManager;
+    [SerializeField] private ScoreManager scoreManager = default;
     [Header("UI")]
-    [SerializeField]
-    private Text scoreText = default;
+    [SerializeField] private Text scoreText = default;
 
     void Start()
     {

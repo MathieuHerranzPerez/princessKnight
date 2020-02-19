@@ -11,7 +11,7 @@ public class Enemy : MonoBehaviour, Damageable, INavMeshUnit
     public Animator Anim { get { return animator; } }
     public Transform ProjecileSpawnPoint { get { return projectileSpawnPoint; } }
 
-
+    [SerializeField] private string speciesName = "";
     [SerializeField]
     protected EnemyStats stats = default;
     [SerializeField]
@@ -154,6 +154,9 @@ public class Enemy : MonoBehaviour, Damageable, INavMeshUnit
         navMeshAgent.enabled = false;
 
         attack.StopEffects();
+
+        EventManager.Instance.QueueEvent(new EnemyDieEvent(speciesName));
+
         Destroy(transform.gameObject, 2f);
     }
 

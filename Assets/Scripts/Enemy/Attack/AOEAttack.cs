@@ -53,7 +53,10 @@ public class AOEAttack : CastingAttack
     public override void StopEffects()
     {
         base.StopEffects();
-        particlesCharging.Stop();
+        if (particlesCharging)
+        {
+            particlesCharging.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+        }
     }
 
     private void OnTriggerEnter(Collider other)

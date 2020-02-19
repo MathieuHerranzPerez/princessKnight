@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerFollow : MonoBehaviour
 {
@@ -10,14 +8,23 @@ public class PlayerFollow : MonoBehaviour
     [SerializeField]
     [Range(0.05f, 1.0f)]
     private float smoothFactor = 1f;
+    [SerializeField] private float maxDistanceOnSides = 5f;
+    [SerializeField] private float maxDistanceTargetCanComeback = 30f;
 
     // ---- INTERN ----
     private Vector3 cameraOffset;
+    private float maxTargetZPos;
+    private float lastTargetZPos;
+    private float firstXPos;
 
     void Start()
     {
         // set the camera offset to scene offset
         cameraOffset = transform.position - target.transform.position;
+
+        maxTargetZPos = target.position.z;
+        lastTargetZPos = target.position.z;
+        firstXPos = transform.position.x;
     }
 
     // for movement to perform before it
@@ -25,14 +32,27 @@ public class PlayerFollow : MonoBehaviour
     {
         Vector3 newPos = target.position + cameraOffset;
 
-        // opti if smoothFactor == 1
-        if (smoothFactor < 0.99f)
+
+        if(target.position.x > firstXPos + maxDistanceOnSides)
         {
-            transform.position = Vector3.Slerp(transform.position, newPos, smoothFactor);
+            newPos.x = maxDistanceOnSides;
+        }
+        else if(target.position.x < firstXPos - maxDistanceOnSides)
+        {
+            newPos.x = -maxDistanceOnSides;
+        }
+
+        // to stop the camera if the player comeback to much
+        if(target.position.z < maxTargetZPos - maxDistanceTargetCanComeback)
+        {
+            newPos.z = lastTargetZPos + cameraOffset.z;
         }
         else
         {
-            transform.position = newPos;
+            lastTargetZPos = target.position.z;
         }
+
+        // TODO vibration on cam ?
+        transform.position = Vector3.Slerp(transform.position, newPos, smoothFactor);
     }
 }

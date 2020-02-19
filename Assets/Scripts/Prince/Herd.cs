@@ -14,7 +14,7 @@ public class Herd : MonoBehaviour
     public float RadiusSquare { get { return radiusSquare; } }
     public float MaxSpeed { get { return maxUnitSpeed; } }
     public Transform Head { get { return head; } }
-    public Transform target;
+    [HideInInspector] public Vector3 agentTargetPosition;
 
     public int size = 0;
 
@@ -26,6 +26,9 @@ public class Herd : MonoBehaviour
     private HerdLeader virtualLeader = default;
     [SerializeField]
     private Transform head = default;
+    [Header("Movement settings")]
+    [SerializeField] private Transform target = default;
+    [SerializeField] private float offsetTarget = 10f;
 
     [Header("Setup")]
     [SerializeField]
@@ -98,6 +101,18 @@ public class Herd : MonoBehaviour
         else if (state == HerdState.Broken)
         {
             state = HerdState.Forming;
+        }
+
+        // compute agentTargetPos
+        // target going forward
+        if (target.transform.position.z > agentTargetPosition.z + offsetTarget)
+        {
+            agentTargetPosition.z = target.transform.position.z - offsetTarget;
+        }
+        // target going backward
+        else if (target.transform.position.z < agentTargetPosition.z - offsetTarget)
+        {
+            agentTargetPosition.z = target.transform.position.z + offsetTarget;
         }
     }
 

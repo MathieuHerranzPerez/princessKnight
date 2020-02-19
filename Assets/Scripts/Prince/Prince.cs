@@ -29,7 +29,7 @@ public class Prince : Targetable, INavMeshUnit
         {
             if (status == PrinceStatus.JoiningHerd && !herdUnit.IsMemberOfHerd)
             {
-                navMeshAgent.SetDestination(HerdManager.Instance.Herd.target.position);
+                navMeshAgent.SetDestination(HerdManager.Instance.Herd.agentTargetPosition);
             }
         }
         else

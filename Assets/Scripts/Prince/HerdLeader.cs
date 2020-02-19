@@ -15,7 +15,7 @@ public class HerdLeader : MonoBehaviour
     protected void Update()
     {
         // ChangeSpeed();
-        transform.position = herd.target.position;
+        transform.position = herd.agentTargetPosition;
     }
 
     //private void ChangeSpeed()

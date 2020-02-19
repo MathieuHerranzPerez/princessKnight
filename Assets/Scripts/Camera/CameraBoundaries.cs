@@ -9,28 +9,28 @@ public class CameraBoundaries : MonoBehaviour
     [SerializeField]
     private Transform target = default;
 
-
     void LateUpdate()
     {
-        Vector3 newPos = target.position;
+        Vector3 targetCurrentPos = target.position;
+        Vector3 newPos = targetCurrentPos;
         bool hasPosChanged = false;
-        if(target.position.x < bottomLeftPoint.position.x)
+        if(targetCurrentPos.x < bottomLeftPoint.position.x)
         {
             newPos.x = bottomLeftPoint.position.x;
             hasPosChanged = true;
         }
-        if(target.position.x > topRighPoint.position.x)
+        if(targetCurrentPos.x > topRighPoint.position.x)
         {
             newPos.x = topRighPoint.position.x;
             hasPosChanged = true;
         }
 
-        if (target.position.z < bottomLeftPoint.position.z)
+        if (targetCurrentPos.z < bottomLeftPoint.position.z)
         {
             newPos.z = bottomLeftPoint.position.z;
             hasPosChanged = true;
         }
-        if (target.position.z > topRighPoint.position.z)
+        if (targetCurrentPos.z > topRighPoint.position.z)
         {
             newPos.z = topRighPoint.position.z;
             hasPosChanged = true;
