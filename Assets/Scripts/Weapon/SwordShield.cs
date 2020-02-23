@@ -7,6 +7,8 @@ public class SwordShield : MeleeWeapon
     [SerializeField]
     private float timeToCombo = 3f;
 
+    [SerializeField] private ParticleSystem[] listParticleSystem = new ParticleSystem[1];
+
     // ---- INERN ----
     private int nbCombo = 0;
     private float timeLeftToCombo = 0f;
@@ -44,6 +46,7 @@ public class SwordShield : MeleeWeapon
             animator.SetTrigger("BasicAttack");
             animator.SetInteger("AttackNum", nbCombo);
             timeLeftToCombo = timeToCombo;
+            listParticleSystem[nbCombo].Play();
 
             nbCombo = nbCombo < maxCombo ? nbCombo + 1 : 0;
 

@@ -2,8 +2,8 @@
 
 public class WeaponGFXObject : MonoBehaviour
 {
-    [SerializeField]
-    protected GameObject effectOnColliderActive = default;
+    //[SerializeField]
+    //protected GameObject effectOnColliderActive = default;
     // it contains all informations about a physic weapon
 
     // ---- INTERN ----
@@ -17,11 +17,11 @@ public class WeaponGFXObject : MonoBehaviour
 
     public void DisplayGFX()
     {
-        effectOnColliderActive.SetActive(true);
+        //effectOnColliderActive.SetActive(true);
     }
 
     public void HideGFX()
     {
-        effectOnColliderActive.SetActive(false);
+        //effectOnColliderActive.SetActive(false);
     }
 }
