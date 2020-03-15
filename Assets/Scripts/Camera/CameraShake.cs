@@ -36,7 +36,7 @@ public class CameraShake : MonoBehaviour
             transform.localPosition = new Vector3(x, y, initialPos.z);
             transform.Rotate(new Vector3(0f, rotY, rotZ));
 
-            time += Time.deltaTime;
+            time += Time.unscaledDeltaTime;
             yield return null;
         }
 

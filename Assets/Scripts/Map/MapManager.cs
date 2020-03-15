@@ -103,6 +103,26 @@ public class MapManager : MonoBehaviour
         }
     }
 
+    public float GetMaxDistanceDiscovered()
+    {
+        int nbMapFragmentDiscovered = nbMapFragmentGenerated;
+        int nbCheckpointDiscovered = nbCheckpointMapFragment;
+
+        for(int i = 0; i < 2; ++i)
+        {
+            if(nbMapFragmentDiscovered % 4 == 0 && nbMapFragmentDiscovered / 4 == nbCheckpointDiscovered)
+            {
+                --nbCheckpointDiscovered;
+            }
+            else
+            {
+                --nbMapFragmentDiscovered;
+            }
+        }
+
+        return nbMapFragmentDiscovered * mapFragmentSize + nbCheckpointDiscovered * checkpointMapFragmentSize;
+    }
+
     private void ChargeFirstsMap()
     {
         // the the first map fragment

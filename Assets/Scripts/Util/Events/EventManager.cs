@@ -4,7 +4,7 @@ using UnityEngine;
 
 public interface IEvent
 {
-    string GetName();
+    EventName GetName();
     object GetData();
 }
 
@@ -22,7 +22,7 @@ public class EventManager : MonoBehaviour
     [SerializeField] private float maxTimeForProcessing = 0.1f;
 
     // ---- INTERN ----
-    private Dictionary<string, ArrayList> tableListener = new Dictionary<string, ArrayList>();
+    private Dictionary<EventName, ArrayList> tableListener = new Dictionary<EventName, ArrayList>();
     Queue<IEvent> queueEvent = new Queue<IEvent>();
 
     void Awake()
@@ -54,7 +54,7 @@ public class EventManager : MonoBehaviour
         }
     }
 
-    public void AddListener(IEventListener listener, string eventName)
+    public void AddListener(IEventListener listener, EventName eventName)
     {
         // if listener unknown, create entry in table
         if(!tableListener.ContainsKey(eventName))
@@ -69,7 +69,7 @@ public class EventManager : MonoBehaviour
         }
     }
 
-    public void DetachListener(IEventListener listener, string eventName)
+    public void DetachListener(IEventListener listener, EventName eventName)
     {
         tableListener[eventName].Remove(listener);
     }

@@ -335,13 +335,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stats:
     damage: 10
-    attackCouldown: 0.5
+    attackCouldown: 0.4
     specialCouldown: 10
     defaultSpeed: 15
     speed: 15
     dashSpeed: 20
     dashTime: 0.2
-    dashCouldown: 0.3
+    dashCouldown: 0.4
+    dashSpeedWhenAttack: 15
   nameLayerAnimator: SwordShield
   arrayWeaponSpell:
   - {fileID: 507632313}
@@ -434,6 +435,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Slash2
       objectReference: {fileID: 0}
+    - target: {fileID: 6875683287711937282, guid: 406c7421a573c3546954fe027f9e99a3,
+        type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 7.5
+      objectReference: {fileID: 0}
     - target: {fileID: 8046236387646239845, guid: 406c7421a573c3546954fe027f9e99a3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -489,11 +495,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6875683287711937282, guid: 406c7421a573c3546954fe027f9e99a3,
-        type: 3}
-      propertyPath: InitialModule.startSize.scalar
-      value: 7.5
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 406c7421a573c3546954fe027f9e99a3, type: 3}
 --- !u!4 &3077115841304998768 stripped
@@ -519,6 +520,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Slash1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6875683287711937282, guid: 406c7421a573c3546954fe027f9e99a3,
+        type: 3}
+      propertyPath: RotationModule.curve.scalar
+      value: -17.453293
+      objectReference: {fileID: 0}
+    - target: {fileID: 6875683287711937282, guid: 406c7421a573c3546954fe027f9e99a3,
+        type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 7.5
       objectReference: {fileID: 0}
     - target: {fileID: 8046236387646239845, guid: 406c7421a573c3546954fe027f9e99a3,
         type: 3}
@@ -575,16 +586,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6875683287711937282, guid: 406c7421a573c3546954fe027f9e99a3,
-        type: 3}
-      propertyPath: RotationModule.curve.scalar
-      value: -17.453293
-      objectReference: {fileID: 0}
-    - target: {fileID: 6875683287711937282, guid: 406c7421a573c3546954fe027f9e99a3,
-        type: 3}
-      propertyPath: InitialModule.startSize.scalar
-      value: 7.5
-      objectReference: {fileID: 0}
     - target: {fileID: 2871141053635974434, guid: 406c7421a573c3546954fe027f9e99a3,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -620,6 +621,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Slash3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6875683287711937282, guid: 406c7421a573c3546954fe027f9e99a3,
+        type: 3}
+      propertyPath: RotationModule.curve.scalar
+      value: -17.453293
+      objectReference: {fileID: 0}
+    - target: {fileID: 6875683287711937282, guid: 406c7421a573c3546954fe027f9e99a3,
+        type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 8.5
       objectReference: {fileID: 0}
     - target: {fileID: 8046236387646239845, guid: 406c7421a573c3546954fe027f9e99a3,
         type: 3}
@@ -675,16 +686,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6875683287711937282, guid: 406c7421a573c3546954fe027f9e99a3,
-        type: 3}
-      propertyPath: RotationModule.curve.scalar
-      value: -17.453293
-      objectReference: {fileID: 0}
-    - target: {fileID: 6875683287711937282, guid: 406c7421a573c3546954fe027f9e99a3,
-        type: 3}
-      propertyPath: InitialModule.startSize.scalar
-      value: 8.5
       objectReference: {fileID: 0}
     - target: {fileID: 2871141053635974434, guid: 406c7421a573c3546954fe027f9e99a3,
         type: 3}

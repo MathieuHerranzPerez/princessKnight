@@ -5,7 +5,8 @@ using UnityEngine.EventSystems;
 public class TactileInputsOneHand : PlayerInputs
 {
     [SerializeField] private float minDistanceForSwipe = 100f;
-    [SerializeField] private float maxTimeForSwipe = 0.2f;
+    [SerializeField] private float maxTimeForSwipe = 0.25f;
+    [SerializeField] private float maxDistanceSquaredForTouch = 1500f;
 
     [Header("Setup")]
     [SerializeField] private Transform joystickBounds = default;
@@ -44,7 +45,7 @@ public class TactileInputsOneHand : PlayerInputs
     private void UpdateEditor()
     {
         Vector2 mousePos = Input.mousePosition;
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0))    // just tuching
         {
             if (!IsPointingOverUI())
             {
@@ -54,7 +55,7 @@ public class TactileInputsOneHand : PlayerInputs
                 joystickBounds.position = mousePos;
             }
         }
-        else if (Input.GetMouseButton(0))
+        else if (Input.GetMouseButton(0))   // continu tuching
         {
             if (!IsPointingOverUI())
             {
@@ -138,7 +139,8 @@ public class TactileInputsOneHand : PlayerInputs
                     if (Time.time - lastTouchTime < maxTimeForSwipe)
                     {
                         // it is a simple touch
-                        if (startingPoint == touchPos)
+                        if((touchPos.x - startingPoint.x) * (touchPos.x - startingPoint.x) + (touchPos.y - startingPoint.y) * (touchPos.y - startingPoint.y) < maxDistanceSquaredForTouch)
+                        //if (startingPoint == touchPos)
                         {
                             isAPressed = true;
                         }

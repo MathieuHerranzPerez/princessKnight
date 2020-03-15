@@ -6,4 +6,5 @@ using UnityEngine;
 public class GameStats
 {
     public int nbEnemyKilled = 0;
+    public int nbBossKilled = 0;
 }

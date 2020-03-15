@@ -6,7 +6,7 @@ public class RandomMoveStrategy : BehaviorStrategy
     {
         Vector3 dir = targetHitPoint - projectileSpawnPoint;
         float distSquare = dir.x * dir.x + dir.z * dir.z;
-        if(distSquare > 170f)
+        if(distSquare > 500f)
         {
             return WhatToDo.MOVE_CLOSER;
         }

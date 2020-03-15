@@ -62,7 +62,7 @@ public abstract class Weapon : MonoBehaviour
         }
     }
 
-    public abstract void PerformAttack();
+    public abstract bool PerformAttack();
     public abstract void ActiveOffensiveColliders();
     public abstract void DesactiveOffensiveColliders();
 

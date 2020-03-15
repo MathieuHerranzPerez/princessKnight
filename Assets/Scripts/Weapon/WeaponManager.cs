@@ -23,9 +23,9 @@ public class WeaponManager : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
-    public void PerformWeaponAttack()
+    public bool PerformWeaponAttack()
     {
-        currentWeapon.PerformAttack();
+        return currentWeapon.PerformAttack();
     }
 
     public void ActiveOffensiveColliders()

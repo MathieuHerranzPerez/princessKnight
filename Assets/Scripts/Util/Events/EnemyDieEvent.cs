@@ -1,19 +1,19 @@
 ﻿public class EnemyDieEvent : IEvent
 {
-    private string enemyName;
+    private Enemy enemy;
 
-    public EnemyDieEvent(string enemyName)
+    public EnemyDieEvent(Enemy enemy)
     {
-        this.enemyName = enemyName;
+        this.enemy = enemy;
     }
 
     public object GetData()
     {
-        return enemyName;
+        return this.enemy;
     }
 
-    public string GetName()
+    public EventName GetName()
     {
-        return "enemyDie";
+        return EventName.EnemyDeath;
     }
 }

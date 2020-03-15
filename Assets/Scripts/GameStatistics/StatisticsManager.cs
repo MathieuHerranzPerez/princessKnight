@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StatisticsManager : MonoBehaviour
+public class StatisticsManager : MonoBehaviour, IEventListener
 {
     public static StatisticsManager Instance { get; private set; }
 
+    public GameStats Stats { get { return gameStats; } }
 
     // ---- INTERN ----
     private GameStats gameStats = new GameStats();
@@ -13,10 +14,28 @@ public class StatisticsManager : MonoBehaviour
     void Start()
     {
         Instance = this;
+        EventManager.Instance.AddListener(this, EventName.EnemyDeath);
     }
 
-    public void NotifyEnemyDeath(Enemy enemy)
+    void OnDestroy()
     {
-        ++gameStats.nbEnemyKilled;
+        EventManager.Instance.DetachListener(this, EventName.EnemyDeath);
+    }
+
+    public bool HandleEvent(IEvent evt)
+    {
+        bool res = false;
+        switch(evt.GetName())
+        {
+            case EventName.EnemyDeath:
+                Enemy enemy = (Enemy)evt.GetData();
+                if (enemy is Boss)
+                    ++gameStats.nbBossKilled;
+                ++gameStats.nbEnemyKilled;
+                res = true;
+                break;
+        }
+
+        return res;
     }
 }

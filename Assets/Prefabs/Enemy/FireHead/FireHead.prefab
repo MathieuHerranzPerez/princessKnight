@@ -4852,7 +4852,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c2d0de028a1e8143b76f4a6a8fecf29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speciesName: 
+  speciesName: FireHead
   stats:
     maxHP: 15
     HP: 15

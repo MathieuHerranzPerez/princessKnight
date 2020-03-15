@@ -12,4 +12,5 @@ public class WeaponStats
     public float dashSpeed = 10f;
     public float dashTime = 0.4f;
     public float dashCouldown = 0.4f;
+    public float dashSpeedWhenAttack = 7f;
 }

@@ -47,7 +47,7 @@ public class SceneFader : MonoBehaviour
             float t = 0f;
             while (t < 1f)
             {
-                t += Time.deltaTime;
+                t += Time.unscaledDeltaTime;
                 float alpha = curve.Evaluate(t);
                 img.color = new Color(0f, 0f, 0f, alpha);
                 yield return 0;             // skip to the next frame
@@ -81,7 +81,7 @@ public class SceneFader : MonoBehaviour
             float t = 1f;
             while (t > 0f)
             {
-                t -= Time.deltaTime;
+                t -= Time.unscaledDeltaTime;
                 float alpha = curve.Evaluate(t);
                 img.color = new Color(0f, 0f, 0f, alpha);
                 yield return 0;             // skip to the next frame
@@ -100,7 +100,7 @@ public class SceneFader : MonoBehaviour
                         float t = 0f;
                         while (t < 1f)
                         {
-                            t += Time.deltaTime;
+                            t += Time.unscaledDeltaTime;
                             float alpha = curve.Evaluate(t);
                             img.color = new Color(0f, 0f, 0f, alpha);
                             yield return 0;             // skip to the next frame
@@ -108,7 +108,7 @@ public class SceneFader : MonoBehaviour
                     }// -- /FADE OUT --
                 }
             }
-            timeLoadingScreen += Time.deltaTime;
+            timeLoadingScreen += Time.unscaledDeltaTime;
             // float progress = Mathf.Clamp01(operation.progress / 0.9f);  // if we want the progress
             yield return 0;
         }
@@ -120,7 +120,7 @@ public class SceneFader : MonoBehaviour
 
         while (t > 0f)
         {
-            t -= Time.deltaTime;
+            t -= Time.unscaledDeltaTime;
             float alpha = curve.Evaluate(t);
             img.color = new Color(0f, 0f, 0f, alpha);
             yield return 0;             // skip to the next frame

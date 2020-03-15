@@ -17,12 +17,13 @@ public class Stats
     public float dashSpeed = 10f;
     public float dashTime = 0.4f;
     public float dashCouldown = 2f;
+    public float dashSpeedWhenAttack = 7f;
 
     // enemy only
     [Header("Enemy only")]
     public float aggroRange = 10f;
 
-    public void ChangeStats(float speed, float dashSpeed, float dashTime, float dashCouldown)
+    public void ChangeStats(float speed, float dashSpeed, float dashTime, float dashCouldown, float dashSpeedWhenAttack)
     {
         defaultSpeed = speed;
         this.speed = speed;
@@ -30,5 +31,6 @@ public class Stats
         this.dashSpeed = dashSpeed;
         this.dashTime = dashTime;
         this.dashCouldown = dashCouldown;
+        this.dashSpeedWhenAttack = dashSpeedWhenAttack;
     }
 }

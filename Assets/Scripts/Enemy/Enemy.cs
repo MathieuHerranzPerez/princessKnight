@@ -10,18 +10,15 @@ public class Enemy : MonoBehaviour, Damageable, INavMeshUnit
 {
     public Animator Anim { get { return animator; } }
     public Transform ProjecileSpawnPoint { get { return projectileSpawnPoint; } }
+    public string SpeciesName { get { return speciesName; } }
+    public EnemyStats Stats { get { return stats; } }
 
     [SerializeField] private string speciesName = "";
-    [SerializeField]
-    protected EnemyStats stats = default;
-    [SerializeField]
-    protected LayerMask targetMask = default;
-    [SerializeField]
-    protected string targetTag = "Player";
-    [SerializeField]
-    protected EnemyAttack attack = default;
-    [SerializeField]
-    protected BehaviorStrategy strategy = default;
+    [SerializeField] protected EnemyStats stats = default;
+    [SerializeField] protected LayerMask targetMask = default;
+    [SerializeField] protected string targetTag = "Player";
+    [SerializeField] protected EnemyAttack attack = default;
+    [SerializeField] protected BehaviorStrategy strategy = default;
 
     [Header("Setup")]
     [SerializeField]
@@ -150,12 +147,11 @@ public class Enemy : MonoBehaviour, Damageable, INavMeshUnit
 
         animator.SetTrigger("Dying");
 
-        StatisticsManager.Instance.NotifyEnemyDeath(this);
         navMeshAgent.enabled = false;
 
         attack.StopEffects();
 
-        EventManager.Instance.QueueEvent(new EnemyDieEvent(speciesName));
+        EventManager.Instance.QueueEvent(new EnemyDieEvent(this));
 
         Destroy(transform.gameObject, 2f);
     }

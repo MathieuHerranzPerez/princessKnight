@@ -59,6 +59,7 @@ public class Player : Targetable, Observable
     {
         // todo
         Debug.Log("DIE DIE DIE !");
+        GameManager.Instance.NotifyPlayerDie();
     }
 
 
