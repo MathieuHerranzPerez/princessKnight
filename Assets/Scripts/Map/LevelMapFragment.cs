@@ -4,17 +4,17 @@ using UnityEngine;
 public class LevelMapFragment : MapFragment
 {
     [Header("Setup")]
-    [SerializeField] private SpawnChunck[] arrayEnemyAndPrinceSpawnPoint = new SpawnChunck[1];
-    [SerializeField] private Transform[] arrayChestSpawnPoint = new Transform[1];
-    [SerializeField] private NavMeshObject navMeshObject = default;
-    [SerializeField] private Transform objectContainer = default;    // every object in the mapFragment must be instantiated in this transform
-                                                    // to be desroyed when fragment will be. To not destroying object, just put
-                                                    // its transform to null (root)
+    [SerializeField] protected SpawnChunck[] arrayEnemyAndPrinceSpawnPoint = new SpawnChunck[1];
+    [SerializeField] protected Transform[] arrayChestSpawnPoint = new Transform[1];
+    [SerializeField] protected NavMeshObject navMeshObject = default;
+    [SerializeField] protected Transform objectContainer = default;    // every object in the mapFragment must be instantiated in this transform
+                                                                       // to be desroyed when fragment will be. To not destroying object, just put
+                                                                       // its transform to null (root)
 
     // ---- INTERN ----
-    private List<int> listAllIndex = new List<int>();
+    protected List<int> listAllIndex = new List<int>();
 
-    void Awake()
+    protected void Awake()
     {
         // a list that contains all the index of the array
         for (int i = 0; i < arrayEnemyAndPrinceSpawnPoint.Length; ++i)
@@ -31,7 +31,7 @@ public class LevelMapFragment : MapFragment
     }
 
     // TODO pooling
-    private void SpawnEnemiesAndPrinces(GameObject[] arrayEnemyGO, GameObject[] arrayPrinceGO)
+    protected void SpawnEnemiesAndPrinces(GameObject[] arrayEnemyGO, GameObject[] arrayPrinceGO)
     {
         List<int> listIndexNotUsed = listAllIndex;
 
@@ -53,7 +53,7 @@ public class LevelMapFragment : MapFragment
         }
     }
 
-    private void SpawnChest(int nbChestToSpawn)
+    protected void SpawnChest(int nbChestToSpawn)
     {
         nbChestToSpawn = Mathf.Min(nbChestToSpawn, arrayChestSpawnPoint.Length);
         List<int> indexList = new List<int>();

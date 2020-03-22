@@ -3,24 +3,9 @@ using UnityEngine.AI;
 
 public class NavMeshObject : MonoBehaviour
 {
-    // private static NavMeshSurface currentGlobalNavMesh;
-
-    //[SerializeField]
-    //private NavMeshSurface navMeshSurface;
-
-
     [SerializeField]
     private NavMeshData navMeshData;
     private NavMeshDataInstance navMeshInstance;
-
-    //public void BuildNavMesh()
-    //{
-    //    if (currentGlobalNavMesh)
-    //        Destroy(currentGlobalNavMesh);
-
-    //    navMeshSurface.BuildNavMesh();
-    //    currentGlobalNavMesh = navMeshSurface;
-    //}
 
     void OnEnable()
     {

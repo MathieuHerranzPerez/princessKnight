@@ -12,16 +12,15 @@ public class MapManager : MonoBehaviour
     [SerializeField] private int nbMaxChestPerFragment = 2;
 
     [Header("Setup")]
-    [SerializeField]
-    private int nbMapFragmentToCheckPoint = 4;
-    [SerializeField]
-    private Transform mapFragmentContainer = default;
-    [SerializeField]
-    private int mapFragmentSize = 30;
-    [SerializeField]
-    private string prefabMapFragmentFolder = "";
-    [SerializeField]
-    private string[] listPrefabMapFragmentSubFolder = new string[1];
+    [SerializeField] private int nbMapFragmentToCheckPoint = 4;
+    [SerializeField] private Transform mapFragmentContainer = default;
+    [SerializeField] private int mapFragmentSize = 30;
+    [SerializeField] private string prefabMapFragmentFolder = "";
+    [SerializeField] private string[] listPrefabMapFragmentSubFolder = new string[1];
+
+    [Header("Boss")]
+    [SerializeField] private int nbCheckpointForBoss = 2;
+    [SerializeField] private string prefabBossMapFragmentFolder = "";
 
     [Header("First map fragment")]
     [SerializeField]
@@ -50,6 +49,7 @@ public class MapManager : MonoBehaviour
     private float offsetFragment = 0;
     private float offsetCheckpoint = 0;
     private bool needToSpawnCheckPoint = false;
+    private int nbBossGenerated = 0;
 
     private EnemyGroupGOFactory enemyGroupGOFactory;
 
@@ -97,6 +97,10 @@ public class MapManager : MonoBehaviour
         {
             SpawnCheckpointMap();
         }
+        else if((nbMapFragmentGenerated + 1) % nbMapFragmentToCheckPoint == 0 && (nbCheckpointMapFragment + 1) % nbCheckpointForBoss == 0)
+        {
+            ChargeNewBossMap();
+        }
         else
         {
             ChargeNewMap();
@@ -123,6 +127,15 @@ public class MapManager : MonoBehaviour
         return nbMapFragmentDiscovered * mapFragmentSize + nbCheckpointDiscovered * checkpointMapFragmentSize;
     }
 
+    private void AddOneToMapFragmentFolder()
+    {
+        ++currentMapFragmentFolderIndex;
+        if (currentMapFragmentFolderIndex == listPrefabMapFragmentFolderFullPath.Length)
+        {
+            currentMapFragmentFolderIndex = 0;
+        }
+    }
+
     private void ChargeFirstsMap()
     {
         // the the first map fragment
@@ -132,7 +145,7 @@ public class MapManager : MonoBehaviour
         mapFragmentSelection = Resources.LoadAll(listPrefabMapFragmentFolderFullPath[currentMapFragmentFolderIndex], typeof(GameObject));
         GameObject mapFragmentToSpawn = (GameObject)mapFragmentSelection[Random.Range(0, mapFragmentSelection.Length - 1)];
 
-        SpawnMap(mapFragmentToSpawn);
+        SpawnMap(mapFragmentToSpawn, false);
 
         // charge the following
         ChargeNewMap();
@@ -145,14 +158,21 @@ public class MapManager : MonoBehaviour
         // charge the following map fragments
         mapFragmentSelection = Resources.LoadAll(listPrefabMapFragmentFolderFullPath[currentMapFragmentFolderIndex], typeof(GameObject));
         mapFragmentToSpawn = (GameObject)mapFragmentSelection[Random.Range(0, mapFragmentSelection.Length - 1)];
-        SpawnMap(mapFragmentToSpawn);
+        SpawnMap(mapFragmentToSpawn, false);
 
+        AddOneToMapFragmentFolder();
+    }
 
-        ++currentMapFragmentFolderIndex;
-        if (currentMapFragmentFolderIndex == listPrefabMapFragmentFolderFullPath.Length)
-        {
-            currentMapFragmentFolderIndex = 0;
-        }
+    private void ChargeNewBossMap()
+    {
+        GameObject mapFragmentToSpawn;
+
+        // charge the following map fragments
+        mapFragmentSelection = Resources.LoadAll(prefabBossMapFragmentFolder, typeof(GameObject));
+        mapFragmentToSpawn = (GameObject)mapFragmentSelection[Random.Range(0, mapFragmentSelection.Length - 1)];
+        SpawnMap(mapFragmentToSpawn, true);
+
+        AddOneToMapFragmentFolder();
     }
 
     private void SpawnFirstMapFragment()
@@ -175,15 +195,14 @@ public class MapManager : MonoBehaviour
         ++nbCheckpointMapFragment;
     }
 
-    private void SpawnMap(GameObject mapFragmentToSpawn)
+    private void SpawnMap(GameObject mapFragmentToSpawn, bool isBossMap)
     {
         Debug.Log("Spawn map");
         float distance = (nbMapFragmentGenerated) * mapFragmentSize + offsetFragment + nbCheckpointMapFragment * checkpointMapFragmentSize;
         Vector3 pos = mapFragmentContainer.forward * distance;
+
         GameObject mapFragmentGO = Instantiate(mapFragmentToSpawn, pos, mapFragmentContainer.rotation, mapFragmentContainer);
-        LevelMapFragment levelMapFragment = mapFragmentGO.GetComponent<LevelMapFragment>();
-        queueMapFragment.Enqueue(levelMapFragment);
- 
+        
         ++nbMapFragmentGenerated;
 
         // if we need to spawn a checkpoint as next map
@@ -191,14 +210,17 @@ public class MapManager : MonoBehaviour
 
         // instantiate enemies, princes...
 
+        int nbEnemyToSpawn = isBossMap ? 0 : 7;
+        int nbPrinceToSpawn = isBossMap ? 0 : 7;
+
         // TODO need better than that v1.0
-        GameObject[] arrayEnemyGroupGO = new GameObject[7];
-        GameObject[] arrayPrinceGO = new GameObject[5];
-        for(int i = 0; i < 7; ++i)
+        GameObject[] arrayEnemyGroupGO = new GameObject[nbEnemyToSpawn];
+        GameObject[] arrayPrinceGO = new GameObject[nbPrinceToSpawn];
+        for(int i = 0; i < nbEnemyToSpawn; ++i)
         {
             arrayEnemyGroupGO[i] = enemyGroupGOFactory.GetEnemyGroupGO(nbMapFragmentGenerated);
         }
-        for (int i = 0; i < 5; ++i)
+        for (int i = 0; i < nbPrinceToSpawn; ++i)
         {
             arrayPrinceGO[i] = princePrefab;
         }
@@ -208,12 +230,27 @@ public class MapManager : MonoBehaviour
         for(int i = 0; i < nbMaxChestPerFragment; ++i)
         {
             float random = Random.Range(0f, 1f);
-            if (random < chanceToSpawnChest)
+            if (random < (isBossMap ? 1.5 * chanceToSpawnChest : chanceToSpawnChest))
             {
                 ++nbChestToSpawn;
             }
         }
 
-        levelMapFragment.InitWith(arrayEnemyGroupGO, arrayPrinceGO, nbChestToSpawn);
+        if (isBossMap)
+        {
+            ++nbBossGenerated;
+            // get a random boss
+            GameObject bossGO = enemyGroupGOFactory.GetBossGO(nbBossGenerated);
+
+            BossRoom bossRoom = mapFragmentGO.GetComponent<BossRoom>();
+            queueMapFragment.Enqueue(bossRoom);
+            bossRoom.InitWith(arrayEnemyGroupGO, arrayPrinceGO, nbChestToSpawn, bossGO);
+        }
+        else
+        {
+            LevelMapFragment levelMapFragment = mapFragmentGO.GetComponent<LevelMapFragment>();
+            queueMapFragment.Enqueue(levelMapFragment);
+            levelMapFragment.InitWith(arrayEnemyGroupGO, arrayPrinceGO, nbChestToSpawn);
+        }
     }
 }
