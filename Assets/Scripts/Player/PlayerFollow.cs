@@ -1,8 +1,7 @@
 ﻿using UnityEngine;
 
-public class PlayerFollow : MonoBehaviour
+public class PlayerFollow : MonoBehaviour, IStoppable
 {
-
     [SerializeField]
     private Transform target = default;
     [SerializeField]
@@ -17,6 +16,8 @@ public class PlayerFollow : MonoBehaviour
     private float lastTargetZPos;
     private float firstXPos;
 
+    private bool isStopped = false;
+
     void Start()
     {
         // set the camera offset to scene offset
@@ -30,6 +31,9 @@ public class PlayerFollow : MonoBehaviour
     // for movement to perform before it
     void LateUpdate()
     {
+        if (isStopped)
+            return;
+
         Vector3 newPos = target.position + cameraOffset;
 
 
@@ -54,5 +58,15 @@ public class PlayerFollow : MonoBehaviour
 
         // TODO vibration on cam ?
         transform.position = Vector3.Slerp(transform.position, newPos, smoothFactor);
+    }
+
+    public void StopAction()
+    {
+        isStopped = true;
+    }
+
+    public void Continue()
+    {
+        isStopped = false;
     }
 }

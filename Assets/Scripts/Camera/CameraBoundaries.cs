@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class CameraBoundaries : MonoBehaviour
+public class CameraBoundaries : MonoBehaviour, IStoppable
 {
     [SerializeField]
     private Transform bottomLeftPoint = default;
@@ -9,8 +9,24 @@ public class CameraBoundaries : MonoBehaviour
     [SerializeField]
     private Transform target = default;
 
+    // ---- INTERN ----
+    private bool isStopped = false;
+
+    public void Continue()
+    {
+        isStopped = false;
+    }
+
+    public void StopAction()
+    {
+        isStopped = true;
+    }
+
     void LateUpdate()
     {
+        if (isStopped)
+            return;
+
         Vector3 targetCurrentPos = target.position;
         Vector3 newPos = targetCurrentPos;
         bool hasPosChanged = false;

@@ -10,8 +10,6 @@ public class PlayerController : MonoBehaviour
     [Header("Setup")]
     [SerializeField]
     private PlayerInputs playerInputs = default;
-    [SerializeField]
-    private GameObject firstWeaponPrefab = default;
     [SerializeField] private LayerMask enemyLayerMask = default;
 
     [Header("GFX")]
@@ -39,7 +37,8 @@ public class PlayerController : MonoBehaviour
         animator = GetComponent<Animator>();
         player = GetComponent<Player>();
 
-        GetNewWeapon(firstWeaponPrefab);
+        // GetNewWeapon(firstWeaponPrefab);
+        GetNewWeapon(weaponManager.GetFirstWeaponPrefab());
     }
 
     void Update()
@@ -124,7 +123,7 @@ public class PlayerController : MonoBehaviour
     // when the player need to change his weapon
     public void GetNewWeapon(GameObject weaponPefab)
     {
-        WeaponStats ws = weaponManager.ChangeWeapon(firstWeaponPrefab);
+        WeaponStats ws = weaponManager.ChangeWeapon(weaponPefab);
         player.stats.ChangeStats(ws.speed, ws.dashSpeed, ws.dashTime, ws.dashCouldown, ws.dashSpeedWhenAttack);
     }
 

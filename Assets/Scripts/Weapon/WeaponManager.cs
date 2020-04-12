@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 [RequireComponent(typeof(Animator))]
 public class WeaponManager : MonoBehaviour
@@ -9,6 +10,8 @@ public class WeaponManager : MonoBehaviour
     private Transform rightHandPoint = default;
     [SerializeField]
     private Transform leftHandPoint = default;
+
+    [SerializeField] private GameObject firstWeaponPrefab = default;
 
     [SerializeField] private SpellUI spellUI = default;
 
@@ -47,6 +50,21 @@ public class WeaponManager : MonoBehaviour
     {
         currentWeaponPrefab = newWeaponPrefab;
         return InitCurrentWeapon().stats;
+    }
+
+    public GameObject GetFirstWeaponPrefab()
+    {
+        string weaponPrefabName = PlayerPrefs.GetString("firstWeapon");
+        GameObject weaponPrefab;
+
+        weaponPrefab = (GameObject)Resources.Load("Weapons/" + weaponPrefabName);
+        if (weaponPrefab == null)
+        {
+            Debug.LogWarning("no weapon in ressource folder or playerPrefs");
+            weaponPrefab = firstWeaponPrefab;
+        }
+
+        return weaponPrefab;
     }
 
     private Weapon InitCurrentWeapon()

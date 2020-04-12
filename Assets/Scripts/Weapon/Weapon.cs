@@ -11,8 +11,8 @@ public abstract class Weapon : MonoBehaviour
     public WeaponStats stats;
 
     [Header("Setup")]
-    [SerializeField]
-    protected string nameLayerAnimator = "";
+    [SerializeField] protected string nameLayerAnimator = "";
+    [SerializeField] protected string namePrefab = "";
     [SerializeField] protected WeaponSpell[] arrayWeaponSpell = new WeaponSpell[1];
 
 

@@ -10,6 +10,8 @@ public class ChestManager : MonoBehaviour
 
     [SerializeField] private GameObject chestPrefab = default;
 
+    private bool isInitialized = false;
+
     void Awake()
     {
         if (Instance != null)
@@ -21,9 +23,22 @@ public class ChestManager : MonoBehaviour
 
     public void SpawnChest(Transform whereToSpawn)
     {
+        if (!isInitialized)
+            InitWithDataBetweenScene();
+
         GameObject chestGO = (GameObject)Instantiate(chestPrefab, whereToSpawn.position, whereToSpawn.rotation, whereToSpawn);
         Chest chest = chestGO.GetComponent<Chest>();
         int index = Random.Range(0, arrayGameObjectInChest.Count);
         chest.Init(arrayGameObjectInChest[index]);
+    }
+
+    private void InitWithDataBetweenScene()
+    {
+        foreach (int i in DataBetweenScene.listIndexCardSelected)
+        {
+            arrayGameObjectInChest.Add(MasterDeck.Instance.GetListAllCards()[i].WeaponOnFloor);
+        }
+
+        isInitialized = true;
     }
 }

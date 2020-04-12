@@ -24,7 +24,6 @@ public class Boss : Enemy, Observable
 
     protected void PerformSpecial()
     {
-        Debug.Log("Special");
         specialAttack.Perform(target);
     }
 
@@ -53,7 +52,6 @@ public class Boss : Enemy, Observable
                 break;
 
             default:    // move closer
-                Debug.Log("moving closer");
                 navMeshAgent.stoppingDistance = 0.5f;
                 break;
         }

@@ -18,7 +18,7 @@ public class TimeManager : MonoBehaviour
 
     public void Freeze()
     {
-        previousTimeScale = Time.timeScale;
+        previousTimeScale = Time.timeScale > 0.01f ? Time.timeScale : 1f;
         Time.timeScale = 0f;
     }
 
