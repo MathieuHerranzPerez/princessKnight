@@ -25,7 +25,7 @@ public class CardSlotUI : SlotUser
                 // place it at the same deep
                 FitObjectWell(DraggableUIObject.itemBeingDragged);
 
-                NotifyDeckUI();
+                NotifyDeckUI(DraggableUIObject.itemBeingDragged);
             }
         }
         else
@@ -38,11 +38,11 @@ public class CardSlotUI : SlotUser
         }
     }
 
-    public override void NotifyDeckUI()
+    public override void NotifyDeckUI(GameObject go)
     {
         if (deckUI != null)
         {
-            deckUI.NotifyFromCardSlot();
+            deckUI.NotifyFromCardSlot(go);
         }
     }
 }

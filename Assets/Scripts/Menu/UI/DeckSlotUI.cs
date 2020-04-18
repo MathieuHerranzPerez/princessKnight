@@ -1,4 +1,5 @@
-﻿using UnityEngine.EventSystems;
+﻿using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class DeckSlotUI : SlotUser
 {
@@ -12,14 +13,14 @@ public class DeckSlotUI : SlotUser
         // place it at the same deep
         FitObjectWell(DraggableUIObject.itemBeingDragged);
 
-        NotifyDeckUI();
+        NotifyDeckUI(DraggableUIObject.itemBeingDragged);
     }
 
-    public override void NotifyDeckUI()
+    public override void NotifyDeckUI(GameObject go)
     {
         if (deckUI != null)
         {
-            deckUI.NotifyFromCardContainer();
+            deckUI.NotifyFromCardContainer(go);
         }
     }
 }

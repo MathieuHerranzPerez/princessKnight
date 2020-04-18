@@ -34,6 +34,9 @@ public class ChestManager : MonoBehaviour
 
     private void InitWithDataBetweenScene()
     {
+        if (DataBetweenScene.listIndexCardSelected == null)
+            return;
+
         foreach (int i in DataBetweenScene.listIndexCardSelected)
         {
             arrayGameObjectInChest.Add(MasterDeck.Instance.GetListAllCards()[i].WeaponOnFloor);

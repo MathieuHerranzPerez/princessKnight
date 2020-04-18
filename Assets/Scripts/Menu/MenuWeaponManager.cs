@@ -1,52 +1,30 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 [RequireComponent(typeof(Animator))]
-public class WeaponManager : MonoBehaviour
+public class MenuWeaponManager : MonoBehaviour
 {
-
     [Header("Setup")]
-    [SerializeField]
-    private Transform rightHandPoint = default;
-    [SerializeField]
-    private Transform leftHandPoint = default;
+    [SerializeField] private Transform rightHandPoint = default;
+    [SerializeField] private Transform leftHandPoint = default;
 
     [SerializeField] private GameObject firstWeaponPrefab = default;
-
-    [SerializeField] private SpellUI spellUI = default;
 
     // ---- INTERN ----
     private GameObject currentWeaponPrefab;
     private Weapon currentWeapon;
     private Animator animator;
 
+    private Dictionary<string, GameObject> listWeapon = new Dictionary<string, GameObject>();
 
     void Awake()
     {
         animator = GetComponent<Animator>();
     }
 
-    public bool PerformWeaponAttack()
-    {
-        return currentWeapon.PerformAttack();
-    }
-
-    public void ActiveOffensiveColliders()
-    {
-        currentWeapon.ActiveOffensiveColliders();
-    }
-
-    public void DesactiveOffensiveColliders()
-    {
-        currentWeapon.DesactiveOffensiveColliders();
-    }
-
-    public void PerformSpellEffect(int num)
-    {
-        currentWeapon.WeaponSpells[num].PerformEffect();
-    }
-
-    public WeaponStats ChangeWeapon(GameObject newWeaponPrefab)
+    private void ChangeWeapon(GameObject newWeaponPrefab)
     {
         // remove the current weapon GO
         if (currentWeapon != null)
@@ -63,22 +41,15 @@ public class WeaponManager : MonoBehaviour
         }
 
         currentWeaponPrefab = newWeaponPrefab;
-        return InitCurrentWeapon().stats;
+        InitCurrentWeapon();
+
+        // TODO
+        // notify something to start anim
     }
 
     public GameObject GetFirstWeaponPrefab()
     {
-        string weaponPrefabName = PlayerPrefs.GetString("firstWeapon");
-        GameObject weaponPrefab;
-
-        weaponPrefab = (GameObject)Resources.Load("Weapons/" + weaponPrefabName);
-        if (weaponPrefab == null)
-        {
-            Debug.LogWarning("no weapon in ressource folder or playerPrefs");
-            weaponPrefab = firstWeaponPrefab;
-        }
-
-        return weaponPrefab;
+        return firstWeaponPrefab;
     }
 
     private Weapon InitCurrentWeapon()
@@ -116,9 +87,40 @@ public class WeaponManager : MonoBehaviour
         animator.SetLayerWeight(animator.GetLayerIndex(currentWeapon.NameLayerAnimator), 1f);
         // animator.runtimeAnimatorController = currentWeapon.AnimatorController;
 
-        // the spell UI
-        spellUI.InitWithWeaponSpell(currentWeapon.WeaponSpells);
-
         return currentWeapon;
+    }
+
+    public void GiveNewWeapon(GameObject newWeaponPrefab)
+    {
+        Weapon newWeapon = newWeaponPrefab.GetComponent<Weapon>();
+        if (!listWeapon.ContainsKey(newWeapon.NameLayerAnimator))
+        {
+            listWeapon.Add(newWeapon.NameLayerAnimator, newWeaponPrefab);
+        }
+        ChangeWeapon(newWeaponPrefab);
+    }
+
+    public void RemoveWeapon(GameObject weaponPrefab)
+    {
+        Weapon weapon = weaponPrefab.GetComponent<Weapon>();
+        if (!listWeapon.ContainsKey(weapon.NameLayerAnimator))
+        {
+            return;
+        }
+
+        listWeapon.Remove(weaponPrefab.GetComponent<Weapon>().NameLayerAnimator);
+
+        if(currentWeapon.NameLayerAnimator == weapon.NameLayerAnimator)
+        {
+            // check if there is another in the list
+            if (listWeapon.Count > 0)
+            {
+                ChangeWeapon(listWeapon.Values.Last());
+            }
+            else {
+                // else, put the default one
+                ChangeWeapon(firstWeaponPrefab);
+            }
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using UnityEngine;
 
 public static class SaveSystem
@@ -56,6 +57,51 @@ public static class SaveSystem
         else
         {
             Debug.LogWarning(path + "Does not exists");
+        }
+    }
+
+
+    public static void Save<T>(T serializedObject, string saveName)
+    {
+        string json = JsonUtility.ToJson(serializedObject);
+        string filePath = Application.persistentDataPath + "/Saves/" + saveName;
+
+        Debug.Log(json); // affD
+        Debug.Log("Save at : " + filePath); // affD
+
+
+        if (!Directory.Exists(Path.GetDirectoryName(filePath)))
+        {
+            // create it
+            Directory.CreateDirectory(Path.GetDirectoryName(filePath));
+        }
+
+        // open or create
+        using (StreamWriter streamWriter = File.CreateText(filePath))
+        {
+            streamWriter.Write(json);
+        } // close
+    }
+
+    public static T Load<T>(string saveName)
+    {
+        string filePath = Application.persistentDataPath + "/Saves/" + saveName;
+
+        if (Directory.Exists(Path.GetDirectoryName(filePath)) && File.Exists(filePath))
+        {
+            // open
+            using (StreamReader streamReader = File.OpenText(filePath))
+            {
+                string json = streamReader.ReadToEnd();
+                Debug.Log(json); // affD
+
+                return JsonUtility.FromJson<T>(json);
+            }// close
+        }
+        else
+        {
+            Debug.LogWarning(path + "Does not exists (or we having a problem reading at it)");
+            return default;
         }
     }
 }

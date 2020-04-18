@@ -19,5 +19,5 @@ public abstract class SlotUser : MonoBehaviour, IDropHandler
         deckUI = deck;
     }
 
-    public abstract void NotifyDeckUI();
+    public abstract void NotifyDeckUI(GameObject go);
 }

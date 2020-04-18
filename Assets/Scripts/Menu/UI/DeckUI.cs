@@ -11,6 +11,8 @@ public class DeckUI : MonoBehaviour, Observer
 
     [SerializeField] private Deck deck = default;
 
+    [SerializeField] private MenuWeaponManager menuWeaponManager = default;
+
     void Start()
     {
         Init();
@@ -24,8 +26,10 @@ public class DeckUI : MonoBehaviour, Observer
         Notify();
     }
 
-    public void NotifyFromCardSlot()
+    public void NotifyFromCardSlot(GameObject go)
     {
+        menuWeaponManager.GiveNewWeapon(go.GetComponent<Card>().WeaponPrefab);
+
         // for all the slots, add the card if not already added
         for (int i = 0; i < slotList.Length; ++i)
         {
@@ -38,8 +42,10 @@ public class DeckUI : MonoBehaviour, Observer
         deck.DisplayDeckSelectedInConsole(); //affD
     }
 
-    public void NotifyFromCardContainer()
+    public void NotifyFromCardContainer(GameObject go)
     {
+        menuWeaponManager.RemoveWeapon(go.GetComponent<Card>().WeaponPrefab);
+
         // for all the slots, add the card if not already added or remove it if null
         for (int i = 0; i < slotList.Length; ++i)
         {
