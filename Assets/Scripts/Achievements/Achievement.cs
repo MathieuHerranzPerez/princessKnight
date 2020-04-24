@@ -1,44 +1,88 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
-[Serializable]
-public abstract class Achievement : Observable
+public class Achievement : MonoBehaviour, Observable
 {
-    public string Title { get { return title; } }
-    public string Description { get { return description; } }
-    public int RewardPoint { get { return rewardPoint; } }
-    public bool Unlocked { get { return unlocked; } }
+    public string Title { get { return achievementInfos.title; } }
+    public string Description { get { return achievementInfos.description; } }
+    public int RewardPoint { get { return achievementInfos.rewardPoint; } }
+    public bool Unlocked { get { return achievementInfos.unlocked; } }
     public Sprite Picture { get { return picture; } }
 
-    protected int Counter { get => counter; set => counter = value; }
+    protected int Counter { get => achievementInfos.counter; set => achievementInfos.counter = value; }
+    public string GameStatsAttributeCheckEarn { get => gameStatsAttributeCheckEarn; set => gameStatsAttributeCheckEarn = value; }
 
-    [SerializeField] protected string title;
-    [SerializeField] protected string description;
-    [SerializeField] protected int rewardPoint;
-    [SerializeField] protected bool unlocked = false;
-    [SerializeField] private int counter;
+    [SerializeField] private RewardType rewardType = RewardType.CARD;
+    [SerializeField] private GameObject rewardGO = default;
+    [SerializeField] private AchievementInfos achievementInfos = default;
 
-    [SerializeField] protected Sprite picture = default;
-    [SerializeField] protected Reward reward;
+    [SerializeField] private Sprite picture = default;
 
+    [Header("Check completed")]
+    [SerializeField] private ComparisonOp comparisonOp = default;
+
+
+    // ---- INTERN ----
+
+    private string gameStatsAttributeCheckEarn;
     private List<Observer> listObserver = new List<Observer>();
-    
-    //public Achievement(string title, string description, int rewardPoint, bool unlocked, int counter)
-    //{
-    //    this.listObserver = new List<Observer>();
 
-    //    this.title = title;
-    //    this.description = description;
-    //    this.rewardPoint = rewardPoint;
-    //    this.unlocked = unlocked;
-    //    this.counter = counter;
-    //}
+    public bool CheckAchievementCompleted(GameStats gameStats)
+    {
+        int? gameStatsValue = (typeof(GameStats).GetField(gameStatsAttributeCheckEarn).GetValue(gameStats)) as int?;
+        int valueToCompareWith = UpdateLocalCounter(gameStatsValue);
 
-    public abstract bool CheckAchievementEarn(GameStats gameStats);
+        switch (comparisonOp)
+        {
+            case ComparisonOp.INF:
+                return achievementInfos.counter < valueToCompareWith;
+
+            case ComparisonOp.INF_EQL:
+                return achievementInfos.counter <= valueToCompareWith;
+
+            case ComparisonOp.EQL:
+                return achievementInfos.counter == valueToCompareWith;
+
+            case ComparisonOp.SUP_EQL:
+                return achievementInfos.counter >= valueToCompareWith;
+
+            case ComparisonOp.SUP:
+                return achievementInfos.counter > valueToCompareWith;
+
+            default:
+                return false;
+        }
+    }
 
     public void Register(Observer obsever)
     {
         listObserver.Add(obsever);
     }
+
+    private int UpdateLocalCounter(int? value)
+    {
+        if(value != null)
+        {
+            achievementInfos.counter += value ?? 0;
+            // save the new value
+            // TODO
+        }
+        return achievementInfos.counter += value ?? 0;
+    }
+
+}
+
+public enum RewardType
+{
+    CARD,
+    SKIN
+}
+
+public enum ComparisonOp
+{
+    INF,
+    INF_EQL,
+    EQL,
+    SUP_EQL,
+    SUP,
 }

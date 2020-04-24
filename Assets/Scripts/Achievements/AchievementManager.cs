@@ -8,11 +8,10 @@ public class AchievementManager : MonoBehaviour
     [Header("Setup")]
     [SerializeField] private GameObject achievementGFXPrefab = default;
     [SerializeField] private Transform achievementsContainer = default;
-
-    [SerializeField] private RewardDictionary rewardStorage = RewardDictionary.New<RewardDictionary>();
-    private Dictionary<string, Reward> rewardDictionary
+    [SerializeField] private AchievementDictionary achievementStorage = AchievementDictionary.New<AchievementDictionary>();
+    private Dictionary<string, Achievement> achievementDictionary
     {
-        get { return rewardStorage.dictionary; }
+        get { return achievementStorage.dictionary; }
     }
 
     private void Awake()
@@ -29,17 +28,17 @@ public class AchievementManager : MonoBehaviour
         GameObject achievementGFXGO = (GameObject)Instantiate(achievementGFXPrefab, achievementsContainer);
         AchievementGFX achievementGFX = achievementGFXGO.GetComponent<AchievementGFX>();
 
-        Achievement achievement = GetRewardFromTitle(title).Achievement;
+        Achievement achievement = GetAchievementFromTitle(title);
         achievementGFX.SetAchievement(achievement);
     }
 
 
 
-    private Reward GetRewardFromTitle(string title)
+    private Achievement GetAchievementFromTitle(string title)
     {
-        if (!rewardDictionary.ContainsKey(title))
+        if (!achievementDictionary.ContainsKey(title))
             return null;
 
-        return rewardDictionary[title];
+        return achievementDictionary[title];
     }
 }

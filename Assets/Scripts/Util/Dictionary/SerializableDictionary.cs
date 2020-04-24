@@ -7,7 +7,7 @@ using UnityEngine;
 public abstract class SerializableDictionary<K, V, E> : ISerializationCallbackReceiver
     where K : class where V : class where E : DictionaryElement<K, V>
 {
-    [SerializeField] public E[] arrayDictionaryElement = new E[0];
+    [SerializeField] private E[] arrayDictionaryElement = new E[0];
 
     public Dictionary<K, V> dictionary;
 

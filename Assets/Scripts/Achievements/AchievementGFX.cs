@@ -1,11 +1,12 @@
-﻿using UnityEngine;
+﻿using TMPro;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class AchievementGFX : MonoBehaviour, Observer
 {
     [Header("Setup")]
-    [SerializeField] private Text titleText = default;
-    [SerializeField] private Text descriptionText = default;
+    [SerializeField] private TextMeshProUGUI titleText = default;
+    [SerializeField] private TextMeshProUGUI descriptionText = default;
     [SerializeField] private Image picture = default;
 
     [SerializeField] private Image lockImage = default;
