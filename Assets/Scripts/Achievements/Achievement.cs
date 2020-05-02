@@ -1,35 +1,43 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class Achievement : MonoBehaviour, Observable
+public abstract class Achievement : MonoBehaviour, Observable
 {
     public string Title { get { return achievementInfos.title; } }
     public string Description { get { return achievementInfos.description; } }
     public int RewardPoint { get { return achievementInfos.rewardPoint; } }
     public bool Unlocked { get { return achievementInfos.unlocked; } }
     public Sprite Picture { get { return picture; } }
+    public GameObject RewardGO { get { return rewardGO; } }
+    public RewardType RewardType { get { return rewardType; } }
 
-    protected int Counter { get => achievementInfos.counter; set => achievementInfos.counter = value; }
-    public string GameStatsAttributeCheckEarn { get => gameStatsAttributeCheckEarn; set => gameStatsAttributeCheckEarn = value; }
+    public int Counter { get => achievementInfos.counter; protected set => achievementInfos.counter = value; }
 
-    [SerializeField] private RewardType rewardType = RewardType.CARD;
-    [SerializeField] private GameObject rewardGO = default;
-    [SerializeField] private AchievementInfos achievementInfos = default;
 
-    [SerializeField] private Sprite picture = default;
+    [SerializeField] protected RewardType rewardType = RewardType.CARD;
+    [SerializeField] protected GameObject rewardGO = default;
+    [SerializeField] protected AchievementInfos achievementInfos = default;
+
+    [SerializeField] protected Sprite picture = default;
 
     [Header("Check completed")]
-    [SerializeField] private ComparisonOp comparisonOp = default;
+    [SerializeField] protected ComparisonOp comparisonOp = default;
 
 
     // ---- INTERN ----
+    protected List<Observer> listObserver = new List<Observer>();
 
-    private string gameStatsAttributeCheckEarn;
-    private List<Observer> listObserver = new List<Observer>();
+    public void Awake()
+    {
+        LoadAchievement();
+    }
 
     public bool CheckAchievementCompleted(GameStats gameStats)
     {
-        int? gameStatsValue = (typeof(GameStats).GetField(gameStatsAttributeCheckEarn).GetValue(gameStats)) as int?;
+        if (achievementInfos.unlocked)
+            return false;
+
+        int? gameStatsValue = GetValueFromGameStats(gameStats);
         int valueToCompareWith = UpdateLocalCounter(gameStatsValue);
 
         switch (comparisonOp)
@@ -59,15 +67,23 @@ public class Achievement : MonoBehaviour, Observable
         listObserver.Add(obsever);
     }
 
-    private int UpdateLocalCounter(int? value)
+    protected abstract int? GetValueFromGameStats(GameStats gameStats);
+
+
+    protected void LoadAchievement()
+    {
+        this.achievementInfos = SaveSystem.Load<AchievementInfos>(achievementInfos.title);
+    }
+
+    protected int UpdateLocalCounter(int? value)
     {
         if(value != null)
         {
             achievementInfos.counter += value ?? 0;
             // save the new value
-            // TODO
+            SaveSystem.Save<AchievementInfos>(achievementInfos, achievementInfos.title);
         }
-        return achievementInfos.counter += value ?? 0;
+        return achievementInfos.counter;
     }
 
 }

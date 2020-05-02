@@ -1,11 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
 [RequireComponent(typeof(Animator))]
 public class MenuWeaponManager : MonoBehaviour
 {
+    public static MenuWeaponManager Instance;
+
     [Header("Setup")]
     [SerializeField] private Transform rightHandPoint = default;
     [SerializeField] private Transform leftHandPoint = default;
@@ -21,6 +22,11 @@ public class MenuWeaponManager : MonoBehaviour
 
     void Awake()
     {
+        if(Instance != null)
+        {
+            Debug.Log("More than 1 MenuWeaponManager in the scene");
+        }
+        Instance = this;
         animator = GetComponent<Animator>();
     }
 

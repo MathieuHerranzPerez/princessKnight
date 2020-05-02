@@ -9,12 +9,13 @@ public class DeckUI : MonoBehaviour, Observer
 
     [SerializeField] private DeckSlotUI cardsListGOUI = default;
 
-    [SerializeField] private Deck deck = default;
-
-    [SerializeField] private MenuWeaponManager menuWeaponManager = default;
+    private MenuWeaponManager menuWeaponManager;
+    private Deck deck;
 
     void Start()
     {
+        deck = MasterDeck.Instance.GetDeck();
+        menuWeaponManager = MenuWeaponManager.Instance;
         Init();
     }
 

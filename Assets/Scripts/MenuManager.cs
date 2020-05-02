@@ -7,8 +7,6 @@ public class MenuManager : MonoBehaviour
 
     [SerializeField] private SceneFader sceneFader = default;
 
-    [SerializeField] private Deck deck = default;
-
     [SerializeField] private string gameSceneName = "Mathieu";
 
 
@@ -34,7 +32,7 @@ public class MenuManager : MonoBehaviour
         // -- store cards
         // - card selected
         List<Card> listSelectedCards = new List<Card>();
-        listSelectedCards.AddRange(deck.GetSelectedCards());
+        listSelectedCards.AddRange(MasterDeck.Instance.GetDeck().GetSelectedCards());
         List<Card> listAllCards = MasterDeck.Instance.GetListAllCards();
         DataBetweenScene.listIndexCardSelected = new List<int>();         // clear the list
         for (int i = 0; i < listAllCards.Count; ++i)
@@ -46,7 +44,7 @@ public class MenuManager : MonoBehaviour
         }
 
         // save selected card in file
-        SaveSystem.SaveDeck(deck, MasterDeck.Instance);
+        SaveSystem.SaveDeck(MasterDeck.Instance.GetDeck(), MasterDeck.Instance);
 
         // load scene
         sceneFader.FadeTo(gameSceneName);

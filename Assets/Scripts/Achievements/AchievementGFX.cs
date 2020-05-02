@@ -7,6 +7,7 @@ public class AchievementGFX : MonoBehaviour, Observer
     [Header("Setup")]
     [SerializeField] private TextMeshProUGUI titleText = default;
     [SerializeField] private TextMeshProUGUI descriptionText = default;
+    [SerializeField] private TextMeshProUGUI counterText = default;
     [SerializeField] private Image picture = default;
 
     [SerializeField] private Image lockImage = default;
@@ -24,6 +25,8 @@ public class AchievementGFX : MonoBehaviour, Observer
 
         titleText.text = achievement.Title;
         descriptionText.text = achievement.Description;
+        int counter = achievement.Counter < achievement.RewardPoint ? achievement.Counter : achievement.RewardPoint;
+        counterText.text = counter + " / " + achievement.RewardPoint;
         this.picture.sprite = achievement.Picture;
 
         this.lockImage.sprite = achievement.Unlocked ? unlockedSprite : lockSprite;

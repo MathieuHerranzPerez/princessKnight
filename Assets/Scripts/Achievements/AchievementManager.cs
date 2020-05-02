@@ -1,44 +1,63 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class AchievementManager : MonoBehaviour
 {
     public static AchievementManager Instance { get; private set; }
 
-    [Header("Setup")]
-    [SerializeField] private GameObject achievementGFXPrefab = default;
-    [SerializeField] private Transform achievementsContainer = default;
-    [SerializeField] private AchievementDictionary achievementStorage = AchievementDictionary.New<AchievementDictionary>();
-    private Dictionary<string, Achievement> achievementDictionary
-    {
-        get { return achievementStorage.dictionary; }
-    }
+    public event Action<Achievement> OnAchievementCompleted;
 
-    private void Awake()
+    //[SerializeField] private AchievementDictionary achievementStorage = AchievementDictionary.New<AchievementDictionary>();
+    //private Dictionary<string, Achievement> achievementDictionary
+    //{
+    //    get { return achievementStorage.dictionary; }
+    //}
+    [SerializeField] private AchievementDictionary achievementDictionary = new AchievementDictionary();
+
+    void Awake()
     {
         if(Instance != null)
         {
             Debug.LogWarning("More than 1 AchievementManager in scene");
+            Destroy(gameObject);
         }
         Instance = this;
+
+        DontDestroyOnLoad(gameObject);
     }
 
-    public void CreateAchievementGFX(string title)
+    public List<Achievement> GetAchievementList()
     {
-        GameObject achievementGFXGO = (GameObject)Instantiate(achievementGFXPrefab, achievementsContainer);
-        AchievementGFX achievementGFX = achievementGFXGO.GetComponent<AchievementGFX>();
-
-        Achievement achievement = GetAchievementFromTitle(title);
-        achievementGFX.SetAchievement(achievement);
+        return achievementDictionary.Values.ToList();
     }
 
-
-
-    private Achievement GetAchievementFromTitle(string title)
+    public void UpdateAchievementWithGameStats(GameStats gameStats)
     {
-        if (!achievementDictionary.ContainsKey(title))
-            return null;
+        foreach (Achievement achievement in achievementDictionary.Values)
+        {
+            bool completed = achievement.CheckAchievementCompleted(gameStats);
 
-        return achievementDictionary[title];
+            if(completed)
+            {
+                UnlockAchievement(achievement);
+            }
+        }
+    }
+
+    private void UnlockAchievement(Achievement achievement)
+    {
+        switch(achievement.RewardType)
+        {
+            case RewardType.CARD:
+                MasterDeck.Instance.AddCardJustFoundToDeck(achievement.RewardGO.GetComponent<Card>());
+                break;
+            default:
+                // nothing
+                break;
+        }
+
+        OnAchievementCompleted?.Invoke(achievement);
     }
 }

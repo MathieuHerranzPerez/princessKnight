@@ -1,10 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class Bush : MonoBehaviour
 {
-    public int BushGroupId { get { return bushGroup.Id; } }
+    //public int BushGroupId { get { return bushGroup.Id; } }
     public bool IsContainingPlayer { get; private set; } = false;
 
     [HideInInspector]
@@ -93,9 +92,10 @@ public class Bush : MonoBehaviour
     {
         needToHideUnits = false;
         Color newCol = defaultColor;
-        newCol.a = 0.5f;
+        newCol.a = 0.3f;
         // rendererBush.material.color = newCol;
         rendererBush.material.SetColor("_BaseColor", newCol);
+        rendererBush.material.SetColor("_Color", newCol);
     }
 
     public void HideUnits()
@@ -103,6 +103,7 @@ public class Bush : MonoBehaviour
         needToHideUnits = true;
         // rendererBush.material.color = defaultColor;
         rendererBush.material.SetColor("_BaseColor", defaultColor);
+        rendererBush.material.SetColor("_Color", defaultColor);
     }
 
     public bool Contains(HiddableUnit unit)

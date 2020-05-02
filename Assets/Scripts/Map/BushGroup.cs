@@ -3,15 +3,15 @@ using UnityEngine;
 
 public class BushGroup : MonoBehaviour
 {
-    public int Id { get { return id; } }
+    //public int Id { get { return id; } }
 
     // ---- INTERN ----
-    private int id;
+    //private int id;
     private Dictionary<Point, Bush> dicBush = new Dictionary<Point, Bush>();
 
     void Awake()
     {
-        id = (int) (transform.position.x * transform.position.y * 100);
+        //id = (int) (transform.position.x * transform.position.y * 100);
 
         Vector2 refPos = new Vector2(transform.GetChild(0).position.x, transform.GetChild(0).position.z);
         foreach (Transform child in transform)

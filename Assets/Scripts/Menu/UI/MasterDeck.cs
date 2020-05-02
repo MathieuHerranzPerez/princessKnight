@@ -15,7 +15,14 @@ public class MasterDeck : MonoBehaviour
 
     void Awake()
     {
+        if(Instance != null)
+        {
+            Debug.LogWarning("More than 1 MasterDeck in the scene");
+            Destroy(gameObject);
+        }
         Instance = this;
+
+        DontDestroyOnLoad(gameObject);
     }
 
     public List<Card> GetListAllCards()
@@ -36,13 +43,13 @@ public class MasterDeck : MonoBehaviour
     public void SaveData()
     {
         // to add all card if the deck (temporary)
-        foreach (Card c in cardCollection.listAllCard)
-        {
-            if (!deck.GetListCard().Contains(c) && !FindCardInArray(c, deck.GetSelectedCards()))
-            {
-                deck.AddDeckCard(c);
-            }
-        }
+        //foreach (Card c in cardCollection.listAllCard)
+        //{
+        //    if (!deck.GetListCard().Contains(c) && !FindCardInArray(c, deck.GetSelectedCards()))
+        //    {
+        //        deck.AddDeckCard(c);
+        //    }
+        //}
 
         SaveSystem.SaveDeck(deck, this);
     }
@@ -126,6 +133,7 @@ public class MasterDeck : MonoBehaviour
 
         // add it to the deck
         deck.AddDeckCard(card);
+        SaveData(); // todo new
     }
 
     public bool HasCardNotFound()

@@ -2,7 +2,7 @@
 using System.Reflection;
 using UnityEditor;
 
-[CustomEditor(typeof(Achievement))]
+[CustomEditor(typeof(StatsAchievement))]
 public class AchievementGameStatsEditor : Editor
 {
     public string GameStatsAttribute;
@@ -29,7 +29,7 @@ public class AchievementGameStatsEditor : Editor
         }
 
         choiceIndex = EditorGUILayout.Popup(choiceIndex, choices);
-        Achievement achievement = target as Achievement;
+        StatsAchievement achievement = target as StatsAchievement;
         // Update the selected choice in the underlying object
         achievement.GameStatsAttributeCheckEarn = choices[choiceIndex];
         // Save the changes back to the object
