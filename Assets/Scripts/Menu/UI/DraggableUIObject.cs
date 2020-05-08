@@ -16,8 +16,8 @@ public class DraggableUIObject : MonoBehaviour, IBeginDragHandler, IDragHandler,
         startParent = transform.parent;
         GetComponent<CanvasGroup>().blocksRaycasts = false;
 
-        // transform.SetParent(transform.root);
-        transform.SetParent(transform.parent.transform.parent);
+         transform.SetParent(transform.root);
+        //transform.SetParent(transform.parent.transform.parent);
     }
 
     public void OnDrag(PointerEventData eventData)

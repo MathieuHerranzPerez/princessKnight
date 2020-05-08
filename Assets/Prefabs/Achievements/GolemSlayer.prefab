@@ -51,6 +51,6 @@ MonoBehaviour:
     rewardPoint: 20
     unlocked: 0
     counter: 0
-  picture: {fileID: 0}
+  picture: {fileID: 21300000, guid: a3d5b4a5f28a36449b5333eabf27fcb5, type: 3}
   comparisonOp: 3
   monsterName: Golem

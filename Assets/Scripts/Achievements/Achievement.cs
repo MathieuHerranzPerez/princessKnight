@@ -77,6 +77,8 @@ public abstract class Achievement : MonoBehaviour, Observable
 
     protected int UpdateLocalCounter(int? value)
     {
+        Debug.LogError("UpdateLocalCounter : " + value); // affD
+
         if(value != null)
         {
             achievementInfos.counter += value ?? 0;

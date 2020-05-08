@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class StatisticsScreen : MonoBehaviour
+public class StatisticsScreen : BaseScreen
 {
     [SerializeField] private Text textScore = default;
     [SerializeField] private Text textDistance = default;

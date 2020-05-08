@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
 
     [SerializeField] private SceneFader sceneFader = default;
-    [SerializeField] private GameObject ScreenStatsPrefab = default;
+    //[SerializeField] private GameObject ScreenStatsPrefab = default;
 
     void Awake()
     {
@@ -16,9 +16,13 @@ public class GameManager : MonoBehaviour
 
     public void NotifyPlayerDie()
     {
+        AchievementManager.Instance.UpdateAchievementWithGameStats(StatisticsManager.Instance.Stats);
         TimeManager.Instance.Freeze();
-        GameObject screenStatsGO = (GameObject) Instantiate(ScreenStatsPrefab);
-        StatisticsScreen statisticsScreen = screenStatsGO.GetComponent<StatisticsScreen>();
+
+        StatisticsScreen statisticsScreen = (StatisticsScreen) ScreenManager.Instance.ShowScreen(ScreenType.StatisticsScreen);
+
+        //GameObject screenStatsGO = (GameObject) Instantiate(ScreenStatsPrefab);
+        //StatisticsScreen statisticsScreen = screenStatsGO.GetComponent<StatisticsScreen>();
         statisticsScreen.Init(StatisticsManager.Instance.Stats);
     }
 

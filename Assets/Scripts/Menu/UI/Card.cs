@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(DraggableUIObject))]
 [Serializable]
 public class Card : MonoBehaviour
 {

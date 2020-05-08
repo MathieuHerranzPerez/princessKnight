@@ -9,6 +9,7 @@ public enum ScreenType
 {
     HomeScreen,
     AchievementScreen,
+    StatisticsScreen
 }
 
 public class ScreenManager : MonoBehaviour
@@ -51,7 +52,13 @@ public class ScreenManager : MonoBehaviour
             ShowScreen(firstScreenType);
     }
 
-    public void ShowScreen(ScreenType screenType, Hashtable parameters = null)
+    public void ShowScreen(string type)
+    {
+        Enum.TryParse(type, out ScreenType screenType);
+        ShowScreen(screenType);
+    }
+
+    public BaseScreen ShowScreen(ScreenType screenType, Hashtable parameters = null)
     {
         if(currentScreen != null)
         {
@@ -66,6 +73,8 @@ public class ScreenManager : MonoBehaviour
 
             NotifyScreenChanged();
         }
+
+        return newScreen;
     }
 
     public T CreatePopup<T>() where T : Popup

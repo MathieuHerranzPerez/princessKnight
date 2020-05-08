@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class StatisticsManager : MonoBehaviour, IEventListener
 {
@@ -32,6 +30,16 @@ public class StatisticsManager : MonoBehaviour, IEventListener
                 if (enemy is Boss)
                     ++gameStats.nbBossKilled;
                 ++gameStats.nbEnemyKilled;
+
+                if(gameStats.dictionaryMonster.ContainsKey(enemy.SpeciesName))
+                {
+                    gameStats.dictionaryMonster[enemy.SpeciesName] = gameStats.dictionaryMonster[enemy.SpeciesName] + 1;
+                }
+                else
+                {
+                    gameStats.dictionaryMonster.Add(enemy.SpeciesName, 1);
+                }
+
                 res = true;
                 break;
         }
