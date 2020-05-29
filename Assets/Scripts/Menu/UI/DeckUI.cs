@@ -92,9 +92,9 @@ public class DeckUI : MonoBehaviour, Observer
         // check if there is space in selected
         bool isFull = true;
         int i = 0;
-        while(i < selectedCardsGOUI.transform.childCount && isFull)
+        while (i < selectedCardsGOUI.transform.childCount && isFull)
         {
-            if(selectedCardsGOUI.transform.GetChild(i).childCount == 0)
+            if (selectedCardsGOUI.transform.GetChild(i).childCount == 0)
                 isFull = false;
             else
                 ++i;
@@ -149,12 +149,16 @@ public class DeckUI : MonoBehaviour, Observer
         foreach (Card c in deck.GetListCard())
         {
             ++j;
-            Card cardClone = (Card)Instantiate(c, cardsListGOUI.transform);  // instantiate the card in the UI
-            cardClone.gameObject.AddComponent(typeof(CardUI));
-            CardUI cardUI = cardClone.GetComponent<CardUI>();
-            cardUI.ChangeListener(delegate { NotifyClicOnCardFromContainer(cardClone.gameObject); });
-            cardClone.gameObject.AddComponent(typeof(DraggableUIObject));
-            cardClone.gameObject.AddComponent(typeof(CanvasGroup));
+            // Debug.LogError(c); // affD
+            if (c != null)
+            {
+                Card cardClone = (Card)Instantiate(c, cardsListGOUI.transform);  // instantiate the card in the UI
+                cardClone.gameObject.AddComponent(typeof(CardUI));
+                CardUI cardUI = cardClone.GetComponent<CardUI>();
+                cardUI.ChangeListener(delegate { NotifyClicOnCardFromContainer(cardClone.gameObject); });
+                cardClone.gameObject.AddComponent(typeof(DraggableUIObject));
+                cardClone.gameObject.AddComponent(typeof(CanvasGroup));
+            }
         }
     }
 

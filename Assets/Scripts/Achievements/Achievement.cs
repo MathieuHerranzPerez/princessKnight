@@ -62,6 +62,13 @@ public abstract class Achievement : MonoBehaviour, Observable
         }
     }
 
+    public void Unlock()
+    {
+        achievementInfos.unlocked = true;
+        // save the new value
+        SaveSystem.Save<AchievementInfos>(achievementInfos, achievementInfos.title);
+    }
+
     public void Register(Observer obsever)
     {
         listObserver.Add(obsever);

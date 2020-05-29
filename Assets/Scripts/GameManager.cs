@@ -16,7 +16,10 @@ public class GameManager : MonoBehaviour
 
     public void NotifyPlayerDie()
     {
-        AchievementManager.Instance.UpdateAchievementWithGameStats(StatisticsManager.Instance.Stats);
+        if (AchievementManager.Instance != null)
+        {
+            AchievementManager.Instance.UpdateAchievementWithGameStats(StatisticsManager.Instance.Stats);
+        }
         TimeManager.Instance.Freeze();
 
         StatisticsScreen statisticsScreen = (StatisticsScreen) ScreenManager.Instance.ShowScreen(ScreenType.StatisticsScreen);

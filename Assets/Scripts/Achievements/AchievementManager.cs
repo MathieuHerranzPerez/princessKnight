@@ -14,7 +14,11 @@ public class AchievementManager : MonoBehaviour
     //{
     //    get { return achievementStorage.dictionary; }
     //}
+    [SerializeField] private Transform achievementContainer = default;
     [SerializeField] private AchievementDictionary achievementDictionary = new AchievementDictionary();
+
+    // ---- INTERN ----
+    private AchievementDictionary inGameAchievementDictionary = new AchievementDictionary();
 
     void Awake()
     {
@@ -24,18 +28,29 @@ public class AchievementManager : MonoBehaviour
             Destroy(gameObject);
         }
         Instance = this;
-
         DontDestroyOnLoad(gameObject);
+
+        // get saved achievements
+
+    }
+
+    private void Start()
+    {
+        foreach(KeyValuePair<string, Achievement> element in achievementDictionary)
+        {
+            Achievement achievement = Instantiate(element.Value, achievementContainer);
+            inGameAchievementDictionary.Add(achievement.Title, achievement);
+        }
     }
 
     public List<Achievement> GetAchievementList()
     {
-        return achievementDictionary.Values.ToList();
+        return inGameAchievementDictionary.Values.ToList();
     }
 
     public void UpdateAchievementWithGameStats(GameStats gameStats)
     {
-        foreach (Achievement achievement in achievementDictionary.Values)
+        foreach (Achievement achievement in inGameAchievementDictionary.Values)
         {
             bool completed = achievement.CheckAchievementCompleted(gameStats);
 
@@ -48,7 +63,8 @@ public class AchievementManager : MonoBehaviour
 
     private void UnlockAchievement(Achievement achievement)
     {
-        switch(achievement.RewardType)
+        achievement.Unlock();
+        switch (achievement.RewardType)
         {
             case RewardType.CARD:
                 MasterDeck.Instance.AddCardJustFoundToDeck(achievement.RewardGO.GetComponent<Card>());
@@ -59,5 +75,12 @@ public class AchievementManager : MonoBehaviour
         }
 
         OnAchievementCompleted?.Invoke(achievement);
+
+
+        AchievementNotification achievementNotification = ScreenManager.Instance.CreateNotificationPopup<AchievementNotification>();
+        if(achievementNotification != null)
+        {
+            achievementNotification.Init(achievement);
+        }
     }
 }

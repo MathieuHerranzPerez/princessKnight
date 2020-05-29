@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BeautifulTransitions.Scripts.Transitions.Components.GameObject.AbstractClasses;
+using System;
 using UnityEngine;
 
 public enum PopupResult
@@ -27,11 +28,13 @@ public class Popup : MonoBehaviour
 
     // ---- INTERN ----
     protected PopupResult result;
+    protected TransitionGameObjectBase transition;
 
     void Awake()
     {
         result = defaultResult;
         OnAwake();
+        transition = GetComponent<TransitionGameObjectBase>();
     }
     protected virtual void OnAwake() { }
 
@@ -40,7 +43,10 @@ public class Popup : MonoBehaviour
         OnStart();
         OnOpened?.Invoke(this);
     }
-    protected virtual void OnStart() { }
+    protected virtual void OnStart()
+    {
+        transition.TransitionIn();
+    }
 
     void Update()
     {
@@ -69,7 +75,7 @@ public class Popup : MonoBehaviour
     {
         if(destroyOnClose)
         {
-            // close animation
+            transition.TransitionOut();
         }
 
         InternalClose();

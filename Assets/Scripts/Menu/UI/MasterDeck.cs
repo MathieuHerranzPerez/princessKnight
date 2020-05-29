@@ -40,6 +40,19 @@ public class MasterDeck : MonoBehaviour
         this.listIndexCardNotFound = listIndexCardNotFound;
     }
 
+    public int GetCardIndexByTitle(string name)
+    {
+        int res = -1;
+        for(int i = 0; i < cardCollection.listAllCard.Count && res == -1; ++i)
+        {
+            if(cardCollection.listAllCard[i].GetTitle() == name)
+            {
+                res = i;
+            }
+        }
+        return res;
+    }
+
     public void SaveData()
     {
         // to add all card if the deck (temporary)
