@@ -58,6 +58,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cardCollection:
     listAllCard:
-    - {fileID: 6702411520610572237, guid: 0055ac27a7ff1954da952b2f4615dd48, type: 3}
     - {fileID: 6702411520610572237, guid: 064d93c984cee7547843b6eae4ade449, type: 3}
+    - {fileID: 6702411520610572237, guid: 0055ac27a7ff1954da952b2f4615dd48, type: 3}
   deck: {fileID: 1942003646910624929}

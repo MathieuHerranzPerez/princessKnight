@@ -346,7 +346,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9cbe524a298075448002aa8cf61c05a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speciesName: 
+  speciesName: Orc
   stats:
     maxHP: 1
     HP: 1

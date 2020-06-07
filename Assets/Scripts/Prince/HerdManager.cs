@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class HerdManager : MonoBehaviour
+public class HerdManager : ResetableManager
 {
     public static HerdManager Instance { get; private set; }
     public Herd Herd { get { return herd; } }
@@ -12,5 +12,10 @@ public class HerdManager : MonoBehaviour
     void Start()
     {
         Instance = this;
+    }
+
+    public override void ResetScene()
+    {
+        Destroy(herd.gameObject);
     }
 }

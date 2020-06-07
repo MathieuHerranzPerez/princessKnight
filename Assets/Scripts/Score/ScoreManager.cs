@@ -6,6 +6,7 @@ public class ScoreManager : MonoBehaviour, Observable
     public static ScoreManager Instance { get; private set; }
 
     public float Score { get { return score; } }
+    public bool IsNewecord { get { return isNewRecord; } }
 
     [SerializeField]
     private float princeDeahImpactOnScore = -1f;
@@ -13,6 +14,8 @@ public class ScoreManager : MonoBehaviour, Observable
     private float princeSavedImpactOnScore = 3f;
 
     // ---- INTERN ----
+    private bool isNewRecord = false;
+    private float record = 0f;
     private float score = 0f;
 
     private List<Observer> listObserver = new List<Observer>();
@@ -20,6 +23,7 @@ public class ScoreManager : MonoBehaviour, Observable
     void Start()
     {
         Instance = this;
+        record = PlayerPrefs.GetFloat("scoreRecord", 0);
     }
 
     public void NotifyPrinceDeath()
@@ -32,6 +36,15 @@ public class ScoreManager : MonoBehaviour, Observable
     {
         score += princeSavedImpactOnScore;
         NotifyObservers();
+    }
+
+    public void SaveScore()
+    {
+        if(score > record)
+        {
+            isNewRecord = true;
+            PlayerPrefs.SetFloat("scoreRecord", score);
+        }
     }
 
 

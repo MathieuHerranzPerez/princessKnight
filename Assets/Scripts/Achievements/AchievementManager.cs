@@ -29,9 +29,6 @@ public class AchievementManager : MonoBehaviour
         }
         Instance = this;
         DontDestroyOnLoad(gameObject);
-
-        // get saved achievements
-
     }
 
     private void Start()
@@ -50,6 +47,7 @@ public class AchievementManager : MonoBehaviour
 
     public void UpdateAchievementWithGameStats(GameStats gameStats)
     {
+        Debug.Log(gameStats); // affD
         foreach (Achievement achievement in inGameAchievementDictionary.Values)
         {
             bool completed = achievement.CheckAchievementCompleted(gameStats);
@@ -75,7 +73,6 @@ public class AchievementManager : MonoBehaviour
         }
 
         OnAchievementCompleted?.Invoke(achievement);
-
 
         AchievementNotification achievementNotification = ScreenManager.Instance.CreateNotificationPopup<AchievementNotification>();
         if(achievementNotification != null)

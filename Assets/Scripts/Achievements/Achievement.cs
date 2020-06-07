@@ -40,22 +40,26 @@ public abstract class Achievement : MonoBehaviour, Observable
         int? gameStatsValue = GetValueFromGameStats(gameStats);
         int valueToCompareWith = UpdateLocalCounter(gameStatsValue);
 
+        Debug.Log(achievementInfos.counter);
+        Debug.LogError(comparisonOp); // affD
+        Debug.Log(valueToCompareWith);
+
         switch (comparisonOp)
         {
             case ComparisonOp.INF:
-                return achievementInfos.counter < valueToCompareWith;
+                return valueToCompareWith < achievementInfos.rewardPoint;
 
             case ComparisonOp.INF_EQL:
-                return achievementInfos.counter <= valueToCompareWith;
+                return valueToCompareWith <= achievementInfos.rewardPoint;
 
             case ComparisonOp.EQL:
-                return achievementInfos.counter == valueToCompareWith;
+                return valueToCompareWith == achievementInfos.rewardPoint;
 
             case ComparisonOp.SUP_EQL:
-                return achievementInfos.counter >= valueToCompareWith;
+                return valueToCompareWith >= achievementInfos.rewardPoint;
 
             case ComparisonOp.SUP:
-                return achievementInfos.counter > valueToCompareWith;
+                return valueToCompareWith > achievementInfos.rewardPoint;
 
             default:
                 return false;
@@ -79,13 +83,15 @@ public abstract class Achievement : MonoBehaviour, Observable
 
     protected void LoadAchievement()
     {
-        this.achievementInfos = SaveSystem.Load<AchievementInfos>(achievementInfos.title);
+        AchievementInfos ai = SaveSystem.Load<AchievementInfos>(achievementInfos.title);
+        if(ai != default)
+        {
+            this.achievementInfos = ai;
+        }
     }
 
     protected int UpdateLocalCounter(int? value)
     {
-        Debug.LogError("UpdateLocalCounter : " + value); // affD
-
         if(value != null)
         {
             achievementInfos.counter += value ?? 0;

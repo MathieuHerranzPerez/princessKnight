@@ -140,7 +140,7 @@ public class DeckUI : MonoBehaviour, Observer
                 CardUI cardUI = cardClone.GetComponent<CardUI>();
                 cardUI.ChangeListener(delegate { NotifyClicOnCardFromSlot(cardClone.gameObject); });
 
-                cardClone.gameObject.AddComponent(typeof(DraggableUIObject));
+                // cardClone.gameObject.AddComponent(typeof(DraggableUIObject));
                 cardClone.gameObject.AddComponent(typeof(CanvasGroup));
             }
         }
@@ -156,7 +156,7 @@ public class DeckUI : MonoBehaviour, Observer
                 cardClone.gameObject.AddComponent(typeof(CardUI));
                 CardUI cardUI = cardClone.GetComponent<CardUI>();
                 cardUI.ChangeListener(delegate { NotifyClicOnCardFromContainer(cardClone.gameObject); });
-                cardClone.gameObject.AddComponent(typeof(DraggableUIObject));
+                // cardClone.gameObject.AddComponent(typeof(DraggableUIObject));
                 cardClone.gameObject.AddComponent(typeof(CanvasGroup));
             }
         }

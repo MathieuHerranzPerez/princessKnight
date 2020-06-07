@@ -1,5 +1,4 @@
 ﻿using System;
-using UnityEngine;
 
 [Serializable]
 public class AchievementInfos
@@ -11,4 +10,9 @@ public class AchievementInfos
     public bool unlocked = false;
 
     public int counter;
+
+    public override string ToString()
+    {
+        return "[" + title + "] " + description;
+    }
 }

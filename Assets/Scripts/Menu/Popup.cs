@@ -85,7 +85,7 @@ public class Popup : MonoBehaviour
     {
         if(destroyOnClose)
         {
-            Destroy(gameObject);
+            Destroy(gameObject, 0.5f);
         }
         else
         {

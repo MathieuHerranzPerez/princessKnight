@@ -27,15 +27,18 @@ public class CameraBoundaries : MonoBehaviour, IStoppable
         if (isStopped)
             return;
 
+        if (target == null)
+            return;
+
         Vector3 targetCurrentPos = target.position;
         Vector3 newPos = targetCurrentPos;
         bool hasPosChanged = false;
-        if(targetCurrentPos.x < bottomLeftPoint.position.x)
+        if (targetCurrentPos.x < bottomLeftPoint.position.x)
         {
             newPos.x = bottomLeftPoint.position.x;
             hasPosChanged = true;
         }
-        if(targetCurrentPos.x > topRighPoint.position.x)
+        if (targetCurrentPos.x > topRighPoint.position.x)
         {
             newPos.x = topRighPoint.position.x;
             hasPosChanged = true;
@@ -52,7 +55,7 @@ public class CameraBoundaries : MonoBehaviour, IStoppable
             hasPosChanged = true;
         }
 
-        if(hasPosChanged)
+        if (hasPosChanged)
         {
             target.transform.position = newPos;
         }

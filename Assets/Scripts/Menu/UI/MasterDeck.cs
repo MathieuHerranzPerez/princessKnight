@@ -83,6 +83,12 @@ public class MasterDeck : MonoBehaviour
     {
         SaveDeckData saveDeckData = SaveSystem.LoadDeck();
 
+        if(saveDeckData == null)
+        {
+            saveDeckData = new SaveDeckData(deck, this);
+            saveDeckData.listIndexCardFound.Add(0);
+        }
+
         // card found
         List<Card> listCardFound = new List<Card>();
         if (saveDeckData != null)

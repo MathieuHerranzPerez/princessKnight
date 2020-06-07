@@ -1,15 +1,13 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class GameManager : ResetableManager
 {
     public static GameManager Instance { get; private set; }
 
     [SerializeField] private SceneFader sceneFader = default;
-    //[SerializeField] private GameObject ScreenStatsPrefab = default;
 
-    void Awake()
+    protected override void Awake()
     {
         Instance = this;
     }
@@ -20,17 +18,27 @@ public class GameManager : MonoBehaviour
         {
             AchievementManager.Instance.UpdateAchievementWithGameStats(StatisticsManager.Instance.Stats);
         }
-        TimeManager.Instance.Freeze();
+        TimeManager.Instance.ChangeTimeScale(0.2f);
+
+        ScoreManager.Instance.SaveScore();
 
         StatisticsScreen statisticsScreen = (StatisticsScreen) ScreenManager.Instance.ShowScreen(ScreenType.StatisticsScreen);
-
-        //GameObject screenStatsGO = (GameObject) Instantiate(ScreenStatsPrefab);
-        //StatisticsScreen statisticsScreen = screenStatsGO.GetComponent<StatisticsScreen>();
         statisticsScreen.Init(StatisticsManager.Instance.Stats);
+
+        ResetScene();
     }
 
     public void NotifyStatsClose()
     {
         sceneFader.FadeTo("MathieuMenu");
+    }
+
+
+    public override void ResetScene()
+    {
+        foreach(ResetableManager manager in listAllManager)
+        {
+            manager.ResetScene();
+        }
     }
 }

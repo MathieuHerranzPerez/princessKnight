@@ -88,7 +88,7 @@ public class ScreenManager : MonoBehaviour
         T popupPrefab = (T)GetPopupPrefab(typeof(T));
         if (popupPrefab != null)
         {
-            T popup = Instantiate(popupPrefab, popupContainer, true);
+            T popup = Instantiate(popupPrefab, popupContainer);
             popup.GetComponent<Canvas>().worldCamera = cam;
             SetSortingOrderPopup(popup);
             listCurrentPopup.Add(popup);
@@ -106,7 +106,7 @@ public class ScreenManager : MonoBehaviour
         T notificationPopupPrefab = (T)GetNotificationPopupPrefab(typeof(T));
         if(notificationPopupPrefab != null)
         {
-            T notificationPopup = Instantiate(notificationPopupPrefab, notificationPopupContainer, true);
+            T notificationPopup = Instantiate(notificationPopupPrefab, notificationPopupContainer);
             notificationPopup.GetComponent<Canvas>().worldCamera = cam;
             SetSortingOrderPopup(notificationPopup);
             listCurrentPopup.Add(notificationPopup);
@@ -125,7 +125,7 @@ public class ScreenManager : MonoBehaviour
         BaseScreen baseScreen = listScreen.Find(screen => screen.Type == screenType);
         if(baseScreen != null)
         {
-            BaseScreen screen = Instantiate(baseScreen, screenContainer, true);
+            BaseScreen screen = Instantiate(baseScreen, screenContainer);
             Canvas screenCanvas = screen.GetComponent<Canvas>();
             screenCanvas.worldCamera = cam;
             screenCanvas.sortingLayerID = screenLayerIndex;

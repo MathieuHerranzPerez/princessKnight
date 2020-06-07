@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class StatisticsScreen : BaseScreen
@@ -26,6 +24,10 @@ public class StatisticsScreen : BaseScreen
 
     private void InitTexts()
     {
+        if (ScoreManager.Instance.IsNewecord)
+        {
+            // todo anim
+        }
         textScore.text = ScoreManager.Instance.Score.ToString();
         textDistance.text = ((int) MapManager.Instance.GetMaxDistanceDiscovered()).ToString();
         textNbEnemiesKilled.text = gameStats.nbEnemyKilled.ToString();

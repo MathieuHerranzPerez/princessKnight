@@ -34,6 +34,9 @@ public class PlayerFollow : MonoBehaviour, IStoppable
         if (isStopped)
             return;
 
+        if (target == null)
+            return;
+
         Vector3 newPos = target.position + cameraOffset;
 
 

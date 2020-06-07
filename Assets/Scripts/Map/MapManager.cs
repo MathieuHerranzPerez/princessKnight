@@ -2,7 +2,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(EnemyGroupGOFactory))]
-public class MapManager : MonoBehaviour
+public class MapManager : ResetableManager
 {
     public static MapManager Instance { get; private set; }
 
@@ -251,6 +251,14 @@ public class MapManager : MonoBehaviour
             LevelMapFragment levelMapFragment = mapFragmentGO.GetComponent<LevelMapFragment>();
             queueMapFragment.Enqueue(levelMapFragment);
             levelMapFragment.InitWith(arrayEnemyGroupGO, arrayPrinceGO, nbChestToSpawn);
+        }
+    }
+
+    public override void ResetScene()
+    {
+        foreach(Transform child in mapFragmentContainer)
+        {
+            Destroy(child.gameObject);
         }
     }
 }

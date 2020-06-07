@@ -1,13 +1,14 @@
 ﻿using UnityEngine;
 
-public class TimeManager : MonoBehaviour
+public class TimeManager : ResetableManager
 {
     public static TimeManager Instance { get; private set; }
 
     private float previousTimeScale = 1f;
 
-    void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         Instance = this;
     }
 
@@ -31,5 +32,11 @@ public class TimeManager : MonoBehaviour
     {
         Time.timeScale = newTimeScale;
         previousTimeScale = newTimeScale;
+    }
+
+    public override void ResetScene()
+    {
+        Time.timeScale = 1f;
+        UnFreeze();
     }
 }

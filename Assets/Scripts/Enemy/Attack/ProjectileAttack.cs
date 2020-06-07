@@ -50,7 +50,7 @@ public class ProjectileAttack : CastingAttack
         isAiming = false;
         lineRenderer.positionCount = 0;    // remove lineRenderer points
         Quaternion rotation = Quaternion.LookRotation(directionFromPtojectileSpawnPointToTarget, source.ProjecileSpawnPoint.up);
-        GameObject projectileGO = Instantiate(projectilePrefab, source.ProjecileSpawnPoint.position, rotation);
+        GameObject projectileGO = Instantiate(projectilePrefab, source.ProjecileSpawnPoint.position, rotation, EnemyManager.Instance.EnemyContainer);
         Projectile projectile = projectileGO.GetComponent<Projectile>();
         projectile.Damage = damageOnHit;
         projectile.TimeToLive = projectileTimeToLive;

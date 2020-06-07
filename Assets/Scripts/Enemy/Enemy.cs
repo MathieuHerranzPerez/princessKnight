@@ -186,7 +186,7 @@ public class Enemy : MonoBehaviour, Damageable, INavMeshUnit
                 {
                     target = col.gameObject.GetComponent<Targetable>();
                     attack.Target = target;
-                    gameObject.transform.parent = null;    // put it in the scene root to not be removed if mapFragement destroy
+                    gameObject.transform.parent = EnemyManager.Instance.EnemyContainer;    // put it in the scene root to not be removed if mapFragement destroy
                 }
             }
         }
