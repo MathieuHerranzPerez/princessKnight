@@ -7,6 +7,8 @@ public class MenuWeaponManager : MonoBehaviour
 {
     public static MenuWeaponManager Instance;
 
+    [SerializeField] List<string> listAnimationTriggerName = new List<string>();
+
     [Header("Setup")]
     [SerializeField] private Transform rightHandPoint = default;
     [SerializeField] private Transform leftHandPoint = default;
@@ -28,6 +30,14 @@ public class MenuWeaponManager : MonoBehaviour
         }
         Instance = this;
         animator = GetComponent<Animator>();
+    }
+
+    void Start()
+    {
+        Invoke("ChangeAnimation", 5f);
+
+        // put the default one
+        ChangeWeapon(firstWeaponPrefab);
     }
 
     private void ChangeWeapon(GameObject newWeaponPrefab)
@@ -128,5 +138,11 @@ public class MenuWeaponManager : MonoBehaviour
                 ChangeWeapon(firstWeaponPrefab);
             }
         }
+    }
+
+    private void ChangeAnimation()
+    {
+        animator.SetTrigger(listAnimationTriggerName[Random.Range(0, listAnimationTriggerName.Count)]);
+        Invoke("ChangeAnimation", Random.Range(10, 20));
     }
 }
